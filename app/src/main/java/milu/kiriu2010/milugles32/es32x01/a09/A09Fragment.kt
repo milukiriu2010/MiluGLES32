@@ -1,4 +1,4 @@
-package milu.kiriu2010.milugles32.es32x01.a06
+package milu.kiriu2010.milugles32.es32x01.a09
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class A06Fragment : Fragment() {
+class A09Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -27,7 +27,7 @@ class A06Fragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_es32x01_a01, container, false)
 
         myGLES32View = view.findViewById(R.id.myGLES32ViewA01)
-        val renderer = A06Renderer(context!!)
+        val renderer = A09Renderer(context!!)
         myGLES32View.setRenderer(renderer)
         myGLES32View.setOnTouchListener { v, event ->
             when (event.action) {
@@ -63,7 +63,7 @@ class A06Fragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() =
-                A06Fragment().apply {
+                A09Fragment().apply {
                     arguments = Bundle().apply {
                     }
                 }

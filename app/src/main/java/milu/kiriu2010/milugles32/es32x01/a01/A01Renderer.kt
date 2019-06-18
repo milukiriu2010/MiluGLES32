@@ -1,4 +1,4 @@
-package milu.kiriu2010.exdb1.es32x01.a01
+package milu.kiriu2010.milugles32.es32x01.a01
 
 import android.content.Context
 import android.opengl.GLES32

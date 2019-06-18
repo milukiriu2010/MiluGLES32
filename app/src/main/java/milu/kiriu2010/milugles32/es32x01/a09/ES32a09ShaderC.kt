@@ -1,4 +1,4 @@
-package milu.kiriu2010.milugles32.es32x01.a06
+package milu.kiriu2010.milugles32.es32x01.a09
 
 import android.content.Context
 import android.opengl.GLES32
@@ -7,12 +7,12 @@ import milu.kiriu2010.gui.shader.es32.ES32MgShader
 import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
 
 // ------------------------------------
-// シェーダB
+// UBO
+// シェーダC
 // ------------------------------------
-// https://wgld.org/d/webgl2/w006.html
-// https://github.com/danginsburg/opengles3-book/blob/master/Android_Java/Chapter_6/VertexArrayObjects/src/com/openglesbook/VertexArrayObjects/VAORenderer.java
+// https://wgld.org/d/webgl2/w009.html
 // ------------------------------------
-class ES32a06ShaderB(ctx: Context): ES32MgShader(ctx) {
+class ES32a09ShaderC(ctx: Context): ES32MgShader(ctx) {
     // 頂点シェーダ
     private val scv =
             """#version 300 es
@@ -37,10 +37,10 @@ class ES32a06ShaderB(ctx: Context): ES32MgShader(ctx) {
 
             in  vec2  v_TexCoord;
 
-            out vec4  o_Color;
+            out vec4  o_FragColor;
 
             void main() {
-                o_Color = texture(u_Texture,v_TexCoord);
+                o_FragColor = texture(u_Texture,v_TexCoord);
             }
             """.trimIndent()
 
@@ -83,6 +83,10 @@ class ES32a06ShaderB(ctx: Context): ES32MgShader(ctx) {
 
         // モデルを描画
         GLES32.glDrawElements(GLES32.GL_TRIANGLES, model.datIdx.size, GLES32.GL_UNSIGNED_SHORT, 0)
+
+        // リソース解放
+        //GLES32.glBindBuffer(GLES32.GL_ARRAY_BUFFER,0)
+        //GLES32.glBindBuffer(GLES32.GL_ELEMENT_ARRAY_BUFFER,0)
 
         // VAO解放
         GLES32.glBindVertexArray(0)

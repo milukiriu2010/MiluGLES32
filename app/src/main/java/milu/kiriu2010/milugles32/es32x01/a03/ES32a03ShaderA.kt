@@ -1,6 +1,7 @@
-package milu.kiriu2010.milugles32.es32x01.a06
+package milu.kiriu2010.milugles32.es32x01.a03
 
 import android.content.Context
+import android.opengl.GLES30
 import android.opengl.GLES32
 import milu.kiriu2010.gui.basic.MyGLES32Func
 import milu.kiriu2010.gui.shader.es32.ES32MgShader
@@ -9,10 +10,9 @@ import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
 // ------------------------------------
 // シェーダA
 // ------------------------------------
-// https://wgld.org/d/webgl2/w006.html
-// https://github.com/danginsburg/opengles3-book/blob/master/Android_Java/Chapter_6/VertexArrayObjects/src/com/openglesbook/VertexArrayObjects/VAORenderer.java
+// https://wgld.org/d/webgl2/w003.html
 // ------------------------------------
-class ES32a06ShaderA(ctx: Context): ES32MgShader(ctx) {
+class ES32a03ShaderA(ctx: Context): ES32MgShader(ctx) {
     // 頂点シェーダ
     private val scv =
             """#version 300 es
@@ -65,7 +65,6 @@ class ES32a06ShaderA(ctx: Context): ES32MgShader(ctx) {
                 o_Color = vec4(samplerColor.rgb*diffuse + specular, samplerColor.a);
             }
             """.trimIndent()
-
 
     override fun loadShader(): ES32MgShader {
         // 頂点シェーダを生成

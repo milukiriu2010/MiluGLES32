@@ -2,6 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+            android:id="@+id/es32_a09"
+            android:title="a09_UBO" />
+    <item
             android:id="@+id/es32_a07"
             android:title="a07_インスタンシング" />
     <item
