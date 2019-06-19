@@ -1,4 +1,4 @@
-package milu.kiriu2010.milugles32.es32x01.a03
+package milu.kiriu2010.milugles32.es32x02.a11
 
 import android.content.Context
 import android.opengl.GLES30
@@ -9,10 +9,11 @@ import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
 
 // ------------------------------------
 // シェーダA
+// MRT(Multiple Render Targets)
 // ------------------------------------
-// https://wgld.org/d/webgl2/w003.html
+// https://wgld.org/d/webgl2/w011.html
 // ------------------------------------
-class ES32a03ShaderA(ctx: Context): ES32MgShader(ctx) {
+class ES32a11ShaderA(ctx: Context): ES32MgShader(ctx) {
     // 頂点シェーダ
     private val scv =
             """#version 300 es
@@ -52,17 +53,19 @@ class ES32a03ShaderA(ctx: Context): ES32MgShader(ctx) {
             in  vec3  v_Normal;
             in  vec2  v_TexCoord;
 
-            out vec4  o_FragColor;
+            layout (location = 0) out vec4  o_FragColor0;
+            layout (location = 1) out vec4  o_FragColor1;
 
             void main() {
                 vec3  light    = normalize(u_vecLight - v_Position);
                 vec3  eye      = normalize(v_Position - u_vecEye);
                 vec3  ref      = normalize(reflect(eye,v_Normal));
-                float diffuse  = max(dot(light,v_Normal),0.5);
+                float diffuse  = max(dot(light,v_Normal),0.2);
                 float specular = max(dot(light,ref)     ,0.0);
                 specular = pow(specular,20.0);
                 vec4 samplerColor = texture(u_Texture,v_TexCoord);
-                o_FragColor = vec4(samplerColor.rgb*diffuse + specular, samplerColor.a);
+                o_FragColor0 = vec4(samplerColor.rgb*diffuse + specular, samplerColor.a);
+                o_FragColor1 = vec4(v_Normal* vec3(diffuse + specular) , samplerColor.a);
             }
             """.trimIndent()
 

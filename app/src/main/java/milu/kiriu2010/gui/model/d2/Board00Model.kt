@@ -36,6 +36,8 @@ class Board00Model: MgModelAbs() {
             51 -> createPathPattern51(opt)
             // XY平面(左回り)画像貼り付け
             100 -> createPathPattern100(opt)
+            // XY平面
+            101 -> createPathPattern101(opt)
             else -> createPathPattern1(opt)
         }
 
@@ -245,7 +247,6 @@ class Board00Model: MgModelAbs() {
         datIdx.addAll(arrayListOf<Short>(3,1,2))
     }
 
-
     // XY平面(左回り)画像貼り付け
     //  a03,a06,a07
     private fun createPathPattern100(opt: Map<String, Float>) {
@@ -265,6 +266,31 @@ class Board00Model: MgModelAbs() {
         datTxc.addAll(arrayListOf(0f,0f))
         datTxc.addAll(arrayListOf(1f,1f))
         datTxc.addAll(arrayListOf(0f,1f))
+
+        // インデックスデータ
+        datIdx.addAll(arrayListOf<Short>(0,1,2))
+        datIdx.addAll(arrayListOf<Short>(2,1,3))
+    }
+
+    // XY平面
+    //  a13
+    private fun createPathPattern101(opt: Map<String, Float>) {
+        // 頂点データ
+        datPos.addAll(arrayListOf( 1f, 1f,0f))
+        datPos.addAll(arrayListOf(-1f, 1f,0f))
+        datPos.addAll(arrayListOf( 1f,-1f,0f))
+        datPos.addAll(arrayListOf(-1f,-1f,0f))
+
+        // 法線データ
+        (0..3).forEach {
+            datNor.addAll(arrayListOf(0f,0f,1f))
+        }
+
+        // テクスチャ座標
+        datTxc.addAll(arrayListOf(0f,0f))
+        datTxc.addAll(arrayListOf(1f,0f))
+        datTxc.addAll(arrayListOf(0f,1f))
+        datTxc.addAll(arrayListOf(1f,1f))
 
         // インデックスデータ
         datIdx.addAll(arrayListOf<Short>(0,1,2))

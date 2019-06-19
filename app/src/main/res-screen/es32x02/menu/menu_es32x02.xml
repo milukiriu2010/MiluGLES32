@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+            android:id="@+id/es32_a13"
+            android:title="a13_centroid" />
+    <item
+            android:id="@+id/es32_a12"
+            android:title="a12_derivative" />
+    <item
+            android:id="@+id/es32_a11"
+            android:title="a11_MRT" />
+    <item
+            android:id="@+id/es32_a10"
+            android:title="a10_SamplerObject" />
+</menu>

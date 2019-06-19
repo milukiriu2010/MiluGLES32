@@ -19,6 +19,7 @@ import java.nio.IntBuffer
 // 2019.05.24 フレームバッファ生成の引数に"浮動小数点数テクスチャ"用を追加
 // 2019.05.28 GLSL ES2.0用をコピー
 // 2019.06.11 TAG変更
+// 2019.06.19 MRT用のフレームバッファを生成
 // --------------------------------------------------------------------------
 class MyGLES32Func {
 
@@ -245,6 +246,45 @@ class MyGLES32Func {
 
             // フレームバッファにテクスチャを関連付ける
             GLES32.glFramebufferTexture2D(GLES32.GL_FRAMEBUFFER, GLES32.GL_COLOR_ATTACHMENT0,GLES32.GL_TEXTURE_2D,frameTexture[id],0)
+
+            // 各種オブジェクトのバインドを解除
+            GLES32.glBindTexture(GLES32.GL_TEXTURE_2D,0)
+            GLES32.glBindRenderbuffer(GLES32.GL_RENDERBUFFER,0)
+            GLES32.glBindFramebuffer(GLES32.GL_FRAMEBUFFER,0)
+        }
+
+
+        // --------------------------------------------------
+        // MRT用フレームバッファを生成する
+        // --------------------------------------------------
+        fun createFrameBuffer4MRT(width: Int, height: Int, cnt: Int, id: Int, bufFrame: IntBuffer, bufDepthRender: IntBuffer, frameTexture: IntBuffer) {
+            // フレームバッファのバインド
+            GLES32.glBindFramebuffer(GLES32.GL_FRAMEBUFFER,bufFrame[id])
+
+            (0 until cnt).forEach { i ->
+                // フレームバッファ用のテクスチャをバインド
+                GLES32.glBindTexture(GLES32.GL_TEXTURE_2D,frameTexture[i])
+
+                // フレームバッファ用のテクスチャにカラー用のメモリ領域を確保
+                GLES32.glTexImage2D(GLES32.GL_TEXTURE_2D,0,GLES32.GL_RGBA,width,height,0,
+                    GLES32.GL_RGBA,GLES32.GL_UNSIGNED_BYTE,null)
+
+                // テクスチャパラメータ
+                GLES32.glTexParameteri(GLES32.GL_TEXTURE_2D,GLES32.GL_TEXTURE_MAG_FILTER,GLES32.GL_LINEAR)
+                GLES32.glTexParameteri(GLES32.GL_TEXTURE_2D,GLES32.GL_TEXTURE_MIN_FILTER,GLES32.GL_LINEAR)
+                GLES32.glTexParameteri(GLES32.GL_TEXTURE_2D,GLES32.GL_TEXTURE_WRAP_S,GLES32.GL_CLAMP_TO_EDGE)
+                GLES32.glTexParameteri(GLES32.GL_TEXTURE_2D,GLES32.GL_TEXTURE_WRAP_T,GLES32.GL_CLAMP_TO_EDGE)
+
+                // フレームバッファにテクスチャを関連付ける
+                GLES32.glFramebufferTexture2D(GLES32.GL_FRAMEBUFFER, GLES32.GL_COLOR_ATTACHMENT0+i,GLES32.GL_TEXTURE_2D,frameTexture[i],0)
+            }
+
+            // 深度バッファ用レンダ―バッファのバインド
+            GLES32.glBindRenderbuffer(GLES32.GL_RENDERBUFFER,bufDepthRender[id])
+            // レンダ―バッファを深度バッファとして設定
+            GLES32.glRenderbufferStorage(GLES32.GL_RENDERBUFFER, GLES32.GL_DEPTH_COMPONENT16, width, height)
+            // フレームバッファにレンダ―バッファを関連付ける
+            GLES32.glFramebufferRenderbuffer(GLES32.GL_FRAMEBUFFER, GLES32.GL_DEPTH_ATTACHMENT, GLES32.GL_RENDERBUFFER,bufDepthRender[id])
 
             // 各種オブジェクトのバインドを解除
             GLES32.glBindTexture(GLES32.GL_TEXTURE_2D,0)
