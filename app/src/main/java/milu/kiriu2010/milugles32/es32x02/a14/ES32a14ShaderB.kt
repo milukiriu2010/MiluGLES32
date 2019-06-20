@@ -1,11 +1,10 @@
 package milu.kiriu2010.milugles32.es32x02.a14
 
 import android.content.Context
-import android.opengl.GLES30
 import android.opengl.GLES32
 import milu.kiriu2010.gui.basic.MyGLES32Func
 import milu.kiriu2010.gui.shader.es32.ES32MgShader
-import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
+import milu.kiriu2010.gui.vbo.es32.ES32VBOAbs
 
 // ------------------------------------
 // シェーダB
@@ -57,6 +56,29 @@ class ES32a14ShaderB(ctx: Context): ES32MgShader(ctx) {
         programHandle = MyGLES32Func.createProgram(svhandle,sfhandle)
 
         // ----------------------------------------------
+        // attributeハンドルに値をセット
+        // ----------------------------------------------
+        hATTR = intArrayOf(0,1)
+
+        // 属性(位置)
+        // attribute属性を有効にする
+        // ここで呼ばないと描画されない
+        GLES32.glEnableVertexAttribArray(hATTR[0])
+        MyGLES32Func.checkGlError("a_Position:glEnableVertexAttribArray")
+        // attribute属性を登録
+        GLES32.glVertexAttribPointer(hATTR[0],4,GLES32.GL_FLOAT,false,0,0)
+        MyGLES32Func.checkGlError("a_Position:glVertexAttribPointer")
+
+        // 属性(色)
+        // attribute属性を有効にする
+        // ここで呼ばないと描画されない
+        GLES32.glEnableVertexAttribArray(hATTR[1])
+        MyGLES32Func.checkGlError("a_Color:glEnableVertexAttribArray")
+        // attribute属性を登録
+        GLES32.glVertexAttribPointer(hATTR[1],4,GLES32.GL_FLOAT,false,0,0)
+        MyGLES32Func.checkGlError("a_Color:glVertexAttribPointer")
+
+        // ----------------------------------------------
         // uniformハンドルに値をセット
         // ----------------------------------------------
         hUNI = IntArray(1)
@@ -68,17 +90,25 @@ class ES32a14ShaderB(ctx: Context): ES32MgShader(ctx) {
         return this
     }
 
-    fun draw(vao: ES32VAOAbs,
-             u_matVP: FloatArray) {
+    fun draw(vbo: ES32VBOAbs,
+             u_matVP: FloatArray,
+             bmpSize: Int) {
         //Log.d(javaClass.simpleName,"draw:${model.javaClass.simpleName}")
-        val model = vao.model
+        val model = vbo.model
 
         GLES32.glUseProgram(programHandle)
         MyGLES32Func.checkGlError("UseProgram",this,model)
         //Log.d(javaClass.simpleName,"draw:glUseProgram")
 
-        // VAOをバインド
-        GLES32.glBindVertexArray(vao.hVAO[0])
+        // attribute(位置)
+        GLES32.glBindBuffer(GLES32.GL_ARRAY_BUFFER,vbo.hVBO[0])
+        GLES32.glVertexAttribPointer(hATTR[0],4,GLES32.GL_FLOAT,false,0,0)
+        MyGLES32Func.checkGlError("BindVertexArray",this,model)
+        //Log.d(javaClass.simpleName,"draw:glBindVertexArray")
+
+        // attribute(色)
+        GLES32.glBindBuffer(GLES32.GL_ARRAY_BUFFER,vbo.hVBO[1])
+        GLES32.glVertexAttribPointer(hATTR[1],4,GLES32.GL_FLOAT,false,0,0)
         MyGLES32Func.checkGlError("BindVertexArray",this,model)
         //Log.d(javaClass.simpleName,"draw:glBindVertexArray")
 
@@ -87,11 +117,13 @@ class ES32a14ShaderB(ctx: Context): ES32MgShader(ctx) {
         MyGLES32Func.checkGlError("u_matVP",this,model)
 
         // モデルを描画
-        GLES32.glDrawElements(GLES32.GL_TRIANGLES, model.datIdx.size, GLES32.GL_UNSIGNED_SHORT, 0)
-        MyGLES32Func.checkGlError("glDrawElements",this,model)
-        //Log.d(javaClass.simpleName,"draw:glDrawElements")
+        //GLES32.glDrawArrays(GLES32.GL_POINTS, 0,model.datIdx.size/4)
+        GLES32.glDrawArrays(GLES32.GL_POINTS, 0,bmpSize)
+        MyGLES32Func.checkGlError("glDrawArrays",this,model)
+        //Log.d(javaClass.simpleName,"draw:glDrawArrays")
 
-        // VAO解放
-        GLES32.glBindVertexArray(0)
+        // VBO解放
+        GLES32.glBindBuffer(GLES32.GL_ARRAY_BUFFER,0)
+        GLES32.glBindBuffer(GLES32.GL_ELEMENT_ARRAY_BUFFER,0)
     }
 }

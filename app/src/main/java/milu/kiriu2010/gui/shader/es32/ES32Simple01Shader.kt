@@ -34,9 +34,9 @@ class ES32Simple01Shader(ctx: Context): ES32MgShader(ctx) {
     // フラグメントシェーダ
     private val scf =
             """#version 300 es
-            precision mediump float;
+            precision highp float;
 
-            in vec4 v_Color;
+            in  vec4 v_Color;
 
             out vec4 o_FragColor;
 

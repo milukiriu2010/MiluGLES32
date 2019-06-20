@@ -9,17 +9,18 @@ import milu.kiriu2010.milugles32.es32x02.a10.A10Fragment
 import milu.kiriu2010.milugles32.es32x02.a11.A11Fragment
 import milu.kiriu2010.milugles32.es32x02.a12.A12Fragment
 import milu.kiriu2010.milugles32.es32x02.a13.A13Fragment
+import milu.kiriu2010.milugles32.es32x02.a14.A14Fragment
 
 class ES32x02Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_es32x02)
+        setContentView(R.layout.activity_es32x01)
 
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, A13Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, A14Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -31,7 +32,7 @@ class ES32x02Activity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_es32x01, menu)
+        menuInflater.inflate(R.menu.menu_es32x02, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -41,6 +42,16 @@ class ES32x02Activity : AppCompatActivity() {
             // 前画面に戻る
             android.R.id.home -> {
                 finish()
+                true
+            }
+            // Transform Feedback
+            R.id.es32_a14 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("a14") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, A14Fragment.newInstance(), "a14")
+                        .commit()
+                }
                 true
             }
             // centroid

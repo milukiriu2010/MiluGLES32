@@ -16,6 +16,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".w2x.W2xActivity">
+        </activity>
         <activity android:name=".es32x02.ES32x02Activity">
         </activity>
         <activity android:name=".es32x01.ES32x01Activity">

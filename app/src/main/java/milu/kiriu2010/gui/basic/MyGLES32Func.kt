@@ -20,6 +20,7 @@ import java.nio.IntBuffer
 // 2019.05.28 GLSL ES2.0用をコピー
 // 2019.06.11 TAG変更
 // 2019.06.19 MRT用のフレームバッファを生成
+// 2019.06.20 プログラムオブジェクトの生成(TransformFeedback用)
 // --------------------------------------------------------------------------
 class MyGLES32Func {
 
@@ -78,6 +79,50 @@ class MyGLES32Func {
                 attrStrArray.forEachIndexed { id, attr ->
                     GLES32.glBindAttribLocation(it,id,attr)
                 }
+
+                // リンクする
+                GLES32.glLinkProgram(it)
+
+                // リンク結果のチェック
+                val linkStatus = IntArray(1)
+                GLES32.glGetProgramiv(it,GLES32.GL_LINK_STATUS,linkStatus,0)
+                // リンク失敗
+                if (linkStatus[0] == 0) {
+                    printProgramInfoLog(it)
+                    GLES32.glDeleteProgram(it)
+                    throw RuntimeException("Error creating program.")
+                }
+
+                // シェーダプログラムを適用する
+                GLES32.glUseProgram(it)
+            }
+            return programHandle
+        }
+
+        // ----------------------------------------------------------
+        // プログラムオブジェクトの生成とリンク(TransformFeedback用)
+        // ----------------------------------------------------------
+        // svhandle
+        //  頂点シェーダのハンドル
+        // sfhandle
+        //  フラグメントシェーダのハンドル
+        // ----------------------------------------------------------
+        fun createProgramTransformFeedback(svhandle: Int, sfhandle: Int, varyings: Array<String>): Int {
+            val programHandle = GLES32.glCreateProgram().also {
+                // 頂点シェーダをプログラムに追加
+                GLES32.glAttachShader(it,svhandle)
+                printShaderInfoLog(svhandle,"vertex shader")
+
+                // フラグメントシェーダをプログラムに追加
+                GLES32.glAttachShader(it,sfhandle)
+                printShaderInfoLog(sfhandle,"fragment shader")
+
+                // シェーダオブジェクトを削除
+                GLES32.glDeleteShader(svhandle)
+                GLES32.glDeleteShader(sfhandle)
+
+
+                GLES32.glTransformFeedbackVaryings(it,varyings,GLES32.GL_SEPARATE_ATTRIBS)
 
                 // リンクする
                 GLES32.glLinkProgram(it)
