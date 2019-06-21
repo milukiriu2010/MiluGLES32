@@ -121,6 +121,7 @@ class ES32a14ShaderA(ctx: Context): ES32MgShader(ctx) {
         MyGLES32Func.checkGlError("BindVertexArray",this,modelFrom)
         //Log.d(javaClass.simpleName,"draw:glBindVertexArray")
 
+        // 書き込み先のVBOをバインド
         // Feedback:位置
         GLES32.glBindBufferBase(GLES32.GL_TRANSFORM_FEEDBACK_BUFFER,0,vboTo.hVBO[0])
         // Feedback:色
@@ -141,7 +142,6 @@ class ES32a14ShaderA(ctx: Context): ES32MgShader(ctx) {
 
 
         // モデルを描画
-        //GLES32.glDrawArrays(GLES32.GL_POINTS, 0,modelFrom.datIdx.size/4)
         GLES32.glDrawArrays(GLES32.GL_POINTS, 0,bmpSize)
         MyGLES32Func.checkGlError("glDrawArrays",this,modelFrom)
         //Log.d(javaClass.simpleName,"draw:glDrawArrays:${modelFrom.datIdx.size/4}")

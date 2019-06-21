@@ -117,7 +117,6 @@ class ES32a14ShaderB(ctx: Context): ES32MgShader(ctx) {
         MyGLES32Func.checkGlError("u_matVP",this,model)
 
         // モデルを描画
-        //GLES32.glDrawArrays(GLES32.GL_POINTS, 0,model.datIdx.size/4)
         GLES32.glDrawArrays(GLES32.GL_POINTS, 0,bmpSize)
         MyGLES32Func.checkGlError("glDrawArrays",this,model)
         //Log.d(javaClass.simpleName,"draw:glDrawArrays")

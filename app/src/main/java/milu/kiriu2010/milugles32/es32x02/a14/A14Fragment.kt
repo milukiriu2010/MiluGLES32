@@ -24,7 +24,7 @@ class A14Fragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_es32x01_a01, container, false)
+        val view = inflater.inflate(R.layout.fragment_a01, container, false)
 
         myGLES32View = view.findViewById(R.id.myGLES32ViewA01)
         val renderer = A14Renderer(context!!)

@@ -59,9 +59,14 @@ class A14Renderer(ctx: Context): MgRenderer(ctx) {
         // テクスチャ
         textures = IntArray(1)
 
+        // https://stackoverflow.com/questions/8855036/incorrect-image-dimensions-in-android-when-using-bitmap
+        // http://y-anz-m.blogspot.com/2012/08/android.html
+        val options = BitmapFactory.Options()
+        options.inScaled = false
+
         // ビットマップをロード
         bmpArray.clear()
-        val bmp0 = BitmapFactory.decodeResource(ctx.resources, R.drawable.texture_lenna_a03)
+        val bmp0 = BitmapFactory.decodeResource(ctx.resources, R.drawable.texture_lenna_a03,options)
         bmpArray.add(bmp0)
     }
 
@@ -108,13 +113,18 @@ class A14Renderer(ctx: Context): MgRenderer(ctx) {
         bmpSize = bmpArray[0].width*bmpArray[0].height
 
         // 768
+        // 256
         Log.d(javaClass.simpleName,"bmp:width    :"+bmpArray[0].width)
         // 768
+        // 256
         Log.d(javaClass.simpleName,"bmp:height   :"+bmpArray[0].height)
         // 589824
+        // 65536
         Log.d(javaClass.simpleName,"bmp:w*h      :"+bmpSize)
         // 3072
+        // 1024
         Log.d(javaClass.simpleName,"bmp:rowBytes :"+bmpArray[0].rowBytes)
+        // 262144
         Log.d(javaClass.simpleName,"bmp:byteCount:"+bmpArray[0].byteCount)
 
         // モデル生成(画像)

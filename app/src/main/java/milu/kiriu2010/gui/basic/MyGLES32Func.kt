@@ -118,8 +118,8 @@ class MyGLES32Func {
                 printShaderInfoLog(sfhandle,"fragment shader")
 
                 // シェーダオブジェクトを削除
-                GLES32.glDeleteShader(svhandle)
-                GLES32.glDeleteShader(sfhandle)
+                //GLES32.glDeleteShader(svhandle)
+                //GLES32.glDeleteShader(sfhandle)
 
 
                 GLES32.glTransformFeedbackVaryings(it,varyings,GLES32.GL_SEPARATE_ATTRIBS)

@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import milu.kiriu2010.milugles32.es32x01.ES32x01Activity
 import milu.kiriu2010.milugles32.es32x02.ES32x02Activity
 import milu.kiriu2010.milugles32.w2x.W2xActivity
+import milu.kiriu2010.milugles32.w8x.W8xActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,6 +33,13 @@ class MainActivity : AppCompatActivity() {
         btnW2X.transformationMethod = null
         btnW2X.setOnClickListener {
             val intent = Intent(this, W2xActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 描画 W8xページへ遷移
+        btnW8X.transformationMethod = null
+        btnW8X.setOnClickListener {
+            val intent = Intent(this, W8xActivity::class.java)
             startActivity(intent)
         }
     }

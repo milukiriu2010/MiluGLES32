@@ -3,6 +3,9 @@
 
 
     <item
+            android:id="@+id/w22"
+            android:title="w22_環境光" />
+    <item
             android:id="@+id/w21"
             android:title="w21_平行光源" />
 </menu>

@@ -1,14 +1,13 @@
-package milu.kiriu2010.milugles32.w2x
+package milu.kiriu2010.milugles32.w8x
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
-import milu.kiriu2010.milugles32.w2x.w21.W21Fragment
-import milu.kiriu2010.milugles32.w2x.w22.W22Fragment
+import milu.kiriu2010.milugles32.w8x.w81.W81Fragment
 
-class W2xActivity : AppCompatActivity() {
+class W8xActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +16,7 @@ class W2xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W22Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W81Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -29,7 +28,7 @@ class W2xActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_w2x, menu)
+        menuInflater.inflate(R.menu.menu_w8x, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -41,22 +40,12 @@ class W2xActivity : AppCompatActivity() {
                 finish()
                 true
             }
-            // 環境光
-            R.id.w22 -> {
+            // VBO逐次更新
+            R.id.w81 -> {
                 supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w22") == null) {
+                if (supportFragmentManager.findFragmentByTag("w1") == null) {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W22Fragment.newInstance(), "w22")
-                        .commit()
-                }
-                true
-            }
-            // 平行光源
-            R.id.w21 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w21") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W21Fragment.newInstance(), "w21")
+                        .replace(R.id.frameLayout, W81Fragment.newInstance(), "w81")
                         .commit()
                 }
                 true
