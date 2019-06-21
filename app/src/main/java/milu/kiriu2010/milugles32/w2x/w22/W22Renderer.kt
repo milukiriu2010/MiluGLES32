@@ -20,11 +20,11 @@ class W22Renderer(ctx: Context): MgRenderer(ctx) {
     // 描画モデル(トーラス)
     private val model = Torus01Model()
 
-    // シェーダ(拡散光)
-    private val shader = ES32AmbientLight01Shader(ctx)
-
     // VAO
     private val vao = ES32VAOIpnc()
+
+    // シェーダ(拡散光)
+    private val shader = ES32AmbientLight01Shader(ctx)
 
     override fun onDrawFrame(gl: GL10) {
         // 回転角度

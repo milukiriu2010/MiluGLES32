@@ -1,3 +1,63 @@
 <resources>
     <string name="app_name">MiluGLES32</string>
+
+
+    <string-array name="w30_equation">
+        <item>FUNC_ADD</item>
+        <item>FUNC_SUBTRACT</item>
+        <item>FUNC_REVERSE_SUBTRACT</item>
+    </string-array>
+
+    <string-array name="w30_blend_factor">
+        <item>ZERO</item>
+        <item>ONE</item>
+        <item>SRC_COLOR</item>
+        <item>DST_COLOR</item>
+        <item>ONE_MINUS_SRC_COLOR</item>
+        <item>ONE_MINUS_DST_COLOR</item>
+        <item>SRC_ALPHA</item>
+        <item>DST_ALPHA</item>
+        <item>ONE_MINUS_SRC_ALPHA</item>
+        <item>ONE_MINUS_DST_ALPHA</item>
+        <item>CONSTANT_COLOR</item>
+        <item>ONE_MINUS_CONSTANT_COLOR</item>
+        <item>CONSTANT_ALPHA</item>
+        <item>ONE_MINUS_CONSTANT_ALPHA</item>
+        <item>SRC_ALPHA_SATURATE</item>
+    </string-array>
+
+    <string name="w59_depth_of_field">depth of field</string>
+    <string name="w59_depth">depth</string>
+    <string name="w59_scene">scene</string>
+    <string name="w59_blur1">blur scene1</string>
+    <string name="w59_blur2">blur scene2</string>
+
+    <string-array name="w59list">
+        <item>@string/w59_depth_of_field</item>
+        <item>@string/w59_depth</item>
+        <item>@string/w59_scene</item>
+        <item>@string/w59_blur1</item>
+        <item>@string/w59_blur2</item>
+    </string-array>
+
+    <string name="w89_texture0">Texture0</string>
+    <string name="w89_texture1">Texture1</string>
+    <string name="w89_texture2">Texture2</string>
+    <string name="w89_texture3">Texture3</string>
+    <string name="w89_texture4">Texture4</string>
+    <string name="w89_texture5">Texture5</string>
+    <string name="w89_texture6">Texture6</string>
+    <string name="w89_texture7">Texture7</string>
+
+    <string-array name="w89list">
+        <item>@string/w89_texture0</item>
+        <item>@string/w89_texture1</item>
+        <item>@string/w89_texture2</item>
+        <item>@string/w89_texture3</item>
+        <item>@string/w89_texture4</item>
+        <item>@string/w89_texture5</item>
+        <item>@string/w89_texture6</item>
+        <item>@string/w89_texture7</item>
+    </string-array>
+
 </resources>

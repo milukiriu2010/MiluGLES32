@@ -6,7 +6,9 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 import milu.kiriu2010.milugles32.es32x01.ES32x01Activity
 import milu.kiriu2010.milugles32.es32x02.ES32x02Activity
+import milu.kiriu2010.milugles32.g1x.G1xActivity
 import milu.kiriu2010.milugles32.w2x.W2xActivity
+import milu.kiriu2010.milugles32.w3x.W3xActivity
 import milu.kiriu2010.milugles32.w8x.W8xActivity
 
 class MainActivity : AppCompatActivity() {
@@ -29,10 +31,24 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 描画 G1xページへ遷移
+        btnG1X.transformationMethod = null
+        btnG1X.setOnClickListener {
+            val intent = Intent(this, G1xActivity::class.java)
+            startActivity(intent)
+        }
+
         // 描画 W2xページへ遷移
         btnW2X.transformationMethod = null
         btnW2X.setOnClickListener {
             val intent = Intent(this, W2xActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 描画 W3xページへ遷移
+        btnW3X.transformationMethod = null
+        btnW3X.setOnClickListener {
+            val intent = Intent(this, W3xActivity::class.java)
             startActivity(intent)
         }
 

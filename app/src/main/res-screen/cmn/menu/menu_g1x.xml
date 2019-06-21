@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+            android:id="@+id/g02"
+            android:title="g02_同心円" />
+    <item
+            android:id="@+id/g01"
+            android:title="g01_GLSL" />
+</menu>

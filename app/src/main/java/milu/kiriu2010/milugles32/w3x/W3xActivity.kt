@@ -1,13 +1,14 @@
-package milu.kiriu2010.milugles32.w8x
+package milu.kiriu2010.milugles32.w3x
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
+import milu.kiriu2010.milugles32.w3x.w32.W32Fragment
 import milu.kiriu2010.milugles32.w8x.w81.W81Fragment
 
-class W8xActivity : AppCompatActivity() {
+class W3xActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,7 +17,7 @@ class W8xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W81Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W32Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -40,12 +41,12 @@ class W8xActivity : AppCompatActivity() {
                 finish()
                 true
             }
-            // VBO逐次更新
-            R.id.w81 -> {
+            // クォータニオン
+            R.id.w32 -> {
                 supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w81") == null) {
+                if (supportFragmentManager.findFragmentByTag("w32") == null) {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W81Fragment.newInstance(), "w81")
+                        .replace(R.id.frameLayout, W32Fragment.newInstance(), "w32")
                         .commit()
                 }
                 true

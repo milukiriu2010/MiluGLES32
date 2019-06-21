@@ -75,7 +75,8 @@ class A14Renderer(ctx: Context): MgRenderer(ctx) {
         val t0 = angle[0].toFloat()
 
         val u_time = (System.currentTimeMillis()-s_time).toFloat()*0.001f
-        val u_mouse = floatArrayOf(touchP.x/renderW*2f-1,-(touchP.y/renderH*2f-1f))
+        // 0-1の範囲に正規化
+        val u_mouse = floatArrayOf(touchP.x/renderW*2f-1f,-(touchP.y/renderH*2f-1f))
 
         // ビュー×プロジェクション座標変換行列
         vecEye = qtnNow.toVecIII(floatArrayOf(0f,0f,5f))
@@ -107,6 +108,7 @@ class A14Renderer(ctx: Context): MgRenderer(ctx) {
         renderW = width
         renderH = height
 
+        // 初期位置はスクリーン中央とする
         touchP.x = renderW*0.5f
         touchP.y = renderH*0.5f
 
