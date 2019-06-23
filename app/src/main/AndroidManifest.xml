@@ -26,6 +26,10 @@
         </activity>
         <activity android:name=".w3x.W3xActivity">
         </activity>
+        <activity android:name=".w5x.W5xActivity">
+        </activity>
+        <activity android:name=".w6x.W6xActivity">
+        </activity>
         <activity android:name=".w8x.W8xActivity">
         </activity>
         <activity android:name=".MainActivity">

@@ -5,4 +5,7 @@
     <item
             android:id="@+id/w32"
             android:title="w32_クォータニオン" />
+    <item
+            android:id="@+id/w30"
+            android:title="w30_ブレンドファクター" />
 </menu>

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
+import milu.kiriu2010.milugles32.w3x.w30.W30Fragment
 import milu.kiriu2010.milugles32.w3x.w32.W32Fragment
 import milu.kiriu2010.milugles32.w8x.w81.W81Fragment
 
@@ -17,7 +18,7 @@ class W3xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W32Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W30Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -47,6 +48,16 @@ class W3xActivity : AppCompatActivity() {
                 if (supportFragmentManager.findFragmentByTag("w32") == null) {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, W32Fragment.newInstance(), "w32")
+                        .commit()
+                }
+                true
+            }
+            // ブレンドファクター
+            R.id.w30 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w30") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W30Fragment.newInstance(), "w30")
                         .commit()
                 }
                 true

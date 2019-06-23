@@ -1,15 +1,13 @@
-package milu.kiriu2010.milugles32.g1x
+package milu.kiriu2010.milugles32.w5x
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
-import milu.kiriu2010.milugles32.g1x.g01.G01Fragment
-import milu.kiriu2010.milugles32.g1x.g02.G02Fragment
-import milu.kiriu2010.milugles32.g1x.g03.G03Fragment
+import milu.kiriu2010.milugles32.w5x.w51.W51Fragment
 
-class G1xActivity : AppCompatActivity() {
+class W5xActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +16,7 @@ class G1xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, G03Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W51Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -30,7 +28,7 @@ class G1xActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_g1x, menu)
+        menuInflater.inflate(R.menu.menu_w5x, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -42,32 +40,12 @@ class G1xActivity : AppCompatActivity() {
                 finish()
                 true
             }
-            // オーブ
-            R.id.g03 -> {
+            // シャドウマッピング
+            R.id.w51 -> {
                 supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g03") == null) {
+                if (supportFragmentManager.findFragmentByTag("w51") == null) {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G03Fragment.newInstance(), "g03")
-                        .commit()
-                }
-                true
-            }
-            // 同心円
-            R.id.g02 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g02") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G02Fragment.newInstance(), "g02")
-                        .commit()
-                }
-                true
-            }
-            // GLSL
-            R.id.g01 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g01") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G01Fragment.newInstance(), "g01")
+                        .replace(R.id.frameLayout, W51Fragment.newInstance(), "w51")
                         .commit()
                 }
                 true
