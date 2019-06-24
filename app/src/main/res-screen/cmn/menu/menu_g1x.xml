@@ -3,6 +3,9 @@
 
 
     <item
+            android:id="@+id/g04"
+            android:title="g04_様々な図形" />
+    <item
             android:id="@+id/g03"
             android:title="g03_オーブ" />
     <item
