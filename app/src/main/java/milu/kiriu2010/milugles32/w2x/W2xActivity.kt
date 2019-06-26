@@ -14,6 +14,7 @@ import milu.kiriu2010.milugles32.w2x.w25.W25Fragment
 import milu.kiriu2010.milugles32.w2x.w26.W26Fragment
 import milu.kiriu2010.milugles32.w2x.w27.W27Fragment
 import milu.kiriu2010.milugles32.w2x.w28.W28Fragment
+import milu.kiriu2010.milugles32.w2x.w29.W29Fragment
 
 class W2xActivity : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class W2xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W28Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W29Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -46,6 +47,16 @@ class W2xActivity : AppCompatActivity() {
             // 前画面に戻る
             android.R.id.home -> {
                 finish()
+                true
+            }
+            // アルファブレンド
+            R.id.w29 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w29") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W29Fragment.newInstance(), "w29")
+                        .commit()
+                }
                 true
             }
             // テクスチャパラメータ

@@ -1,7 +1,6 @@
 package milu.kiriu2010.milugles32.w2x.w28
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.opengl.GLES32
 import javax.microedition.khronos.egl.EGLConfig
@@ -51,8 +50,8 @@ class W28Renderer(ctx: Context): MgRenderer(ctx) {
 
         // ビットマップをロード
         bmpArray.clear()
-        val bmp0 = BitmapFactory.decodeResource(ctx.resources, R.drawable.texture_w027_0)
-        val bmp1 = BitmapFactory.decodeResource(ctx.resources, R.drawable.texture_w028_1)
+        val bmp0 = BitmapFactory.decodeResource(ctx.resources, R.drawable.texture_w27_0)
+        val bmp1 = BitmapFactory.decodeResource(ctx.resources, R.drawable.texture_w28_1)
         bmpArray.add(bmp0)
         bmpArray.add(bmp1)
     }

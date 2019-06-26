@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <milu.kiriu2010.gui.view.MyGLES32View
+        android:id="@+id/myGLES32ViewW29"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupW29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myGLES32ViewW29">
+
+        <RadioButton
+            android:id="@+id/btnW29Normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="通常"
+            tools:layout_editor_absoluteX="137dp"
+            tools:layout_editor_absoluteY="444dp" />
+
+        <RadioButton
+            android:id="@+id/btnW29TransParency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="半透明"
+            tools:layout_editor_absoluteX="137dp"
+            tools:layout_editor_absoluteY="444dp" />
+
+        <RadioButton
+            android:id="@+id/btnW29Add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="加算" />
+
+        <RadioButton
+            android:id="@+id/btnW29Reverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="反転" />
+
+        <RadioButton
+            android:id="@+id/btnW29PhotoShop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="加算α" />
+
+        <RadioButton
+            android:id="@+id/btnW29Mult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="乗算" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textViewW29BlendAlpha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="α成分"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupW29" />
+
+    <SeekBar
+        android:id="@+id/seekBarW29BlendAlpha"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:max="10"
+        android:progress="5"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewW29BlendAlpha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewW29BlendAlpha"
+        app:layout_constraintTop_toTopOf="@+id/textViewW29BlendAlpha" />
+
+    <TextView
+        android:id="@+id/textViewW29BackRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="背景R"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewW29BlendAlpha" />
+
+    <SeekBar
+        android:id="@+id/seekBarW29BackRed"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:max="10"
+        android:progress="0"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewW29BackRed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewW29BackRed"
+        app:layout_constraintTop_toTopOf="@+id/textViewW29BackRed" />
+
+    <TextView
+        android:id="@+id/textViewW29BackGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="背景G"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewW29BackRed" />
+
+    <SeekBar
+        android:id="@+id/seekBarW29BackGreen"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:max="10"
+        android:progress="7"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewW29BackGreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewW29BackGreen"
+        app:layout_constraintTop_toTopOf="@+id/textViewW29BackGreen" />
+
+    <TextView
+        android:id="@+id/textViewW29BackBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="背景B"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewW29BackGreen" />
+
+    <SeekBar
+        android:id="@+id/seekBarW29BackBlue"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:max="10"
+        android:progress="7"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewW29BackBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewW29BackBlue"
+        app:layout_constraintTop_toTopOf="@+id/textViewW29BackBlue" />
+
+    <TextView
+        android:id="@+id/textViewW29BackAlpha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="背景A"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewW29BackBlue" />
+
+    <SeekBar
+        android:id="@+id/seekBarW29BackAlpha"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:max="10"
+        android:progress="10"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewW29BackAlpha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewW29BackAlpha"
+        app:layout_constraintTop_toTopOf="@+id/textViewW29BackAlpha" />
+
+</android.support.constraint.ConstraintLayout>

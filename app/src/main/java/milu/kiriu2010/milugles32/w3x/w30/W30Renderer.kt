@@ -56,7 +56,7 @@ class W30Renderer(ctx: Context): MgRenderer(ctx) {
     init {
         // ビットマップをロード
         bmpArray.clear()
-        val bmp0 = BitmapFactory.decodeResource(ctx.resources, R.drawable.texture_w029)
+        val bmp0 = BitmapFactory.decodeResource(ctx.resources, R.drawable.texture_w29)
         bmpArray.add(bmp0)
     }
 

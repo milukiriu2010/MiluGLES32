@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
+    <item
+            android:id="@+id/w29"
+            android:title="w29_アルファブレンド" />
     <item
             android:id="@+id/w28"
             android:title="w28_テクスチャパラメータ" />

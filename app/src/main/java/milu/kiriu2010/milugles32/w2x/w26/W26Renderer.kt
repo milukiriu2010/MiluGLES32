@@ -1,7 +1,6 @@
 package milu.kiriu2010.milugles32.w2x.w26
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.opengl.GLES32
 import javax.microedition.khronos.egl.EGLConfig
@@ -40,7 +39,7 @@ class W26Renderer(ctx: Context): MgRenderer(ctx) {
 
         // ビットマップをロード
         bmpArray.clear()
-        val bmp0 = BitmapFactory.decodeResource(ctx.resources, R.drawable.texture_w026)
+        val bmp0 = BitmapFactory.decodeResource(ctx.resources, R.drawable.texture_w26)
         bmpArray.add(bmp0)
     }
 
