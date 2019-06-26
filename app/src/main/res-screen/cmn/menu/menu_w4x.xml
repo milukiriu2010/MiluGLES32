@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+            android:id="@+id/w44"
+            android:title="w44_キューブ環境マッピング" />
+    <item
+            android:id="@+id/w40"
+            android:title="w40_フレームバッファ" />
+</menu>

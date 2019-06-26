@@ -22,9 +22,13 @@
         </activity>
         <activity android:name=".g1x.G1xActivity">
         </activity>
+        <activity android:name=".w1x.W1xActivity">
+        </activity>
         <activity android:name=".w2x.W2xActivity">
         </activity>
         <activity android:name=".w3x.W3xActivity">
+        </activity>
+        <activity android:name=".w4x.W4xActivity">
         </activity>
         <activity android:name=".w5x.W5xActivity">
         </activity>

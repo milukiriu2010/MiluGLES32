@@ -7,8 +7,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import milu.kiriu2010.milugles32.es32x01.ES32x01Activity
 import milu.kiriu2010.milugles32.es32x02.ES32x02Activity
 import milu.kiriu2010.milugles32.g1x.G1xActivity
+import milu.kiriu2010.milugles32.w1x.W1xActivity
 import milu.kiriu2010.milugles32.w2x.W2xActivity
 import milu.kiriu2010.milugles32.w3x.W3xActivity
+import milu.kiriu2010.milugles32.w4x.W4xActivity
 import milu.kiriu2010.milugles32.w5x.W5xActivity
 import milu.kiriu2010.milugles32.w6x.W6xActivity
 import milu.kiriu2010.milugles32.w8x.W8xActivity
@@ -40,6 +42,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 描画 W1xページへ遷移
+        btnW1X.transformationMethod = null
+        btnW1X.setOnClickListener {
+            val intent = Intent(this, W1xActivity::class.java)
+            startActivity(intent)
+        }
+
         // 描画 W2xページへ遷移
         btnW2X.transformationMethod = null
         btnW2X.setOnClickListener {
@@ -51,6 +60,13 @@ class MainActivity : AppCompatActivity() {
         btnW3X.transformationMethod = null
         btnW3X.setOnClickListener {
             val intent = Intent(this, W3xActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 描画 W4xページへ遷移
+        btnW4X.transformationMethod = null
+        btnW4X.setOnClickListener {
+            val intent = Intent(this, W4xActivity::class.java)
             startActivity(intent)
         }
 
