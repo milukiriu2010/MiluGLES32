@@ -5,7 +5,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
+import milu.kiriu2010.milugles32.w5x.w50.W50Fragment
 import milu.kiriu2010.milugles32.w5x.w51.W51Fragment
+import milu.kiriu2010.milugles32.w5x.w53.W53Fragment
+import milu.kiriu2010.milugles32.w5x.w54.W54Fragment
+import milu.kiriu2010.milugles32.w5x.w55.W55Fragment
 
 class W5xActivity : AppCompatActivity() {
 
@@ -16,7 +20,7 @@ class W5xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W51Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W55Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -40,12 +44,52 @@ class W5xActivity : AppCompatActivity() {
                 finish()
                 true
             }
+            // sobelフィルタ
+            R.id.w55 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w55") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W55Fragment.newInstance(), "w55")
+                        .commit()
+                }
+                true
+            }
+            // セピア調変換
+            R.id.w54 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w54") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W54Fragment.newInstance(), "w54")
+                        .commit()
+                }
+                true
+            }
+            // グレイスケール
+            R.id.w53 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w53") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W53Fragment.newInstance(), "w53")
+                        .commit()
+                }
+                true
+            }
             // シャドウマッピング
             R.id.w51 -> {
                 supportFragmentManager.popBackStack()
                 if (supportFragmentManager.findFragmentByTag("w51") == null) {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, W51Fragment.newInstance(), "w51")
+                        .commit()
+                }
+                true
+            }
+            // 光学迷彩
+            R.id.w50 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w50") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W50Fragment.newInstance(), "w50")
                         .commit()
                 }
                 true

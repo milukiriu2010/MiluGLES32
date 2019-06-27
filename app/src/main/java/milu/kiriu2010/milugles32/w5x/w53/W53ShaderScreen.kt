@@ -1,4 +1,4 @@
-package milu.kiriu2010.milugles32.w5x.w50
+package milu.kiriu2010.milugles32.w5x.w53
 
 import android.content.Context
 import android.opengl.GLES32
@@ -6,14 +6,14 @@ import milu.kiriu2010.gui.basic.MyGLES32Func
 import milu.kiriu2010.gui.shader.es32.ES32MgShader
 import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
 
-// ---------------------------------------------
-// シェーダ(反射光)
-// ---------------------------------------------
-// ES20VBOSpecularLight01Shaderと同じ
-// ---------------------------------------------
-// https://wgld.org/d/webgl/w050.html
-// ---------------------------------------------
-class W50ShaderSpecular(ctx: Context): ES32MgShader(ctx) {
+// -------------------------------------
+// シェーダ(スクリーンレンダリング用)
+// -------------------------------------
+// ES20VBOPhongShading01Shaderと同じ
+// -------------------------------------
+// https://wgld.org/d/webgl/w053.html
+// -------------------------------------
+class W53ShaderScreen(ctx: Context): ES32MgShader(ctx) {
     // 頂点シェーダ
     private val scv =
             """#version 300 es
@@ -33,11 +33,11 @@ class W50ShaderSpecular(ctx: Context): ES32MgShader(ctx) {
                 vec3   invLight = normalize(u_matINV * vec4(u_vecLight, 0.0)).xyz;
                 vec3   invEye   = normalize(u_matINV * vec4(u_vecEye  , 0.0)).xyz;
                 vec3   halfLE   = normalize(invLight + invEye);
-                float  diffuse  = clamp(dot(a_Normal, invLight), 0.0, 1.0);
+                float  diffuse  = clamp(dot(a_Normal,invLight), 0.0, 1.0);
                 float  specular = pow(clamp(dot(a_Normal, halfLE), 0.0, 1.0), 50.0);
                 vec4   amb      = a_Color * u_ambientColor;
-                v_Color         = amb * vec4(vec3(diffuse), 1.0) + vec4(vec3(specular), 1.0);
-                gl_Position     = u_matMVP * vec4(a_Position, 1.0);
+                v_Color         = amb * vec4(vec3(diffuse),1.0) + vec4(vec3(specular),1.0);
+                gl_Position     = u_matMVP   * vec4(a_Position, 1.0);
             }
             """.trimIndent()
 
@@ -47,11 +47,10 @@ class W50ShaderSpecular(ctx: Context): ES32MgShader(ctx) {
             precision highp   float;
 
             in  vec4  v_Color;
-            
             out vec4  o_FragColor;
 
             void main() {
-                o_FragColor  = v_Color;
+                o_FragColor = v_Color;
             }
             """.trimIndent()
 
@@ -77,7 +76,7 @@ class W50ShaderSpecular(ctx: Context): ES32MgShader(ctx) {
         hUNI[1] = GLES32.glGetUniformLocation(programHandle,"u_matINV")
         MyGLES32Func.checkGlError("u_matINV:glGetUniformLocation")
 
-        // uniform(平行光源)
+        // uniform(光源位置)
         hUNI[2] = GLES32.glGetUniformLocation(programHandle,"u_vecLight")
         MyGLES32Func.checkGlError("u_vecLight:glGetUniformLocation")
 
@@ -115,7 +114,7 @@ class W50ShaderSpecular(ctx: Context): ES32MgShader(ctx) {
         GLES32.glUniformMatrix4fv(hUNI[1],1,false,u_matI,0)
         MyGLES32Func.checkGlError("u_matINV",this,model)
 
-        // uniform(平行光源)
+        // uniform(光源位置)
         GLES32.glUniform3fv(hUNI[2],1,u_vecLight,0)
         MyGLES32Func.checkGlError("u_vecLight",this,model)
 

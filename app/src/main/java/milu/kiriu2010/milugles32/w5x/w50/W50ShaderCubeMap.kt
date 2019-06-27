@@ -62,7 +62,7 @@ class W50ShaderCubeMap(ctx: Context): ES32MgShader(ctx) {
                 }
                 vec4 envColor  = texture(u_CubeTexture, ref);
                 vec4 destColor = v_Color * envColor;
-                gl_FragColor   = destColor;
+                o_FragColor    = destColor;
             }
             """.trimIndent()
 

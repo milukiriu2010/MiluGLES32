@@ -3,6 +3,18 @@
 
 
     <item
+            android:id="@+id/w55"
+            android:title="w55_sobelフィルタ" />
+    <item
+            android:id="@+id/w54"
+            android:title="w54_セピア調変換" />
+    <item
+            android:id="@+id/w53"
+            android:title="w53_グレイスケール" />
+    <item
             android:id="@+id/w51"
             android:title="w51_シャドウマッピング" />
+    <item
+            android:id="@+id/w50"
+            android:title="w50_光学迷彩" />
 </menu>
