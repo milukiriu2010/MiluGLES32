@@ -54,6 +54,8 @@ class ES32PhongShading01Shader(ctx: Context): ES32MgShader(ctx) {
             
             in   vec3 v_Normal;
             in   vec4 v_Color;
+            
+            out  vec4 o_FragColor;
 
             void main() {
                 vec3  invLight  = normalize(u_matINV * vec4(u_vecLight,0.0)).xyz;

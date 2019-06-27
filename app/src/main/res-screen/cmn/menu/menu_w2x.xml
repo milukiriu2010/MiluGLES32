@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
+    <item
+            android:id="@+id/w29"
+            android:title="w29_アルファブレンド" />
+    <item
+            android:id="@+id/w28"
+            android:title="w28_テクスチャパラメータ" />
+    <item
+            android:id="@+id/w27"
+            android:title="w27_マルチテクスチャ" />
+    <item
+            android:id="@+id/w26"
+            android:title="w26_テクスチャ" />
+    <item
+            android:id="@+id/w25"
+            android:title="w25_点光源" />
+    <item
+            android:id="@+id/w24"
+            android:title="w24_フォンシェーディング" />
+    <item
+            android:id="@+id/w23"
+            android:title="w23_反射光" />
     <item
             android:id="@+id/w22"
             android:title="w22_環境光" />
     <item
             android:id="@+id/w21"
             android:title="w21_平行光源" />
+    <item
+            android:id="@+id/w20"
+            android:title="w20_トーラス" />
 </menu>

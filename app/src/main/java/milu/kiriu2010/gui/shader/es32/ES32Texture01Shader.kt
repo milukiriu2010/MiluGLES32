@@ -45,7 +45,7 @@ class ES32Texture01Shader(ctx: Context): ES32MgShader(ctx) {
             out  vec4  o_FragColor;
 
             void main() {
-                vec4 smpColor = texture2D(u_Texture, v_TextureCoord);
+                vec4 smpColor = texture(u_Texture, v_TextureCoord);
                 o_FragColor  = v_Color * smpColor;
             }
             """.trimIndent()

@@ -48,7 +48,7 @@ class W30Shader(ctx: Context): ES32MgShader(ctx) {
             void main() {
                 vec4 destColor = vec4(0.0);
                 if (bool(u_useTexture)) {
-                    vec4 smpColor = texture2D(u_Texture0, v_TextureCoord);
+                    vec4 smpColor = texture(u_Texture0, v_TextureCoord);
                     destColor = v_Color * smpColor;
                 }
                 else {

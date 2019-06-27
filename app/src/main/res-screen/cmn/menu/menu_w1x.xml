@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+            android:id="@+id/w19"
+            android:title="w19_カリング・深度テスト" />
+    <item
+            android:id="@+id/w18"
+            android:title="w18_IBO" />
+    <item
+            android:id="@+id/w17"
+            android:title="w17_移動・回転・拡大縮小" />
+    <item
+            android:id="@+id/w16"
+            android:title="w16_複数モデル" />
+    <item
+            android:id="@+id/w15"
+            android:title="w15_頂点色" />
+</menu>

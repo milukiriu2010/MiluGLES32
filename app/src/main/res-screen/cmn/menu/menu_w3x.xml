@@ -3,6 +3,30 @@
 
 
     <item
+            android:id="@+id/w39"
+            android:title="w39_アウトライン" />
+    <item
+            android:id="@+id/w38"
+            android:title="w38_ステンシルバッファ" />
+    <item
+            android:id="@+id/w37"
+            android:title="w37_ポイントスプライト" />
+    <item
+            android:id="@+id/w36"
+            android:title="w36_点・線" />
+    <item
+            android:id="@+id/w35"
+            android:title="w35_ビルボード" />
+    <item
+            android:id="@+id/w34"
+            android:title="w34_球面線形補間" />
+    <item
+            android:id="@+id/w33"
+            android:title="w33_マウスによる回転" />
+    <item
             android:id="@+id/w32"
             android:title="w32_クォータニオン" />
+    <item
+            android:id="@+id/w30"
+            android:title="w30_ブレンドファクター" />
 </menu>

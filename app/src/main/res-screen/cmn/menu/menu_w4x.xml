@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+            android:id="@+id/w49"
+            android:title="w49_射影テクスチャマッピング" />
+    <item
+            android:id="@+id/w48"
+            android:title="w48_トゥーンレンダリング" />
+    <item
+            android:id="@+id/w47"
+            android:title="w47_動的キューブマッピング" />
+    <item
+            android:id="@+id/w46"
+            android:title="w46_屈折マッピング" />
+    <item
+            android:id="@+id/w45"
+            android:title="w45_キューブ環境バンプマッピング" />
+    <item
+            android:id="@+id/w44"
+            android:title="w44_キューブ環境マッピング" />
+    <item
+            android:id="@+id/w43"
+            android:title="w43_視差マッピング" />
+    <item
+            android:id="@+id/w42"
+            android:title="w42_バンプマッピング" />
+    <item
+            android:id="@+id/w41"
+            android:title="w41_ブラーフィルタ" />
+    <item
+            android:id="@+id/w40"
+            android:title="w40_フレームバッファ" />
+</menu>

@@ -3,6 +3,12 @@
 
 
     <item
+            android:id="@+id/g04"
+            android:title="g04_様々な図形" />
+    <item
+            android:id="@+id/g03"
+            android:title="g03_オーブ" />
+    <item
             android:id="@+id/g02"
             android:title="g02_同心円" />
     <item
