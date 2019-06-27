@@ -3,6 +3,12 @@
 
 
     <item
+            android:id="@+id/w39"
+            android:title="w39_アウトライン" />
+    <item
+            android:id="@+id/w38"
+            android:title="w38_ステンシルバッファ" />
+    <item
             android:id="@+id/w37"
             android:title="w37_ポイントスプライト" />
     <item

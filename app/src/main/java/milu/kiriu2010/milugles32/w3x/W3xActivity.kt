@@ -12,6 +12,8 @@ import milu.kiriu2010.milugles32.w3x.w34.W34Fragment
 import milu.kiriu2010.milugles32.w3x.w35.W35Fragment
 import milu.kiriu2010.milugles32.w3x.w36.W36Fragment
 import milu.kiriu2010.milugles32.w3x.w37.W37Fragment
+import milu.kiriu2010.milugles32.w3x.w38.W38Fragment
+import milu.kiriu2010.milugles32.w3x.w39.W39Fragment
 import milu.kiriu2010.milugles32.w8x.w81.W81Fragment
 
 class W3xActivity : AppCompatActivity() {
@@ -23,7 +25,7 @@ class W3xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W37Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W39Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -45,6 +47,26 @@ class W3xActivity : AppCompatActivity() {
             // 前画面に戻る
             android.R.id.home -> {
                 finish()
+                true
+            }
+            // アウトライン
+            R.id.w39 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w39") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W39Fragment.newInstance(), "w39")
+                        .commit()
+                }
+                true
+            }
+            // ステンシルバッファ
+            R.id.w38 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w38") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W38Fragment.newInstance(), "w38")
+                        .commit()
+                }
                 true
             }
             // ポイントスプライト
