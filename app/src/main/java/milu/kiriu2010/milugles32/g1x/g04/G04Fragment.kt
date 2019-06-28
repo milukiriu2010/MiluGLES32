@@ -42,6 +42,8 @@ class G04Fragment : Fragment() {
                     renderer.touchP.y = event.y.toFloat()/renderer.renderH.toFloat()
                 }
                 MotionEvent.ACTION_MOVE -> {
+                    renderer.touchP.x = event.x.toFloat()/renderer.renderW.toFloat()
+                    renderer.touchP.y = event.y.toFloat()/renderer.renderH.toFloat()
                 }
                 else -> {
                 }

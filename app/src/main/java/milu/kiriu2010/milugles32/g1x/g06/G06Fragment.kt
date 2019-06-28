@@ -1,4 +1,4 @@
-package milu.kiriu2010.milugles32.g1x.g01
+package milu.kiriu2010.milugles32.g1x.g06
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class G01Fragment : Fragment() {
+class G06Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -26,8 +27,9 @@ class G01Fragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_a01, container, false)
 
         myGLES32View = view.findViewById(R.id.myGLES32ViewA01)
-        val renderer = G01Renderer(context!!)
+        val renderer = G06Renderer(context!!)
         myGLES32View.setRenderer(renderer)
+
         myGLES32View.setOnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
@@ -64,7 +66,7 @@ class G01Fragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() =
-                G01Fragment().apply {
+                G06Fragment().apply {
                     arguments = Bundle().apply {
                     }
                 }
