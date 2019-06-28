@@ -6,6 +6,8 @@ import android.view.Menu
 import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.g1x.g10.G10Fragment
+import milu.kiriu2010.milugles32.g1x.g11.G11Fragment
+import milu.kiriu2010.milugles32.g1x.g12.G12Fragment
 
 class G1xActivity : AppCompatActivity() {
 
@@ -16,7 +18,7 @@ class G1xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, G10Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, G12Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -38,6 +40,26 @@ class G1xActivity : AppCompatActivity() {
             // 前画面に戻る
             android.R.id.home -> {
                 finish()
+                true
+            }
+            // レイマーチング(複製)
+            R.id.g12 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("g12") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, G12Fragment.newInstance(), "g12")
+                        .commit()
+                }
+                true
+            }
+            // レイマーチング(視野角)
+            R.id.g11 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("g11") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, G11Fragment.newInstance(), "g11")
+                        .commit()
+                }
                 true
             }
             // レイマーチング(球体+ライティング)

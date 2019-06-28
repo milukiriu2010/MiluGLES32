@@ -3,6 +3,12 @@
 
 
     <item
+            android:id="@+id/g12"
+            android:title="g12_レイマーチング(複製)" />
+    <item
+            android:id="@+id/g11"
+            android:title="g11_レイマーチング(視野角)" />
+    <item
             android:id="@+id/g10"
             android:title="g10_レイマーチング(球体+ライティング)" />
 </menu>
