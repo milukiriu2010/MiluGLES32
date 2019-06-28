@@ -6,6 +6,7 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 import milu.kiriu2010.milugles32.es32x01.ES32x01Activity
 import milu.kiriu2010.milugles32.es32x02.ES32x02Activity
+import milu.kiriu2010.milugles32.g0x.G0xActivity
 import milu.kiriu2010.milugles32.g1x.G1xActivity
 import milu.kiriu2010.milugles32.w1x.W1xActivity
 import milu.kiriu2010.milugles32.w2x.W2xActivity
@@ -32,6 +33,13 @@ class MainActivity : AppCompatActivity() {
         btnES32x02.transformationMethod = null
         btnES32x02.setOnClickListener {
             val intent = Intent(this, ES32x02Activity::class.java)
+            startActivity(intent)
+        }
+
+        // 描画 G0xページへ遷移
+        btnG0X.transformationMethod = null
+        btnG0X.setOnClickListener {
+            val intent = Intent(this, G0xActivity::class.java)
             startActivity(intent)
         }
 

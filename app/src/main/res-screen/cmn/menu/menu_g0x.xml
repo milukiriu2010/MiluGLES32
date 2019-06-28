@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+            android:id="@+id/g09"
+            android:title="g09_レイマーチング(球体)" />
+    <item
+            android:id="@+id/g08"
+            android:title="g08_レイマーチング(RGB)" />
+    <item
+            android:id="@+id/g07"
+            android:title="g07_ノイズ" />
+    <item
+            android:id="@+id/g06"
+            android:title="g06_ジュリア集合" />
+    <item
+            android:id="@+id/g05"
+            android:title="g05_マンデルブロ集合" />
+    <item
+            android:id="@+id/g04"
+            android:title="g04_様々な図形" />
+    <item
+            android:id="@+id/g03"
+            android:title="g03_オーブ" />
+    <item
+            android:id="@+id/g02"
+            android:title="g02_同心円" />
+    <item
+            android:id="@+id/g01"
+            android:title="g01_GLSL" />
+</menu>

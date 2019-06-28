@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".es32x02.ES32x02Activity">
         </activity>
+        <activity android:name=".g0x.G0xActivity">
+        </activity>
         <activity android:name=".g1x.G1xActivity">
         </activity>
         <activity android:name=".w1x.W1xActivity">

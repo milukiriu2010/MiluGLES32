@@ -5,13 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
-import milu.kiriu2010.milugles32.g1x.g01.G01Fragment
-import milu.kiriu2010.milugles32.g1x.g02.G02Fragment
-import milu.kiriu2010.milugles32.g1x.g03.G03Fragment
-import milu.kiriu2010.milugles32.g1x.g04.G04Fragment
-import milu.kiriu2010.milugles32.g1x.g05.G05Fragment
-import milu.kiriu2010.milugles32.g1x.g06.G06Fragment
-import milu.kiriu2010.milugles32.g1x.g07.G07Fragment
+import milu.kiriu2010.milugles32.g1x.g10.G10Fragment
 
 class G1xActivity : AppCompatActivity() {
 
@@ -22,7 +16,7 @@ class G1xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, G07Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, G10Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -46,72 +40,12 @@ class G1xActivity : AppCompatActivity() {
                 finish()
                 true
             }
-            // ノイズ
-            R.id.g07 -> {
+            // レイマーチング(球体+ライティング)
+            R.id.g10 -> {
                 supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g07") == null) {
+                if (supportFragmentManager.findFragmentByTag("g10") == null) {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G07Fragment.newInstance(), "g07")
-                        .commit()
-                }
-                true
-            }
-            // ジュリア集合
-            R.id.g06 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g06") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G06Fragment.newInstance(), "g06")
-                        .commit()
-                }
-                true
-            }
-            // マンデルブロ集合
-            R.id.g05 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g05") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G05Fragment.newInstance(), "g05")
-                        .commit()
-                }
-                true
-            }
-            // 様々な図形
-            R.id.g04 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g04") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G04Fragment.newInstance(), "g04")
-                        .commit()
-                }
-                true
-            }
-            // オーブ
-            R.id.g03 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g03") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G03Fragment.newInstance(), "g03")
-                        .commit()
-                }
-                true
-            }
-            // 同心円
-            R.id.g02 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g02") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G02Fragment.newInstance(), "g02")
-                        .commit()
-                }
-                true
-            }
-            // GLSL
-            R.id.g01 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g01") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G01Fragment.newInstance(), "g01")
+                        .replace(R.id.frameLayout, G10Fragment.newInstance(), "g10")
                         .commit()
                 }
                 true

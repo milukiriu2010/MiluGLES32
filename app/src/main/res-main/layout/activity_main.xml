@@ -97,24 +97,24 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/btnW5X" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toStartOf="@+id/btnG1X"/>
+            app:layout_constraintEnd_toStartOf="@+id/btnG0X"/>
+    <Button
+            android:text="G0x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnG0X"
+            app:layout_constraintStart_toEndOf="@+id/btnW8X"
+            android:layout_marginStart="8dp"
+            app:layout_constraintTop_toTopOf="@+id/btnW8X" app:layout_constraintBottom_toBottomOf="@+id/btnW8X"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/btnG1X"/>
     <Button
             android:text="G1x"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnG1X"
-            app:layout_constraintStart_toEndOf="@+id/btnW8X"
+            app:layout_constraintStart_toEndOf="@+id/btnG0X"
             android:layout_marginStart="8dp"
-            app:layout_constraintTop_toTopOf="@+id/btnW8X" app:layout_constraintBottom_toBottomOf="@+id/btnW8X"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/btnG2X"/>
-    <Button
-            android:text="G2x"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnG2X"
-            app:layout_constraintStart_toEndOf="@+id/btnG1X"
-            android:layout_marginStart="8dp"
-            app:layout_constraintTop_toTopOf="@+id/btnG1X" app:layout_constraintBottom_toBottomOf="@+id/btnG1X"
+            app:layout_constraintTop_toTopOf="@+id/btnG0X" app:layout_constraintBottom_toBottomOf="@+id/btnG0X"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintHorizontal_bias="0.5"/>
 </android.support.constraint.ConstraintLayout>
