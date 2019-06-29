@@ -8,6 +8,8 @@ import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.g1x.g10.G10Fragment
 import milu.kiriu2010.milugles32.g1x.g11.G11Fragment
 import milu.kiriu2010.milugles32.g1x.g12.G12Fragment
+import milu.kiriu2010.milugles32.g1x.g13.G13Fragment
+import milu.kiriu2010.milugles32.g1x.g14.G14Fragment
 
 class G1xActivity : AppCompatActivity() {
 
@@ -18,7 +20,7 @@ class G1xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, G12Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, G14Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -40,6 +42,26 @@ class G1xActivity : AppCompatActivity() {
             // 前画面に戻る
             android.R.id.home -> {
                 finish()
+                true
+            }
+            // レイマーチング(トーラス+床)
+            R.id.g13 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("g14") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, G14Fragment.newInstance(), "g14")
+                        .commit()
+                }
+                true
+            }
+            // レイマーチング(ボックス)
+            R.id.g13 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("g13") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, G13Fragment.newInstance(), "g13")
+                        .commit()
+                }
                 true
             }
             // レイマーチング(複製)
