@@ -10,6 +10,12 @@ import milu.kiriu2010.milugles32.g1x.g11.G11Fragment
 import milu.kiriu2010.milugles32.g1x.g12.G12Fragment
 import milu.kiriu2010.milugles32.g1x.g13.G13Fragment
 import milu.kiriu2010.milugles32.g1x.g14.G14Fragment
+import milu.kiriu2010.milugles32.g1x.g15.G15Fragment
+import milu.kiriu2010.milugles32.g1x.g16.G16Fragment
+import milu.kiriu2010.milugles32.g1x.g17.G17Fragment
+import milu.kiriu2010.milugles32.g1x.g18.G18Fragment
+import milu.kiriu2010.milugles32.g1x.g19.G19Fragment
+import milu.kiriu2010.milugles32.g1x.g20.G20Fragment
 
 class G1xActivity : AppCompatActivity() {
 
@@ -20,7 +26,7 @@ class G1xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, G14Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, G20Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -44,8 +50,68 @@ class G1xActivity : AppCompatActivity() {
                 finish()
                 true
             }
+            // レイマーチング(シャドウ)
+            R.id.g20 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("g20") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, G20Fragment.newInstance(), "g20")
+                        .commit()
+                }
+                true
+            }
+            // レイマーチング(テクスチャ)
+            R.id.g19 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("g19") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, G19Fragment.newInstance(), "g19")
+                        .commit()
+                }
+                true
+            }
+            // レイマーチング(ツイスト)
+            R.id.g18 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("g18") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, G18Fragment.newInstance(), "g18")
+                        .commit()
+                }
+                true
+            }
+            // レイマーチング(回転)
+            R.id.g17 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("g17") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, G17Fragment.newInstance(), "g17")
+                        .commit()
+                }
+                true
+            }
+            // レイマーチング(スムース補間)
+            R.id.g16 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("g16") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, G16Fragment.newInstance(), "g16")
+                        .commit()
+                }
+                true
+            }
+            // レイマーチング(リング+板)
+            R.id.g15 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("g15") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, G15Fragment.newInstance(), "g15")
+                        .commit()
+                }
+                true
+            }
             // レイマーチング(トーラス+床)
-            R.id.g13 -> {
+            R.id.g14 -> {
                 supportFragmentManager.popBackStack()
                 if (supportFragmentManager.findFragmentByTag("g14") == null) {
                     supportFragmentManager.beginTransaction()

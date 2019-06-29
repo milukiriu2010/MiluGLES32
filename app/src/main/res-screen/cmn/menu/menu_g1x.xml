@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
+    <item
+            android:id="@+id/g20"
+            android:title="g20_レイマーチング(シャドウ)" />
+    <item
+            android:id="@+id/g19"
+            android:title="g19_レイマーチング(テクスチャ)" />
+    <item
+            android:id="@+id/g18"
+            android:title="g18_レイマーチング(ツイスト)" />
+    <item
+            android:id="@+id/g17"
+            android:title="g17_レイマーチング(回転)" />
+    <item
+            android:id="@+id/g16"
+            android:title="g16_レイマーチング(スムース補間)" />
+    <item
+            android:id="@+id/g15"
+            android:title="g15_レイマーチング(リング+板)" />
     <item
             android:id="@+id/g14"
             android:title="g14_レイマーチング(床+トーラス)" />
