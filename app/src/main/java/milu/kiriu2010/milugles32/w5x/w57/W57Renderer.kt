@@ -1,4 +1,4 @@
-package milu.kiriu2010.milugles32.w5x.w55
+package milu.kiriu2010.milugles32.w5x.w57
 
 import android.content.Context
 import android.graphics.BitmapFactory
@@ -16,13 +16,14 @@ import milu.kiriu2010.milugles32.w5x.w53.W53ShaderScreen
 import java.nio.IntBuffer
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
+import kotlin.math.exp
 
-// ------------------------------------
-// sobelフィルタ
-// ------------------------------------
-// https://wgld.org/d/webgl/w055.html
-// ------------------------------------
-class W55Renderer(ctx: Context): MgRenderer(ctx) {
+// -------------------------------------------
+// gaussianフィルタ
+// -------------------------------------------
+// https://wgld.org/d/webgl/w057.html
+// -------------------------------------------
+class W57Renderer(ctx: Context): MgRenderer(ctx) {
 
     // 描画オブジェクト(トーラス)
     private val modelTorus = Torus01Model()
@@ -36,23 +37,21 @@ class W55Renderer(ctx: Context): MgRenderer(ctx) {
 
     // シェーダ(モデルをレンダリング)
     private val shaderScreen = W53ShaderScreen(ctx)
-    // シェーダ(sobelフィルタ)
-    private val shaderSoble = W55ShaderSobel(ctx)
+    // シェーダ(gaussianフィルタ)
+    private val shaderGaussian = W57ShaderGaussian(ctx)
 
     // 画面縦横比
     var ratio: Float = 0f
 
-    // ソベルフィルタを使うかどうか
-    var u_sobel = 0
-    // グレースケールを使うかどうか
-    var u_sobelGray = 0
+    // gaussianフィルタを使うかどうか
+    var u_gaussian = 1
     // 描画対象のテクスチャ
     var textureType = 0
 
-    // sobelフィルタの横方向カーネル
-    val u_hCoef = floatArrayOf(1f,0f,-1f,2f,0f,-2f,1f,0f,-1f)
-    // sobelフィルタの縦方向カーネル
-    val u_vCoef = floatArrayOf(1f,2f,1f,0f,0f,0f,-1f,-2f,-1f)
+    // ガウス関数に与えるパラメータ
+    var k_gaussian = 5f
+    // u_gaussianフィルタの重み係数
+    val u_weight = FloatArray(10)
 
     // 色相用カウンタ
     var cntColor = 0
@@ -61,11 +60,11 @@ class W55Renderer(ctx: Context): MgRenderer(ctx) {
         // テクスチャ
         textures = IntArray(2)
         // フレームバッファ
-        frameBuf = IntBuffer.allocate(1)
+        frameBuf = IntBuffer.allocate(2)
         // 深度バッファ用レンダ―バッファ
-        depthRenderBuf = IntBuffer.allocate(1)
+        depthRenderBuf = IntBuffer.allocate(2)
         // フレームバッファ用のテクスチャ
-        frameTex = IntBuffer.allocate(1)
+        frameTex = IntBuffer.allocate(2)
 
         // ビットマップをロード
         bmpArray.clear()
@@ -115,14 +114,6 @@ class W55Renderer(ctx: Context): MgRenderer(ctx) {
             shaderScreen.draw(vaoTorus,matMVP,matI,vecLight,vecEye,amb.toFloatArray())
         }
 
-        // フレームバッファのバインドを解除
-        GLES32.glBindFramebuffer(GLES32.GL_FRAMEBUFFER,0)
-
-        // canvasを初期化
-        GLES32.glClearColor(0f, 0f, 0f, 1.0f)
-        GLES32.glClearDepthf(1f)
-        GLES32.glClear(GLES32.GL_COLOR_BUFFER_BIT or GLES32.GL_DEPTH_BUFFER_BIT)
-
         // 正射影用の座標変換行列
         Matrix.setLookAtM(matV,0,
                 0f,0f,0.5f,
@@ -141,8 +132,63 @@ class W55Renderer(ctx: Context): MgRenderer(ctx) {
             2 -> GLES32.glBindTexture(GLES32.GL_TEXTURE_2D,textures[1])
         }
 
+        // gaussianフィルタの重み係数を算出
+        // t:重み係数を正規化するために用いる
+        var t = 0f
+        // dが大きくなれば大きくなるほど
+        // ガウス関数によって生成される値は扁平型の釣り鐘になる
+        // dとブラーのかかる強さは比例する
+        // dがおおきくなればなるほど大きなぼかし処理がかかる
+        var d = k_gaussian*k_gaussian
+        (0..9).forEach { i ->
+            var r = 1f+2f*i.toFloat()
+            var w = exp(-0.5f*(r*r)/d)
+            u_weight[i] = w
+            if ( i > 0 )  w *= 2f
+            t += w
+        }
+        (0..9).forEach { i ->
+            u_weight[i] /= t
+        }
+
+        when (u_gaussian) {
+            // gaussianフィルタをかける
+            1 -> {
+                // フレームバッファのバインドを変更
+                GLES32.glBindFramebuffer(GLES32.GL_FRAMEBUFFER,frameBuf[1])
+                // レンダリング(横方向ブラー)
+                renderBoard(1,1)
+                // テクスチャを変更
+                GLES32.glActiveTexture(GLES32.GL_TEXTURE0)
+                GLES32.glBindTexture(GLES32.GL_TEXTURE_2D,frameTex[1])
+                // フレームバッファのバインドを解除
+                GLES32.glBindFramebuffer(GLES32.GL_FRAMEBUFFER,0)
+                // レンダリング(縦方向ブラー)
+                renderBoard(1,0)
+            }
+            else -> {
+                // フレームバッファのバインドを解除
+                GLES32.glBindFramebuffer(GLES32.GL_FRAMEBUFFER,0)
+                // レンダリング(ブラーなし)
+                renderBoard(0,0)
+            }
+        }
+
+    }
+
+    // 板ポリゴンを描画
+    //   g:0 => gaussianフィルタ使わない
+    //     1 => gaussianフィルタ使う
+    //   h:0 => 縦方向
+    //     1 => 横方向
+    private fun renderBoard(g: Int, h:Int ) {
+        // canvasを初期化
+        GLES32.glClearColor(0f, 0f, 0f, 1.0f)
+        GLES32.glClearDepthf(1f)
+        GLES32.glClear(GLES32.GL_COLOR_BUFFER_BIT or GLES32.GL_DEPTH_BUFFER_BIT)
+
         // 板ポリゴンの描画
-        shaderSoble.draw(vaoBoard,matVP,0,u_sobel,u_sobelGray,u_hCoef,u_vCoef,renderW.toFloat())
+        shaderGaussian.draw(vaoBoard,matVP,0,g,u_weight,h,renderW.toFloat())
     }
 
     override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
@@ -160,31 +206,26 @@ class W55Renderer(ctx: Context): MgRenderer(ctx) {
         MyGLES32Func.createTexture(1,textures,bmpArray[1],renderW)
 
         // フレームバッファ生成
-        GLES32.glGenFramebuffers(1,frameBuf)
+        GLES32.glGenFramebuffers(2,frameBuf)
         // 深度バッファ用レンダ―バッファ生成
-        GLES32.glGenRenderbuffers(1,depthRenderBuf)
+        GLES32.glGenRenderbuffers(2,depthRenderBuf)
         // フレームバッファ用テクスチャ生成
-        GLES32.glGenTextures(1,frameTex)
+        GLES32.glGenTextures(2,frameTex)
         MyGLES32Func.createFrameBuffer(renderW,renderH,0,frameBuf,depthRenderBuf,frameTex)
+        MyGLES32Func.createFrameBuffer(renderW,renderH,1,frameBuf,depthRenderBuf,frameTex)
     }
 
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
-        // canvasを初期化する色を設定する
-        GLES32.glClearColor(0.0f, 0.0f, 0.0f, 1.0f)
-
-        // canvasを初期化する際の深度を設定する
-        GLES32.glClearDepthf(1f)
-
         // カリングと深度テストを有効にする
         GLES32.glEnable(GLES32.GL_DEPTH_TEST)
         GLES32.glDepthFunc(GLES32.GL_LEQUAL)
         GLES32.glEnable(GLES32.GL_CULL_FACE)
 
-        // シェーダ(モデルをレンダリング)
+        // モデルをレンダリングするシェーダ
         shaderScreen.loadShader()
 
-        // シェーダ(sobelフィルタ)
-        shaderSoble.loadShader()
+        // gaussianフィルタ用シェーダ
+        shaderGaussian.loadShader()
 
         // モデル生成(トーラス)
         modelTorus.createPath(mapOf(
@@ -208,6 +249,11 @@ class W55Renderer(ctx: Context): MgRenderer(ctx) {
 
         // VAO(板ポリゴン)
         vaoBoard.makeVIBO(modelBoard)
+
+        // 光源位置
+        vecLight[0] = -0.577f
+        vecLight[1] =  0.577f
+        vecLight[2] =  0.577f
     }
 
     override fun setMotionParam(motionParam: MutableMap<String, Float>) {
@@ -217,7 +263,7 @@ class W55Renderer(ctx: Context): MgRenderer(ctx) {
         vaoTorus.deleteVIBO()
         vaoBoard.deleteVIBO()
         shaderScreen.deleteShader()
-        shaderSoble.deleteShader()
+        shaderGaussian.deleteShader()
 
         GLES32.glDeleteTextures(textures.size,textures,0)
         GLES32.glDeleteTextures(frameTex.capacity(),frameTex)

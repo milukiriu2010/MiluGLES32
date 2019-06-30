@@ -10,6 +10,9 @@ import milu.kiriu2010.milugles32.w5x.w51.W51Fragment
 import milu.kiriu2010.milugles32.w5x.w53.W53Fragment
 import milu.kiriu2010.milugles32.w5x.w54.W54Fragment
 import milu.kiriu2010.milugles32.w5x.w55.W55Fragment
+import milu.kiriu2010.milugles32.w5x.w56.W56Fragment
+import milu.kiriu2010.milugles32.w5x.w57.W57Fragment
+import milu.kiriu2010.milugles32.w5x.w58.W58Fragment
 
 class W5xActivity : AppCompatActivity() {
 
@@ -20,7 +23,7 @@ class W5xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W55Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W58Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -42,6 +45,36 @@ class W5xActivity : AppCompatActivity() {
             // 前画面に戻る
             android.R.id.home -> {
                 finish()
+                true
+            }
+            // グレアフィルタ
+            R.id.w58 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w58") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W58Fragment.newInstance(), "w58")
+                        .commit()
+                }
+                true
+            }
+            // gaussianフィルタ
+            R.id.w57 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w57") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W57Fragment.newInstance(), "w57")
+                        .commit()
+                }
+                true
+            }
+            // laplacianフィルタ
+            R.id.w56 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w56") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W56Fragment.newInstance(), "w56")
+                        .commit()
+                }
                 true
             }
             // sobelフィルタ

@@ -3,6 +3,15 @@
 
 
     <item
+            android:id="@+id/w58"
+            android:title="w58_グレアフィルタ" />
+    <item
+            android:id="@+id/w57"
+            android:title="w57_gaussianフィルタ" />
+    <item
+            android:id="@+id/w56"
+            android:title="w56_laplacianフィルタ" />
+    <item
             android:id="@+id/w55"
             android:title="w55_sobelフィルタ" />
     <item

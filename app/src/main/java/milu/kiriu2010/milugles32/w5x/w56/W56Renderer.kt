@@ -1,6 +1,7 @@
-package milu.kiriu2010.milugles32.w5x.w55
+package milu.kiriu2010.milugles32.w5x.w56
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.opengl.GLES32
 import android.opengl.Matrix
@@ -17,12 +18,12 @@ import java.nio.IntBuffer
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
-// ------------------------------------
-// sobelフィルタ
-// ------------------------------------
-// https://wgld.org/d/webgl/w055.html
-// ------------------------------------
-class W55Renderer(ctx: Context): MgRenderer(ctx) {
+// -------------------------------------------
+// laplacianフィルタ
+// -------------------------------------------
+// https://wgld.org/d/webgl/w056.html
+// -------------------------------------------
+class W56Renderer(ctx: Context): MgRenderer(ctx) {
 
     // 描画オブジェクト(トーラス)
     private val modelTorus = Torus01Model()
@@ -36,23 +37,21 @@ class W55Renderer(ctx: Context): MgRenderer(ctx) {
 
     // シェーダ(モデルをレンダリング)
     private val shaderScreen = W53ShaderScreen(ctx)
-    // シェーダ(sobelフィルタ)
-    private val shaderSoble = W55ShaderSobel(ctx)
+    // シェーダ(laplacianフィルタ)
+    private val shaderLaplacian = W56ShaderLaplacian(ctx)
 
     // 画面縦横比
     var ratio: Float = 0f
 
-    // ソベルフィルタを使うかどうか
-    var u_sobel = 0
+    // laplacianフィルタを使うかどうか
+    var u_laplacian = 0
     // グレースケールを使うかどうか
-    var u_sobelGray = 0
+    var u_laplacianGray = 0
     // 描画対象のテクスチャ
     var textureType = 0
 
-    // sobelフィルタの横方向カーネル
-    val u_hCoef = floatArrayOf(1f,0f,-1f,2f,0f,-2f,1f,0f,-1f)
-    // sobelフィルタの縦方向カーネル
-    val u_vCoef = floatArrayOf(1f,2f,1f,0f,0f,0f,-1f,-2f,-1f)
+    // laplacianフィルタのカーネル
+    val u_Coef = floatArrayOf(1f,1f,1f,1f,-8f,1f,1f,1f,1f)
 
     // 色相用カウンタ
     var cntColor = 0
@@ -142,7 +141,7 @@ class W55Renderer(ctx: Context): MgRenderer(ctx) {
         }
 
         // 板ポリゴンの描画
-        shaderSoble.draw(vaoBoard,matVP,0,u_sobel,u_sobelGray,u_hCoef,u_vCoef,renderW.toFloat())
+        shaderLaplacian.draw(vaoBoard,matVP,0,u_laplacian,u_laplacianGray,u_Coef,renderW.toFloat())
     }
 
     override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
@@ -169,22 +168,16 @@ class W55Renderer(ctx: Context): MgRenderer(ctx) {
     }
 
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
-        // canvasを初期化する色を設定する
-        GLES32.glClearColor(0.0f, 0.0f, 0.0f, 1.0f)
-
-        // canvasを初期化する際の深度を設定する
-        GLES32.glClearDepthf(1f)
-
         // カリングと深度テストを有効にする
         GLES32.glEnable(GLES32.GL_DEPTH_TEST)
         GLES32.glDepthFunc(GLES32.GL_LEQUAL)
         GLES32.glEnable(GLES32.GL_CULL_FACE)
 
-        // シェーダ(モデルをレンダリング)
+        // モデルをレンダリングするシェーダ
         shaderScreen.loadShader()
 
-        // シェーダ(sobelフィルタ)
-        shaderSoble.loadShader()
+        // セピア調変換用シェーダ
+        shaderLaplacian.loadShader()
 
         // モデル生成(トーラス)
         modelTorus.createPath(mapOf(
@@ -217,7 +210,7 @@ class W55Renderer(ctx: Context): MgRenderer(ctx) {
         vaoTorus.deleteVIBO()
         vaoBoard.deleteVIBO()
         shaderScreen.deleteShader()
-        shaderSoble.deleteShader()
+        shaderLaplacian.deleteShader()
 
         GLES32.glDeleteTextures(textures.size,textures,0)
         GLES32.glDeleteTextures(frameTex.capacity(),frameTex)
