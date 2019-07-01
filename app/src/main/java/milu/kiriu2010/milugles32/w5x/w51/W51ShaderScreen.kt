@@ -3,7 +3,6 @@ package milu.kiriu2010.milugles32.w5x.w51
 import android.content.Context
 import android.opengl.GLES32
 import milu.kiriu2010.gui.basic.MyGLES32Func
-import milu.kiriu2010.gui.model.MgModelAbs
 import milu.kiriu2010.gui.shader.es32.ES32MgShader
 import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
 

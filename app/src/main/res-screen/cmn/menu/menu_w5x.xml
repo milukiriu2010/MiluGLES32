@@ -3,6 +3,9 @@
 
 
     <item
+            android:id="@+id/w59"
+            android:title="w59_被写界深度" />
+    <item
             android:id="@+id/w58"
             android:title="w58_グレアフィルタ" />
     <item

@@ -13,6 +13,7 @@ import milu.kiriu2010.milugles32.w5x.w55.W55Fragment
 import milu.kiriu2010.milugles32.w5x.w56.W56Fragment
 import milu.kiriu2010.milugles32.w5x.w57.W57Fragment
 import milu.kiriu2010.milugles32.w5x.w58.W58Fragment
+import milu.kiriu2010.milugles32.w5x.w59.W59Fragment
 
 class W5xActivity : AppCompatActivity() {
 
@@ -23,7 +24,7 @@ class W5xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W58Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W59Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -45,6 +46,16 @@ class W5xActivity : AppCompatActivity() {
             // 前画面に戻る
             android.R.id.home -> {
                 finish()
+                true
+            }
+            // 被写界深度
+            R.id.w59 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w59") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W59Fragment.newInstance(), "w59")
+                        .commit()
+                }
                 true
             }
             // グレアフィルタ
