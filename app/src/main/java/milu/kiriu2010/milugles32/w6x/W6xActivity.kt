@@ -10,6 +10,7 @@ import milu.kiriu2010.milugles32.w6x.w61.W61Fragment
 import milu.kiriu2010.milugles32.w6x.w62.W62Fragment
 import milu.kiriu2010.milugles32.w6x.w63.W63Fragment
 import milu.kiriu2010.milugles32.w6x.w64.W64Fragment
+import milu.kiriu2010.milugles32.w6x.w65.W65Fragment
 import milu.kiriu2010.milugles32.w6x.w69.W69Fragment
 
 class W6xActivity : AppCompatActivity() {
@@ -21,7 +22,7 @@ class W6xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W64Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W65Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -51,6 +52,16 @@ class W6xActivity : AppCompatActivity() {
                 if (supportFragmentManager.findFragmentByTag("w69") == null) {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, W69Fragment.newInstance(), "w69")
+                        .commit()
+                }
+                true
+            }
+            // 後光表面化散乱
+            R.id.w65 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w65") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W65Fragment.newInstance(), "w65")
                         .commit()
                 }
                 true

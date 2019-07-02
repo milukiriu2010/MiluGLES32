@@ -6,6 +6,9 @@
             android:id="@+id/w69"
             android:title="w69_深度値" />
     <item
+            android:id="@+id/w65"
+            android:title="w65_後光表面化散乱" />
+    <item
             android:id="@+id/w64"
             android:title="w64_リムライティング" />
     <item
