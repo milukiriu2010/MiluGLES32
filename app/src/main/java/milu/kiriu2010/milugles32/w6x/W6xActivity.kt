@@ -5,6 +5,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
+import milu.kiriu2010.milugles32.w6x.w60.W60Fragment
+import milu.kiriu2010.milugles32.w6x.w61.W61Fragment
+import milu.kiriu2010.milugles32.w6x.w62.W62Fragment
+import milu.kiriu2010.milugles32.w6x.w63.W63Fragment
+import milu.kiriu2010.milugles32.w6x.w64.W64Fragment
 import milu.kiriu2010.milugles32.w6x.w69.W69Fragment
 
 class W6xActivity : AppCompatActivity() {
@@ -16,7 +21,7 @@ class W6xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W69Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W64Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -46,6 +51,56 @@ class W6xActivity : AppCompatActivity() {
                 if (supportFragmentManager.findFragmentByTag("w69") == null) {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, W69Fragment.newInstance(), "w69")
+                        .commit()
+                }
+                true
+            }
+            // リムライティング
+            R.id.w64 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w64") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W64Fragment.newInstance(), "w64")
+                        .commit()
+                }
+                true
+            }
+            // 半球ライティング
+            R.id.w63 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w63") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W63Fragment.newInstance(), "w63")
+                        .commit()
+                }
+                true
+            }
+            // ステンシル鏡面
+            R.id.w62 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w62") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W62Fragment.newInstance(), "w62")
+                        .commit()
+                }
+                true
+            }
+            // パーティクルフォグ
+            R.id.w61 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w61") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W61Fragment.newInstance(), "w61")
+                        .commit()
+                }
+                true
+            }
+            // 距離フォグ
+            R.id.w60 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w60") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W60Fragment.newInstance(), "w60")
                         .commit()
                 }
                 true

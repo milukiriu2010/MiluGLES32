@@ -5,4 +5,19 @@
     <item
             android:id="@+id/w69"
             android:title="w69_深度値" />
+    <item
+            android:id="@+id/w64"
+            android:title="w64_リムライティング" />
+    <item
+            android:id="@+id/w63"
+            android:title="w63_半球ライティング" />
+    <item
+            android:id="@+id/w62"
+            android:title="w62_ステンシル鏡面反射" />
+    <item
+            android:id="@+id/w61"
+            android:title="w61_パーティクルフォグ" />
+    <item
+            android:id="@+id/w60"
+            android:title="w60_距離フォグ" />
 </menu>
