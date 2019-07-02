@@ -11,6 +11,9 @@ import milu.kiriu2010.milugles32.w6x.w62.W62Fragment
 import milu.kiriu2010.milugles32.w6x.w63.W63Fragment
 import milu.kiriu2010.milugles32.w6x.w64.W64Fragment
 import milu.kiriu2010.milugles32.w6x.w65.W65Fragment
+import milu.kiriu2010.milugles32.w6x.w66.W66Fragment
+import milu.kiriu2010.milugles32.w6x.w67.W67Fragment
+import milu.kiriu2010.milugles32.w6x.w68.W68Fragment
 import milu.kiriu2010.milugles32.w6x.w69.W69Fragment
 
 class W6xActivity : AppCompatActivity() {
@@ -22,7 +25,7 @@ class W6xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W65Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W68Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -52,6 +55,36 @@ class W6xActivity : AppCompatActivity() {
                 if (supportFragmentManager.findFragmentByTag("w69") == null) {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, W69Fragment.newInstance(), "w69")
+                        .commit()
+                }
+                true
+            }
+            // ゴッドレイ
+            R.id.w68 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w68") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W68Fragment.newInstance(), "w68")
+                        .commit()
+                }
+                true
+            }
+            // ズームブラー
+            R.id.w67 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w67") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W67Fragment.newInstance(), "w67")
+                        .commit()
+                }
+                true
+            }
+            // mosaicフィルタ
+            R.id.w66 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w66") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W66Fragment.newInstance(), "w66")
                         .commit()
                 }
                 true

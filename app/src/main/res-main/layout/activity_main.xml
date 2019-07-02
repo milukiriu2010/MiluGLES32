@@ -117,4 +117,11 @@
             app:layout_constraintTop_toTopOf="@+id/btnG0X" app:layout_constraintBottom_toBottomOf="@+id/btnG0X"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintHorizontal_bias="0.5"/>
+    <Button
+            android:text="M0x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnM0X" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/btnW8X" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
 </android.support.constraint.ConstraintLayout>

@@ -1,4 +1,4 @@
-package milu.kiriu2010.milugles32.w6x.w65
+package milu.kiriu2010.milugles32.w6x.w68
 
 import android.content.Context
 import android.opengl.GLES32
@@ -6,12 +6,12 @@ import milu.kiriu2010.gui.basic.MyGLES32Func
 import milu.kiriu2010.gui.shader.es32.ES32MgShader
 import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
 
-// ----------------------------------------
-// シェーダ(正射影レンダリング)
-// ----------------------------------------
-// https://wgld.org/d/webgl/w065.html
-// ----------------------------------------
-class W65ShaderOrth(ctx: Context): ES32MgShader(ctx) {
+// ------------------------------------
+// シェーダ(正射影)
+// ------------------------------------
+// https://wgld.org/d/webgl/w068.html
+// ------------------------------------
+class W68ShaderOrth(ctx: Context): ES32MgShader(ctx) {
     // 頂点シェーダ
     private val scv =
             """#version 300 es
@@ -20,11 +20,11 @@ class W65ShaderOrth(ctx: Context): ES32MgShader(ctx) {
             
             uniform   mat4  u_matMVP;
             
-            out  vec2  v_TextureCoord;
+            out  vec2  v_TexCoord;
 
             void main() {
-                v_TextureCoord = a_TextureCoord;
-                gl_Position    = u_matMVP * vec4(a_Position,1.0);
+                v_TexCoord  = a_TextureCoord;
+                gl_Position = u_matMVP   * vec4(a_Position, 1.0);
             }
             """.trimIndent()
 
@@ -33,16 +33,17 @@ class W65ShaderOrth(ctx: Context): ES32MgShader(ctx) {
             """#version 300 es
             precision highp     float;
 
-            uniform   sampler2D u_Texture0;
+            uniform  sampler2D u_Texture;
             
-            in  vec2  v_TextureCoord;
+            in  vec2  v_TexCoord;
             
             out vec4  o_FragColor;
 
             void main() {
-                o_FragColor = texture(u_Texture0,v_TextureCoord);
+                o_FragColor = texture(u_Texture, v_TexCoord);
             }
             """.trimIndent()
+
 
     override fun loadShader(): ES32MgShader {
         // 頂点シェーダを生成
@@ -63,19 +64,19 @@ class W65ShaderOrth(ctx: Context): ES32MgShader(ctx) {
         MyGLES32Func.checkGlError("u_matMVP:glGetUniformLocation")
 
         // uniform(テクスチャユニット)
-        hUNI[1] = GLES32.glGetUniformLocation(programHandle,"u_Texture0")
-        MyGLES32Func.checkGlError("u_Texture0:glGetUniformLocation")
+        hUNI[1] = GLES32.glGetUniformLocation(programHandle,"u_Texture")
+        MyGLES32Func.checkGlError("u_Texture:glGetUniformLocation")
 
         return this
     }
 
     fun draw(vao: ES32VAOAbs,
              u_matMVP: FloatArray,
-             u_Texture0: Int) {
+             u_Texture: Int) {
         val model = vao.model
 
         GLES32.glUseProgram(programHandle)
-        MyGLES32Func.checkGlError("UseProgram", this,model)
+        MyGLES32Func.checkGlError("UseProgram",this,model)
 
         // VAOをバインド
         GLES32.glBindVertexArray(vao.hVAO[0])
@@ -86,8 +87,8 @@ class W65ShaderOrth(ctx: Context): ES32MgShader(ctx) {
         MyGLES32Func.checkGlError("u_matMVP",this,model)
 
         // uniform(テクスチャユニット)
-        GLES32.glUniform1i(hUNI[1],u_Texture0)
-        MyGLES32Func.checkGlError("u_Texture0",this,model)
+        GLES32.glUniform1i(hUNI[1],u_Texture)
+        MyGLES32Func.checkGlError("u_Texture",this,model)
 
         // モデルを描画
         GLES32.glDrawElements(GLES32.GL_TRIANGLES, model.datIdx.size, GLES32.GL_UNSIGNED_SHORT, 0)

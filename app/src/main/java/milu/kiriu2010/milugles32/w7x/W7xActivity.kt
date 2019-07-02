@@ -1,14 +1,14 @@
-package milu.kiriu2010.milugles32.w8x
+package milu.kiriu2010.milugles32.w7x
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
-import milu.kiriu2010.milugles32.w8x.w81.W81Fragment
-import milu.kiriu2010.milugles32.w8x.w86.W86Fragment
+import milu.kiriu2010.milugles32.w7x.w76.W76Fragment
+import milu.kiriu2010.milugles32.w7x.w77.W77Fragment
 
-class W8xActivity : AppCompatActivity() {
+class W7xActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +17,7 @@ class W8xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W86Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W76Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -29,7 +29,7 @@ class W8xActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_w8x, menu)
+        menuInflater.inflate(R.menu.menu_w7x, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -41,22 +41,22 @@ class W8xActivity : AppCompatActivity() {
                 finish()
                 true
             }
-            // 色取得
-            R.id.w86 -> {
+            // ハーフトーン
+            R.id.w76 -> {
                 supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w86") == null) {
+                if (supportFragmentManager.findFragmentByTag("w76") == null) {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W86Fragment.newInstance(), "w86")
+                        .replace(R.id.frameLayout, W76Fragment.newInstance(), "w76")
                         .commit()
                 }
                 true
             }
-            // VBO逐次更新
-            R.id.w81 -> {
+            // ラインシェード
+            R.id.w77 -> {
                 supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w81") == null) {
+                if (supportFragmentManager.findFragmentByTag("w77") == null) {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W81Fragment.newInstance(), "w81")
+                        .replace(R.id.frameLayout, W77Fragment.newInstance(), "w77")
                         .commit()
                 }
                 true

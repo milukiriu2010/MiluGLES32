@@ -6,6 +6,15 @@
             android:id="@+id/w69"
             android:title="w69_深度値" />
     <item
+            android:id="@+id/w68"
+            android:title="w68_ゴッドレイ" />
+    <item
+            android:id="@+id/w67"
+            android:title="w67_ズームブラー" />
+    <item
+            android:id="@+id/w66"
+            android:title="w66_mosaicフィルタ" />
+    <item
             android:id="@+id/w65"
             android:title="w65_後光表面化散乱" />
     <item
