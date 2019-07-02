@@ -3,8 +3,8 @@ package milu.kiriu2010.milugles32.w6x.w63
 import android.content.Context
 import android.opengl.GLES32
 import android.opengl.Matrix
-import milu.kiriu2010.gui.model.Sphere01Model
-import milu.kiriu2010.gui.model.Torus01Model
+import milu.kiriu2010.gui.model.d3.Sphere01Model
+import milu.kiriu2010.gui.model.d3.Torus01Model
 import milu.kiriu2010.gui.renderer.MgRenderer
 import milu.kiriu2010.gui.vbo.es32.ES32VAOIpnc
 import javax.microedition.khronos.egl.EGLConfig

@@ -7,6 +7,8 @@ import javax.microedition.khronos.opengles.GL10
 import android.opengl.Matrix
 import android.util.Log
 import milu.kiriu2010.gui.model.*
+import milu.kiriu2010.gui.model.d3.Axis01Model
+import milu.kiriu2010.gui.model.d3.Cube01Model
 import milu.kiriu2010.gui.renderer.MgRenderer
 import milu.kiriu2010.gui.shader.es32.ES32Simple01Shader
 import milu.kiriu2010.gui.vbo.es32.ES32VAOIpc

@@ -6,19 +6,10 @@ import android.opengl.GLES32
 import android.opengl.Matrix
 import android.util.Log
 import milu.kiriu2010.gui.basic.MyGLES32Func
-import milu.kiriu2010.gui.model.Image01Model
-import milu.kiriu2010.gui.model.Sphere01Model
-import milu.kiriu2010.gui.model.Torus01Model
-import milu.kiriu2010.gui.model.d2.Board00Model
+import milu.kiriu2010.gui.model.d2.Image01Model
 import milu.kiriu2010.gui.renderer.MgRenderer
-import milu.kiriu2010.gui.vbo.es32.ES32VAOIpn
-import milu.kiriu2010.gui.vbo.es32.ES32VAOIpnt
-import milu.kiriu2010.gui.vbo.es32.ES32VAOIpt
 import milu.kiriu2010.gui.vbo.es32.ES32VBOIpc
 import milu.kiriu2010.milugles32.R
-import milu.kiriu2010.milugles32.es32x01.a03.ES32a03ShaderA
-import milu.kiriu2010.milugles32.es32x01.a03.ES32a03ShaderB
-import java.nio.IntBuffer
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 

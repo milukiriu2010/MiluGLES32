@@ -3,7 +3,7 @@ package milu.kiriu2010.milugles32.w3x.w33
 import android.content.Context
 import android.opengl.GLES32
 import android.opengl.Matrix
-import milu.kiriu2010.gui.model.Torus01Model
+import milu.kiriu2010.gui.model.d3.Torus01Model
 import milu.kiriu2010.gui.renderer.MgRenderer
 import milu.kiriu2010.gui.shader.es32.ES32PointLight01Shader
 import milu.kiriu2010.gui.vbo.es32.ES32VAOIpnc
