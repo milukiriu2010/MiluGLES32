@@ -17,7 +17,7 @@ import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
 // -----------------------------------------
-// gl_VertexIDとgl_InstanceID
+// インスタンシング
 // -----------------------------------------
 // https://wgld.org/d/webgl2/w008.html
 // -----------------------------------------

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
+import milu.kiriu2010.milugles32.w7x.w75.W75Fragment
 import milu.kiriu2010.milugles32.w7x.w76.W76Fragment
 import milu.kiriu2010.milugles32.w7x.w77.W77Fragment
 
@@ -17,7 +18,7 @@ class W7xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W76Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W75Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -41,6 +42,16 @@ class W7xActivity : AppCompatActivity() {
                 finish()
                 true
             }
+            // ラインシェード
+            R.id.w77 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w77") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W77Fragment.newInstance(), "w77")
+                        .commit()
+                }
+                true
+            }
             // ハーフトーン
             R.id.w76 -> {
                 supportFragmentManager.popBackStack()
@@ -51,12 +62,12 @@ class W7xActivity : AppCompatActivity() {
                 }
                 true
             }
-            // ラインシェード
-            R.id.w77 -> {
+            // インスタンシング
+            R.id.w75 -> {
                 supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w77") == null) {
+                if (supportFragmentManager.findFragmentByTag("w75") == null) {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W77Fragment.newInstance(), "w77")
+                        .replace(R.id.frameLayout, W75Fragment.newInstance(), "w75")
                         .commit()
                 }
                 true
