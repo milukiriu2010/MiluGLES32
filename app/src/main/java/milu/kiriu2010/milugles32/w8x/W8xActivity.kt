@@ -7,6 +7,7 @@ import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.w8x.w81.W81Fragment
 import milu.kiriu2010.milugles32.w8x.w86.W86Fragment
+import milu.kiriu2010.milugles32.w8x.w89.W89Fragment
 
 class W8xActivity : AppCompatActivity() {
 
@@ -17,7 +18,7 @@ class W8xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W86Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W89Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -39,6 +40,16 @@ class W8xActivity : AppCompatActivity() {
             // 前画面に戻る
             android.R.id.home -> {
                 finish()
+                true
+            }
+            // スフィア環境マッピング
+            R.id.w89 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w89") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W89Fragment.newInstance(), "w89")
+                        .commit()
+                }
                 true
             }
             // 色取得
