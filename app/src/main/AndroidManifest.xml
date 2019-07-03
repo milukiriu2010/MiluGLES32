@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".g1x.G1xActivity">
         </activity>
+        <activity android:name=".m0x.M0xActivity">
+        </activity>
         <activity android:name=".w1x.W1xActivity">
         </activity>
         <activity android:name=".w2x.W2xActivity">
@@ -35,6 +37,8 @@
         <activity android:name=".w5x.W5xActivity">
         </activity>
         <activity android:name=".w6x.W6xActivity">
+        </activity>
+        <activity android:name=".w7x.W7xActivity">
         </activity>
         <activity android:name=".w8x.W8xActivity">
         </activity>

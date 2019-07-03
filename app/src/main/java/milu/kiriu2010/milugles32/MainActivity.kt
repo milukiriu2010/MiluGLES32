@@ -8,12 +8,14 @@ import milu.kiriu2010.milugles32.es32x01.ES32x01Activity
 import milu.kiriu2010.milugles32.es32x02.ES32x02Activity
 import milu.kiriu2010.milugles32.g0x.G0xActivity
 import milu.kiriu2010.milugles32.g1x.G1xActivity
+import milu.kiriu2010.milugles32.m0x.M0xActivity
 import milu.kiriu2010.milugles32.w1x.W1xActivity
 import milu.kiriu2010.milugles32.w2x.W2xActivity
 import milu.kiriu2010.milugles32.w3x.W3xActivity
 import milu.kiriu2010.milugles32.w4x.W4xActivity
 import milu.kiriu2010.milugles32.w5x.W5xActivity
 import milu.kiriu2010.milugles32.w6x.W6xActivity
+import milu.kiriu2010.milugles32.w7x.W7xActivity
 import milu.kiriu2010.milugles32.w8x.W8xActivity
 
 class MainActivity : AppCompatActivity() {
@@ -92,10 +94,24 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 描画 W7xページへ遷移
+        btnW7X.transformationMethod = null
+        btnW7X.setOnClickListener {
+            val intent = Intent(this, W7xActivity::class.java)
+            startActivity(intent)
+        }
+
         // 描画 W8xページへ遷移
         btnW8X.transformationMethod = null
         btnW8X.setOnClickListener {
             val intent = Intent(this, W8xActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 描画 M0xページへ遷移
+        btnM0X.transformationMethod = null
+        btnM0X.setOnClickListener {
+            val intent = Intent(this, M0xActivity::class.java)
             startActivity(intent)
         }
     }

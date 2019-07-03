@@ -5,6 +5,9 @@
             android:id="@+id/es32_a09"
             android:title="a09_UBO" />
     <item
+            android:id="@+id/es32_a08"
+            android:title="a08_gl_VertexID" />
+    <item
             android:id="@+id/es32_a07"
             android:title="a07_インスタンシング" />
     <item
@@ -12,13 +15,13 @@
             android:title="a06_VAO" />
     <item
             android:id="@+id/es32_a05"
-            android:title="av05_flat補間" />
+            android:title="a05_flat補間" />
     <item
             android:id="@+id/es32_a04"
-            android:title="av04_layout" />
+            android:title="a04_layout" />
     <item
             android:id="@+id/es32_a03"
-            android:title="av03_ES32" />
+            android:title="a03_ES32" />
     <item
         android:id="@+id/es32_a01"
         android:title="回転(立方体)01_ES32" />
