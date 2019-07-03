@@ -5,6 +5,9 @@
             android:id="@+id/es32_a09"
             android:title="a09_UBO" />
     <item
+            android:id="@+id/es32_a08"
+            android:title="a08_gl_VertexID" />
+    <item
             android:id="@+id/es32_a07"
             android:title="a07_インスタンシング" />
     <item

@@ -1,4 +1,4 @@
-package milu.kiriu2010.milugles32.es32x01.a05
+package milu.kiriu2010.milugles32.es32x01.a07
 
 import android.content.Context
 import android.opengl.GLES32
@@ -7,11 +7,12 @@ import milu.kiriu2010.gui.shader.es32.ES32MgShader
 import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
 
 // ------------------------------------
+// VAOとインスタンシング
 // シェーダB
 // ------------------------------------
-// https://wgld.org/d/webgl2/w005.html
+// https://wgld.org/d/webgl2/w007.html
 // ------------------------------------
-class ES32a05ShaderB(ctx: Context): ES32MgShader(ctx) {
+class ES32a07ShaderB(ctx: Context): ES32MgShader(ctx) {
     // 頂点シェーダ
     private val scv =
             """#version 300 es
@@ -55,7 +56,7 @@ class ES32a05ShaderB(ctx: Context): ES32MgShader(ctx) {
         // ----------------------------------------------
         // uniformハンドルに値をセット
         // ----------------------------------------------
-        hUNI = IntArray(3)
+        hUNI = IntArray(1)
 
         // uniform(テクスチャユニット)
         hUNI[0] = GLES32.glGetUniformLocation(programHandle, "u_Texture")
@@ -66,6 +67,7 @@ class ES32a05ShaderB(ctx: Context): ES32MgShader(ctx) {
 
     fun draw(vao: ES32VAOAbs,
              u_Texture: Int) {
+        //Log.d(javaClass.simpleName,"draw:${model.javaClass.simpleName}")
         val model = vao.model
 
         GLES32.glUseProgram(programHandle)
@@ -80,7 +82,12 @@ class ES32a05ShaderB(ctx: Context): ES32MgShader(ctx) {
         MyGLES32Func.checkGlError("u_Texture",this,model)
 
         // モデルを描画
+        //GLES32.glDrawElements(GLES32.GL_TRIANGLES, model.datIdx.size, GLES32.GL_UNSIGNED_SHORT, model.bufIdx)
         GLES32.glDrawElements(GLES32.GL_TRIANGLES, model.datIdx.size, GLES32.GL_UNSIGNED_SHORT, 0)
+
+        // リソース解放
+        //GLES32.glBindBuffer(GLES32.GL_ARRAY_BUFFER,0)
+        //GLES32.glBindBuffer(GLES32.GL_ELEMENT_ARRAY_BUFFER,0)
 
         // VAO解放
         GLES32.glBindVertexArray(0)

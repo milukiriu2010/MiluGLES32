@@ -1,4 +1,4 @@
-package milu.kiriu2010.milugles32.es32x01.a05
+package milu.kiriu2010.milugles32.es32x01.a08
 
 import android.content.Context
 import android.graphics.BitmapFactory
@@ -10,36 +10,36 @@ import milu.kiriu2010.gui.model.d3.Sphere01Model
 import milu.kiriu2010.gui.model.d3.Torus01Model
 import milu.kiriu2010.gui.renderer.MgRenderer
 import milu.kiriu2010.gui.vbo.es32.ES32VAOIp
-import milu.kiriu2010.gui.vbo.es32.ES32VAOIpnt
+import milu.kiriu2010.gui.vbo.es32.ES32VAOIpnto
 import milu.kiriu2010.milugles32.R
 import java.nio.IntBuffer
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
 // -----------------------------------------
-// GLSL ES 3.0(flat補間)
+// gl_VertexIDとgl_InstanceID
 // -----------------------------------------
-// https://wgld.org/d/webgl2/w005.html
+// https://wgld.org/d/webgl2/w008.html
 // -----------------------------------------
-class A05Renderer(ctx: Context): MgRenderer(ctx) {
+class A08Renderer(ctx: Context): MgRenderer(ctx) {
     // 描画オブジェクト(板ポリゴン)
-    private val modelBoard = Board00Model()
+    private var modelBoard = Board00Model()
     // 描画オブジェクト(トーラス)
-    private val modelTorus = Torus01Model()
+    private var modelTorus = Torus01Model()
     // 描画オブジェクト(球体)
-    private val modelSphere = Sphere01Model()
+    private var modelSphere = Sphere01Model()
 
+    // VAO(トーラス)
+    private val vaoTorus = ES32VAOIpnto()
+    // VAO(球体)
+    private val vaoSphere = ES32VAOIpnto()
     // VAO(板ポリゴン)
     private val vaoBoard = ES32VAOIp()
-    // VAO(トーラス)
-    private val vaoTorus = ES32VAOIpnt()
-    // VAO(球体)
-    private val vaoSphere = ES32VAOIpnt()
 
     // シェーダA
-    private val shaderA = ES32a05ShaderA(ctx)
+    private val shaderA = ES32a08ShaderA(ctx)
     // シェーダB
-    private val shaderB = ES32a05ShaderB(ctx)
+    private val shaderB = ES32a08ShaderB(ctx)
 
     // 画面縦横比
     var ratio: Float = 1f
@@ -61,6 +61,8 @@ class A05Renderer(ctx: Context): MgRenderer(ctx) {
     }
 
     override fun onDrawFrame(gl: GL10?) {
+        //Log.d(javaClass.simpleName,"onDrawFrame:start")
+
         angle[0] =(angle[0]+1)%360
         val t0 = angle[0].toFloat()
 
@@ -71,10 +73,10 @@ class A05Renderer(ctx: Context): MgRenderer(ctx) {
                 vecEye[0], vecEye[1], vecEye[2],
                 vecCenter[0], vecCenter[1], vecCenter[2],
                 vecEyeUp[0], vecEyeUp[1], vecEyeUp[2])
-        Matrix.perspectiveM(matP,0,60f,ratio,0.1f,20f)
+        Matrix.perspectiveM(matP,0,60f,ratio,0.1f,25f)
         Matrix.multiplyMM(matVP,0,matP,0,matV,0)
 
-        // フレームバッファのバインド(マスク用)
+        // フレームバッファのバインド
         GLES32.glBindFramebuffer(GLES32.GL_FRAMEBUFFER,frameBuf[0])
 
         // フレームバッファを初期化
@@ -112,9 +114,13 @@ class A05Renderer(ctx: Context): MgRenderer(ctx) {
 
         // 板ポリゴンをレンダリング
         shaderB.draw(vaoBoard,1)
+
+        //Log.d(javaClass.simpleName,"onDrawFrame:end")
     }
 
     override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
+        //Log.d(javaClass.simpleName,"onSurfaceChanged:start")
+
         GLES32.glViewport(0, 0, width, height)
 
         ratio = width.toFloat()/height.toFloat()
@@ -134,6 +140,8 @@ class A05Renderer(ctx: Context): MgRenderer(ctx) {
         // フレームバッファを格納するテクスチャ生成
         GLES32.glGenTextures(1,frameTex)
         MyGLES32Func.createFrameBuffer(renderW,renderH,0,frameBuf,depthRenderBuf,frameTex)
+
+        //Log.d(javaClass.simpleName,"onSurfaceChanged:end")
     }
 
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
@@ -148,6 +156,13 @@ class A05Renderer(ctx: Context): MgRenderer(ctx) {
         // シェーダB
         shaderB.loadShader()
 
+        // モデルにオフセットをセット
+        (0..8).forEach {
+            val off = (it-4).toFloat()
+            modelTorus.datOff.addAll(arrayListOf(off,off,off))
+            modelSphere.datOff.addAll(arrayListOf(off,off,off))
+        }
+
         // モデル生成(板ポリゴン)
         modelBoard.createPath(mapOf(
                 "pattern" to 100f
@@ -157,27 +172,25 @@ class A05Renderer(ctx: Context): MgRenderer(ctx) {
         modelTorus.createPath(mapOf(
                 "row"     to 32f,
                 "column"  to 32f,
-                "iradius" to 0.25f,
-                "oradius" to 1.25f
+                "iradius" to 0.1f,
+                "oradius" to 0.5f
         ))
 
         // モデル生成(球体)
         modelSphere.createPath(mapOf(
                 "row"    to 16f,
                 "column" to 16f,
-                "radius" to 0.75f
+                "radius" to 0.3f
         ))
-
-        // VAO(板ポリゴン)
-        vaoBoard.makeVIBO(modelBoard)
 
         // VAO(トーラス)
         vaoTorus.makeVIBO(modelTorus)
-
         // VAO(球体)
         vaoSphere.makeVIBO(modelSphere)
+        // VAO(板ポリゴン)
+        vaoBoard.makeVIBO(modelBoard)
 
-        // ライトの向き
+        // 光源位置
         vecLight[0] = 5f
         vecLight[1] = 2f
         vecLight[2] = 5f
@@ -187,9 +200,9 @@ class A05Renderer(ctx: Context): MgRenderer(ctx) {
     }
 
     override fun closeShader() {
-        vaoBoard.deleteVIBO()
         vaoTorus.deleteVIBO()
         vaoSphere.deleteVIBO()
+        vaoBoard.deleteVIBO()
         shaderA.deleteShader()
         shaderB.deleteShader()
 

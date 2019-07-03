@@ -10,6 +10,8 @@ import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.es32x01.a03.A03Fragment
 import milu.kiriu2010.milugles32.es32x01.a04.A04Fragment
 import milu.kiriu2010.milugles32.es32x01.a05.A05Fragment
+import milu.kiriu2010.milugles32.es32x01.a07.A07Fragment
+import milu.kiriu2010.milugles32.es32x01.a08.A08Fragment
 import milu.kiriu2010.milugles32.es32x01.a09.A09Fragment
 
 class ES32x01Activity : AppCompatActivity() {
@@ -21,7 +23,7 @@ class ES32x01Activity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, A05Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, A07Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -51,6 +53,26 @@ class ES32x01Activity : AppCompatActivity() {
                 if (supportFragmentManager.findFragmentByTag("a09") == null) {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, A09Fragment.newInstance(), "a09")
+                        .commit()
+                }
+                true
+            }
+            // gl_VertexID
+            R.id.es32_a08 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("a08") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, A08Fragment.newInstance(), "a08")
+                        .commit()
+                }
+                true
+            }
+            // インスタンシング
+            R.id.es32_a07 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("a07") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, A07Fragment.newInstance(), "a07")
                         .commit()
                 }
                 true

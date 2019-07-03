@@ -6,6 +6,9 @@
             android:id="@+id/w89"
             android:title="w89_スフィア環境マッピング" />
     <item
+            android:id="@+id/w87"
+            android:title="w87_フラットシェーディング" />
+    <item
             android:id="@+id/w86"
             android:title="w86_色取得" />
     <item
