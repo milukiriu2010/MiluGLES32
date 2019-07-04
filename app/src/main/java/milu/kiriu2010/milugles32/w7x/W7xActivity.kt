@@ -6,6 +6,8 @@ import android.view.Menu
 import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.w7x.w70.W70Fragment
+import milu.kiriu2010.milugles32.w7x.w71.W71Fragment
+import milu.kiriu2010.milugles32.w7x.w74.W74Fragment
 import milu.kiriu2010.milugles32.w7x.w75.W75Fragment
 import milu.kiriu2010.milugles32.w7x.w76.W76Fragment
 import milu.kiriu2010.milugles32.w7x.w77.W77Fragment
@@ -19,7 +21,7 @@ class W7xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W70Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W74Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -69,6 +71,26 @@ class W7xActivity : AppCompatActivity() {
                 if (supportFragmentManager.findFragmentByTag("w75") == null) {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, W75Fragment.newInstance(), "w75")
+                        .commit()
+                }
+                true
+            }
+            // 異方性フィルタリング
+            R.id.w74 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w74") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W74Fragment.newInstance(), "w74")
+                        .commit()
+                }
+                true
+            }
+            // 頂点テクスチャフェッチ
+            R.id.w71 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w71") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W71Fragment.newInstance(), "w71")
                         .commit()
                 }
                 true

@@ -12,6 +12,12 @@
             android:id="@+id/w75"
             android:title="w75_インスタンシング" />
     <item
+            android:id="@+id/w74"
+            android:title="w74_異方性フィルタリング" />
+    <item
+            android:id="@+id/w71"
+            android:title="w71_頂点テクスチャフェッチ" />
+    <item
             android:id="@+id/w70"
             android:title="w70_浮動小数点数テクスチャ" />
 </menu>

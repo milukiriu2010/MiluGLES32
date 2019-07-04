@@ -14,12 +14,13 @@ import kotlin.math.floor
 // --------------------------------
 // VAO
 // VBO
-//   0:インデックス
+//   0:位置
+//   1:インデックス
 // IBO
 // --------------------------------
 // ES3.2用
 // --------------------------------
-class W71VAOi: ES32VAOAbs() {
+class W71VAOpi: ES32VAOAbs() {
 
     // 頂点インデックス:データ
     var datIndex = arrayListOf<Float>()
@@ -56,21 +57,32 @@ class W71VAOi: ES32VAOAbs() {
         // ------------------------------------------------
         // VBOの生成
         // ------------------------------------------------
-        hVBO = IntArray(1)
-        GLES32.glGenBuffers(1, hVBO,0)
+        hVBO = IntArray(2)
+        GLES32.glGenBuffers(2, hVBO,0)
         MyGLES32Func.checkGlError("hVBO:glGenBuffers")
+
+        // 位置
+        modelAbs.bufPos.position(0)
+        GLES32.glBindBuffer(GLES32.GL_ARRAY_BUFFER,hVBO[0])
+        MyGLES32Func.checkGlError("a_Position:glBindBuffer")
+        GLES32.glBufferData(GLES32.GL_ARRAY_BUFFER,modelAbs.bufPos.capacity()*4, modelAbs.bufPos,usagePos)
+        MyGLES32Func.checkGlError("a_Position:glBufferData")
+        GLES32.glEnableVertexAttribArray(0)
+        MyGLES32Func.checkGlError("a_Position:glEnableVertexAttribArray")
+        GLES32.glVertexAttribPointer(0,3,GLES32.GL_FLOAT,false,0,0)
+        MyGLES32Func.checkGlError("a_Position:glVertexAttribPointer")
+        //GLES32.glVertexAttribPointer(0,3,GLES32.GL_FLOAT,false,3*4,0)
 
         // 頂点インデックス
         bufIndex.position(0)
-        GLES32.glBindBuffer(GLES32.GL_ARRAY_BUFFER,hVBO[0])
+        GLES32.glBindBuffer(GLES32.GL_ARRAY_BUFFER,hVBO[1])
         MyGLES32Func.checkGlError("a_Index:glBindBuffer")
         GLES32.glBufferData(GLES32.GL_ARRAY_BUFFER,bufIndex.capacity()*4, bufIndex,GLES32.GL_STATIC_DRAW)
         MyGLES32Func.checkGlError("a_Index:glBufferData")
-        GLES32.glEnableVertexAttribArray(0)
+        GLES32.glEnableVertexAttribArray(1)
         MyGLES32Func.checkGlError("a_Index:glEnableVertexAttribArray")
-        GLES32.glVertexAttribPointer(0,1,GLES32.GL_FLOAT,false,0,0)
+        GLES32.glVertexAttribPointer(1,1,GLES32.GL_FLOAT,false,0,0)
         MyGLES32Func.checkGlError("a_Index:glVertexAttribPointer")
-        //GLES32.glVertexAttribPointer(0,3,GLES32.GL_FLOAT,false,3*4,0)
 
         // ------------------------------------------------
         // IBOの生成

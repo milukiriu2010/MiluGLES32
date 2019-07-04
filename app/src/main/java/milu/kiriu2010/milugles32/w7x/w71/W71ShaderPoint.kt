@@ -2,6 +2,7 @@ package milu.kiriu2010.milugles32.w7x.w71
 
 import android.content.Context
 import android.opengl.GLES32
+import android.util.Log
 import milu.kiriu2010.gui.basic.MyGLES32Func
 import milu.kiriu2010.gui.shader.es32.ES32MgShader
 import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
@@ -85,7 +86,8 @@ class W71ShaderPoint(ctx: Context): ES32MgShader(ctx) {
 
     fun draw(vao: ES32VAOAbs,
              u_matMVP: FloatArray,
-             u_Texture0: Int) {
+             u_Texture0: Int,
+             count: Int) {
         val model = vao.model
 
         GLES32.glUseProgram(programHandle)
@@ -104,7 +106,8 @@ class W71ShaderPoint(ctx: Context): ES32MgShader(ctx) {
         MyGLES32Func.checkGlError("u_Texture0",this,model)
 
         // モデルを描画
-        GLES32.glDrawArrays(GLES32.GL_POINTS,0,model.datIdx.size)
+        GLES32.glDrawArrays(GLES32.GL_POINTS,0,count)
+        Log.d(javaClass.simpleName,"count[$count]")
 
         // VAO解放
         GLES32.glBindVertexArray(0)

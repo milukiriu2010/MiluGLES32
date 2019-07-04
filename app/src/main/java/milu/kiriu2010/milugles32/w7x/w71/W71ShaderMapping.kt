@@ -19,7 +19,7 @@ class W71ShaderMapping(ctx: Context): ES32MgShader(ctx) {
     // 頂点シェーダ
     private val scv =
             """#version 300 es
-            layout (location = 0) in vec3 a_Position;
+            layout (location = 0) in vec3  a_Position;
             layout (location = 1) in float a_Index;
 
             out  vec3  v_Color;
@@ -69,7 +69,8 @@ class W71ShaderMapping(ctx: Context): ES32MgShader(ctx) {
         return this
     }
 
-    fun draw(vao: ES32VAOAbs) {
+    fun draw(vao: ES32VAOAbs,
+             count: Int) {
         val model = vao.model
 
         GLES32.glUseProgram(programHandle)
@@ -80,7 +81,7 @@ class W71ShaderMapping(ctx: Context): ES32MgShader(ctx) {
         MyGLES32Func.checkGlError("BindVertexArray",this,model)
 
         // モデルを描画
-        GLES32.glDrawArrays(GLES32.GL_POINTS,0,model.datIdx.size)
+        GLES32.glDrawArrays(GLES32.GL_POINTS,0,count)
 
         // VAO解放
         GLES32.glBindVertexArray(0)
