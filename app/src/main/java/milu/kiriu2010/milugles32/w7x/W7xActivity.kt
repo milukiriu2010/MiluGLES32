@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
+import milu.kiriu2010.milugles32.w7x.w70.W70Fragment
 import milu.kiriu2010.milugles32.w7x.w75.W75Fragment
 import milu.kiriu2010.milugles32.w7x.w76.W76Fragment
 import milu.kiriu2010.milugles32.w7x.w77.W77Fragment
@@ -18,7 +19,7 @@ class W7xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W75Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W70Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -68,6 +69,16 @@ class W7xActivity : AppCompatActivity() {
                 if (supportFragmentManager.findFragmentByTag("w75") == null) {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, W75Fragment.newInstance(), "w75")
+                        .commit()
+                }
+                true
+            }
+            // 浮動小数点数テクスチャ
+            R.id.w70 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w70") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W70Fragment.newInstance(), "w70")
                         .commit()
                 }
                 true

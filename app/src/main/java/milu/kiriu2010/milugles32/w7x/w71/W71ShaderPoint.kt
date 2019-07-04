@@ -1,31 +1,45 @@
-package milu.kiriu2010.milugles32.w6x.w69
+package milu.kiriu2010.milugles32.w7x.w71
 
 import android.content.Context
 import android.opengl.GLES32
 import milu.kiriu2010.gui.basic.MyGLES32Func
-import milu.kiriu2010.gui.model.MgModelAbs
 import milu.kiriu2010.gui.shader.es32.ES32MgShader
 import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
 
 // -------------------------------------
-// シェーダ(深度格納用)
+// シェーダ(点のレンダリングを行う)
 // -------------------------------------
-// w51とは違うらしい
+// テクスチャから座標位置を読み出す
 // -------------------------------------
-// https://wgld.org/d/webgl/w069.html
+// 頂点テクスチャフェッチ
 // -------------------------------------
-class W69ShaderDepth(ctx: Context): ES32MgShader(ctx) {
+// https://wgld.org/d/webgl/w071.html
+// -------------------------------------
+class W71ShaderPoint(ctx: Context): ES32MgShader(ctx) {
     // 頂点シェーダ
     private val scv =
             """#version 300 es
-            layout (location = 0) in vec3  a_Position;
-            
-            uniform   mat4  u_matMVP;
-            out vec4  v_Position;
+            layout (location = 0) in float a_Index;
+
+            uniform   mat4       u_matMVP;
+            uniform   sampler2D  u_Texture0;
+
+            // 描きこみの対象となる
+            // フレームバッファ(テクスチャ)一辺あたりの長さを１で割る
+            const float frag     = 1.0/16.0;
+            // さらに半分の値
+            const float texShift = 0.5 * frag;
 
             void main() {
-                v_Position  = u_matMVP * vec4(a_Position, 1.0);
-                gl_Position = v_Position;
+                // fract => x-floor(x)を返す
+                // 頂点の識別番号に定数fragをかけ,
+                // その結果の小数点以下の部分だけを抜き出す
+                float pu = fract(a_Index*frag + texShift);
+                float pv = floor(a_Index*frag)*frag + texShift;
+                // オフセットさせながらテクスチャを参照
+                vec3  tPosition = texture(u_Texture0,vec2(pu,pv)).rgb*2.0 - 1.0;
+                gl_Position     = u_matMVP * vec4(tPosition, 1.0);
+                gl_PointSize    = 16.0;
             }
             """.trimIndent()
 
@@ -34,27 +48,15 @@ class W69ShaderDepth(ctx: Context): ES32MgShader(ctx) {
             """#version 300 es
             precision highp   float;
 
-            in  vec4 v_Position;
+            uniform sampler2D   u_Texture0;
             
             out vec4 o_FragColor;
 
-            // ----------------------------------------------------
-            // 深度値を色情報に格納する
-            // ----------------------------------------------------
-            // 正規化デバイス座標系に座標系を変換するにはwを使う
-            // ３次元である頂点位置に対してwで割る処理を挟むことで
-            // 必ず頂点座標は-1～1の範囲内に収まる
-            // テクスチャに描きこめる値は0～1の範囲なので、
-            // 1足して2で割る
-            // ----------------------------------------------------
-            // クリップ空間は最終的に正規化されるため、
-            // どれほど広大な空間も最後には-1～1の範囲に収束する
-            // ----------------------------------------------------
             void main() {
-                float depth = (v_Position.z/v_Position.w+1.0)*0.5;
-                o_FragColor = vec4(vec3(depth),1.0);
+                o_FragColor = texture(u_Texture0, gl_PointCoord);
             }
             """.trimIndent()
+
 
     override fun loadShader(): ES32MgShader {
         // 頂点シェーダを生成
@@ -68,18 +70,22 @@ class W69ShaderDepth(ctx: Context): ES32MgShader(ctx) {
         // ----------------------------------------------
         // uniformハンドルに値をセット
         // ----------------------------------------------
-        hUNI = IntArray(1)
+        hUNI = IntArray(2)
 
         // uniform(モデル×ビュー×プロジェクション)
         hUNI[0] = GLES32.glGetUniformLocation(programHandle,"u_matMVP")
         MyGLES32Func.checkGlError("u_matMVP:glGetUniformLocation")
 
+        // uniform(テクスチャユニット0)
+        hUNI[1] = GLES32.glGetUniformLocation(programHandle, "u_Texture0")
+        MyGLES32Func.checkGlError("u_Texture0:glGetUniformLocation")
+
         return this
     }
 
-
     fun draw(vao: ES32VAOAbs,
-             u_matMVP: FloatArray) {
+             u_matMVP: FloatArray,
+             u_Texture0: Int) {
         val model = vao.model
 
         GLES32.glUseProgram(programHandle)
@@ -93,8 +99,12 @@ class W69ShaderDepth(ctx: Context): ES32MgShader(ctx) {
         GLES32.glUniformMatrix4fv(hUNI[0],1,false,u_matMVP,0)
         MyGLES32Func.checkGlError("u_matMVP",this,model)
 
+        // uniform(テクスチャユニット)
+        GLES32.glUniform1i(hUNI[1], u_Texture0)
+        MyGLES32Func.checkGlError("u_Texture0",this,model)
+
         // モデルを描画
-        GLES32.glDrawElements(GLES32.GL_TRIANGLES, model.datIdx.size, GLES32.GL_UNSIGNED_SHORT, 0)
+        GLES32.glDrawArrays(GLES32.GL_POINTS,0,model.datIdx.size)
 
         // VAO解放
         GLES32.glBindVertexArray(0)
