@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.w8x.w81.W81Fragment
+import milu.kiriu2010.milugles32.w8x.w84.W84Fragment
 import milu.kiriu2010.milugles32.w8x.w86.W86Fragment
 import milu.kiriu2010.milugles32.w8x.w87.W87Fragment
 import milu.kiriu2010.milugles32.w8x.w89.W89Fragment
@@ -19,7 +20,7 @@ class W8xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W87Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W84Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -69,6 +70,16 @@ class W8xActivity : AppCompatActivity() {
                 if (supportFragmentManager.findFragmentByTag("w86") == null) {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, W86Fragment.newInstance(), "w86")
+                        .commit()
+                }
+                true
+            }
+            // MRT
+            R.id.w84 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w84") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W84Fragment.newInstance(), "w84")
                         .commit()
                 }
                 true
