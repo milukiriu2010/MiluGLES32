@@ -15,6 +15,12 @@
             android:id="@+id/w84"
             android:title="w84_MRT" />
     <item
+            android:id="@+id/w83"
+            android:title="w83_GPGPU" />
+    <item
+            android:id="@+id/w82"
+            android:title="w82_VBO逐次更新:パーティクル" />
+    <item
             android:id="@+id/w81"
             android:title="w81_VBO逐次更新" />
 </menu>
