@@ -24,7 +24,7 @@ class W83ShaderPoint(ctx: Context): ES32MgShader(ctx) {
             void main() {
                 vec2 p = vec2(
                     mod(a_Index  ,u_resolution.x)/u_resolution.x,
-                    floor(a_Index,u_resolution.x)/u_resolution.y,
+                    floor(a_Index/u_resolution.x)/u_resolution.y
                 );
                 vec4 t = texture(u_texture,p);
                 gl_Position  = vec4(t.xy, 0.0, 1.0);
@@ -110,7 +110,7 @@ class W83ShaderPoint(ctx: Context): ES32MgShader(ctx) {
         MyGLES32Func.checkGlError("u_vecAmbient",this,model)
 
         // モデルを描画
-        GLES32.glDrawElements(GLES32.GL_TRIANGLES, model.datIdx.size, GLES32.GL_UNSIGNED_SHORT, 0)
+        GLES32.glDrawArrays(GLES32.GL_POINTS, 0, model.datPos.size)
 
         // VAO解放
         GLES32.glBindVertexArray(0)

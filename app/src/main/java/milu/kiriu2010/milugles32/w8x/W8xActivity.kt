@@ -9,6 +9,7 @@ import milu.kiriu2010.milugles32.w8x.w81.W81Fragment
 import milu.kiriu2010.milugles32.w8x.w82.W82Fragment
 import milu.kiriu2010.milugles32.w8x.w83.W83Fragment
 import milu.kiriu2010.milugles32.w8x.w84.W84Fragment
+import milu.kiriu2010.milugles32.w8x.w85.W85Fragment
 import milu.kiriu2010.milugles32.w8x.w86.W86Fragment
 import milu.kiriu2010.milugles32.w8x.w87.W87Fragment
 import milu.kiriu2010.milugles32.w8x.w89.W89Fragment
@@ -22,7 +23,7 @@ class W8xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W83Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W85Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -72,6 +73,16 @@ class W8xActivity : AppCompatActivity() {
                 if (supportFragmentManager.findFragmentByTag("w86") == null) {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, W86Fragment.newInstance(), "w86")
+                        .commit()
+                }
+                true
+            }
+            // MRTエッジ検出
+            R.id.w85 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w85") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W85Fragment.newInstance(), "w85")
                         .commit()
                 }
                 true

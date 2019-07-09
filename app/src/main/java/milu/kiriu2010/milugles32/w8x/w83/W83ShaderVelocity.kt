@@ -42,7 +42,7 @@ class W83ShaderVelocity(ctx: Context): ES32MgShader(ctx) {
                 vec4 t = texture(u_texture,p);
                 vec2 v = normalize(u_mouse-t.xy)*0.2;
                 vec2 w = normalize(v+t.zw);
-                vec4 destColor = vec4(t.xy + w*SPEED*velocity, w);
+                vec4 destColor = vec4(t.xy + w*SPEED*u_velocity, w);
                 if ( bool(u_mouseFlag) == false ) {
                     destColor.zw = t.zw;
                 }
@@ -92,7 +92,7 @@ class W83ShaderVelocity(ctx: Context): ES32MgShader(ctx) {
              u_resolution: FloatArray,
              u_texture: Int,
              u_mouse: FloatArray,
-             u_mouseFlg: Float,
+             u_mouseFlg: Int,
              u_velocity: Float) {
         val model = vao.model
 
@@ -116,7 +116,7 @@ class W83ShaderVelocity(ctx: Context): ES32MgShader(ctx) {
         MyGLES32Func.checkGlError("u_mouse",this,model)
 
         // uniform(マウス押下しているかどうか)
-        GLES32.glUniform1f(hUNI[3], u_mouseFlg)
+        GLES32.glUniform1i(hUNI[3], u_mouseFlg)
         MyGLES32Func.checkGlError("u_mouseFlg",this,model)
 
         // uniform(速度)

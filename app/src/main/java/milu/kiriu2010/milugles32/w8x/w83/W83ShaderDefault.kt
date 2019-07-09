@@ -75,7 +75,7 @@ class W83ShaderDefault(ctx: Context): ES32MgShader(ctx) {
         MyGLES32Func.checkGlError("u_resolution",this,model)
 
         // モデルを描画
-        GLES32.glDrawElements(GLES32.GL_TRIANGLES, model.datIdx.size, GLES32.GL_UNSIGNED_SHORT, 0)
+        GLES32.glDrawArrays(GLES32.GL_TRIANGLE_STRIP, 0, model.datPos.size/3)
 
         // VAO解放
         GLES32.glBindVertexArray(0)

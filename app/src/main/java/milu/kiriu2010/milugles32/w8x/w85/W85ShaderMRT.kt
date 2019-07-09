@@ -1,4 +1,4 @@
-package milu.kiriu2010.milugles32.w8x.w84
+package milu.kiriu2010.milugles32.w8x.w85
 
 import android.content.Context
 import android.opengl.GLES32
@@ -10,9 +10,9 @@ import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
 // シェーダA
 // MRT(Multiple Render Targets)
 // ------------------------------------
-// https://wgld.org/d/webgl/w084.html
+// https://wgld.org/d/webgl/w085.html
 // ------------------------------------
-class W84ShaderA(ctx: Context): ES32MgShader(ctx) {
+class W85ShaderMRT(ctx: Context): ES32MgShader(ctx) {
     // 頂点シェーダ
     private val scv =
             """#version 300 es
@@ -22,20 +22,14 @@ class W84ShaderA(ctx: Context): ES32MgShader(ctx) {
             layout (location = 2) in vec4  a_Color;
 
             uniform  mat4  u_matMVP;
-            uniform  mat4  u_matINV;
-            uniform  vec3  u_vecLight;
             uniform  vec4  u_vecAmbient;
 
-            out vec4  v_Dest;
             out vec4  v_Color;
             out vec3  v_Normal;
             out float v_Depth;
 
             void main() {
                 gl_Position    = u_matMVP   * vec4(a_Position, 1.0);
-                vec3  invLight = normalize(u_matINV*vec4(u_vecLight,0.0)).xyz;
-                float diffuse  = clamp(dot(a_Normal,invLight),0.1,1.0);
-                v_Dest   = vec4(a_Color.rgb*u_vecAmbient.rgb*diffuse,1.0);
                 v_Color  = a_Color * u_vecAmbient;
                 v_Normal = a_Normal;
                 v_Depth  = gl_Position.z/gl_Position.w;
@@ -48,7 +42,6 @@ class W84ShaderA(ctx: Context): ES32MgShader(ctx) {
 
             precision highp   float;
 
-            in  vec4  v_Dest;
             in  vec4  v_Color;
             in  vec3  v_Normal;
             in  float v_Depth;
@@ -56,13 +49,11 @@ class W84ShaderA(ctx: Context): ES32MgShader(ctx) {
             layout (location = 0) out vec4  o_FragColor0;
             layout (location = 1) out vec4  o_FragColor1;
             layout (location = 2) out vec4  o_FragColor2;
-            layout (location = 3) out vec4  o_FragColor3;
 
             void main() {
-                o_FragColor0 = v_Dest;
-                o_FragColor1 = v_Color;
+                o_FragColor0 = v_Color;
+                o_FragColor1 = vec4(vec3((v_Depth+1.0)/2.0),1.0);
                 o_FragColor2 = vec4((v_Normal+1.0)/2.0,1.0);
-                o_FragColor3 = vec4(vec3((v_Depth+1.0)/2.0),1.0);
             }
             """.trimIndent()
 
@@ -78,22 +69,14 @@ class W84ShaderA(ctx: Context): ES32MgShader(ctx) {
         // ----------------------------------------------
         // uniformハンドルに値をセット
         // ----------------------------------------------
-        hUNI = IntArray(4)
+        hUNI = IntArray(2)
 
         // uniform(モデル×ビュー×プロジェクション)
         hUNI[0] = GLES32.glGetUniformLocation(programHandle,"u_matMVP")
         MyGLES32Func.checkGlError("u_matMVP:glGetUniformLocation")
 
-        // uniform(逆行列)
-        hUNI[1] = GLES32.glGetUniformLocation(programHandle,"u_matINV")
-        MyGLES32Func.checkGlError("u_matINV:glGetUniformLocation")
-
-        // uniform(光源位置)
-        hUNI[2] = GLES32.glGetUniformLocation(programHandle,"u_vecLight")
-        MyGLES32Func.checkGlError("u_vecLight:glGetUniformLocation")
-
         // uniform(環境光)
-        hUNI[3] = GLES32.glGetUniformLocation(programHandle,"u_vecAmbient")
+        hUNI[1] = GLES32.glGetUniformLocation(programHandle,"u_vecAmbient")
         MyGLES32Func.checkGlError("u_vecAmbient:glGetUniformLocation")
 
         return this
@@ -101,8 +84,6 @@ class W84ShaderA(ctx: Context): ES32MgShader(ctx) {
 
     fun draw(vao: ES32VAOAbs,
              u_matMVP: FloatArray,
-             u_matI: FloatArray,
-             u_vecLight: FloatArray,
              u_vecAmbient: FloatArray) {
         //Log.d(javaClass.simpleName,"draw:${model.javaClass.simpleName}")
         val model = vao.model
@@ -121,18 +102,8 @@ class W84ShaderA(ctx: Context): ES32MgShader(ctx) {
         MyGLES32Func.checkGlError("u_matMVP",this,model)
         //Log.d(javaClass.simpleName,"draw:u_matMVP")
 
-        // uniform(逆行列)
-        GLES32.glUniformMatrix4fv(hUNI[1],1,false,u_matI,0)
-        MyGLES32Func.checkGlError("u_matI",this,model)
-        //Log.d(javaClass.simpleName,"draw:u_matI")
-
-        // uniform(光源位置)
-        GLES32.glUniform3fv(hUNI[2],1,u_vecLight,0)
-        MyGLES32Func.checkGlError("u_vecLight",this,model)
-        //Log.d(javaClass.simpleName,"draw:u_vecLight")
-
         // uniform(環境光)
-        GLES32.glUniform4fv(hUNI[3],1,u_vecAmbient,0)
+        GLES32.glUniform4fv(hUNI[1],1,u_vecAmbient,0)
         MyGLES32Func.checkGlError("u_vecAmbient",this,model)
         //Log.d(javaClass.simpleName,"draw:u_vecAmbient")
 

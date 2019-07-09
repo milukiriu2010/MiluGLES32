@@ -12,6 +12,9 @@
             android:id="@+id/w86"
             android:title="w86_色取得" />
     <item
+            android:id="@+id/w85"
+            android:title="w85_MRTエッジ検出" />
+    <item
             android:id="@+id/w84"
             android:title="w84_MRT" />
     <item
