@@ -66,7 +66,7 @@ class A14Renderer(ctx: Context): MgRenderer(ctx) {
         val t0 = angle[0].toFloat()
 
         val u_time = (System.currentTimeMillis()-s_time).toFloat()*0.001f
-        // 0-1の範囲に正規化
+        // -1.0～1.0の範囲に正規化
         val u_mouse = floatArrayOf(touchP.x/renderW*2f-1f,-(touchP.y/renderH*2f-1f))
 
         // ビュー×プロジェクション座標変換行列
@@ -76,7 +76,7 @@ class A14Renderer(ctx: Context): MgRenderer(ctx) {
                 vecEye[0], vecEye[1], vecEye[2],
                 vecCenter[0], vecCenter[1], vecCenter[2],
                 vecEyeUp[0], vecEyeUp[1], vecEyeUp[2])
-        Matrix.perspectiveM(matP,0,60f,0.5f,0.1f,20f)
+        Matrix.perspectiveM(matP,0,60f,1.0f,0.1f,20f)
         Matrix.multiplyMM(matVP,0,matP,0,matV,0)
 
         // モデルをレンダリング(画像)

@@ -27,7 +27,7 @@ class ES32a14ShaderB(ctx: Context): ES32MgShader(ctx) {
             void main() {
                 v_Color = a_Color;
                 gl_Position  = u_matVP * a_Position;
-                gl_PointSize = 1.0;
+                gl_PointSize = 10.0;
             }
             """.trimIndent()
 

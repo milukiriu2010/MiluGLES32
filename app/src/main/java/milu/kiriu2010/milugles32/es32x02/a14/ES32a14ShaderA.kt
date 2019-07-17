@@ -138,7 +138,7 @@ class ES32a14ShaderA(ctx: Context): ES32MgShader(ctx) {
         // uniform(u_mouse)
         GLES32.glUniform2fv(hUNI[1],1,u_mouse,0)
         MyGLES32Func.checkGlError("u_mouse",this,modelFrom)
-        Log.d(javaClass.simpleName,"draw:u_time[${u_time}]x[${u_mouse[0]}]y[${u_mouse[1]}]")
+        //Log.d(javaClass.simpleName,"draw:u_time[${u_time}]x[${u_mouse[0]}]y[${u_mouse[1]}]")
 
 
         // モデルを描画

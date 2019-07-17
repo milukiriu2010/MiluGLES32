@@ -30,8 +30,15 @@ class Image01Model: MgModelAbs() {
                 val l = (k+j) * 4
                 when ( isEmpty ) {
                     true -> {
+                        /*
                         datPos.addAll(arrayListOf(0f,0f,0f,0f))
                         datCol.addAll(arrayListOf(0f,0f,0f,0f))
+                        */
+                        datPos.addAll(arrayListOf(x,-y,0f,1f))
+                        datCol.add(byteBuf[l].toFloat()/255f)
+                        datCol.add(byteBuf[l+1].toFloat()/255f)
+                        datCol.add(byteBuf[l+2].toFloat()/255f)
+                        datCol.add(byteBuf[l+3].toFloat()/255f)
                     }
                     false -> {
                         datPos.addAll(arrayListOf(x,-y,0f,1f))
