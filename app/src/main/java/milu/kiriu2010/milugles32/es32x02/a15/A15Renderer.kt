@@ -1,4 +1,4 @@
-package milu.kiriu2010.milugles32.es32x02.a14
+package milu.kiriu2010.milugles32.es32x02.a15
 
 import android.content.Context
 import android.graphics.BitmapFactory
@@ -7,33 +7,28 @@ import android.opengl.Matrix
 import android.util.Log
 import milu.kiriu2010.gui.basic.MyGLES32Func
 import milu.kiriu2010.gui.renderer.MgRenderer
-import milu.kiriu2010.gui.vbo.es32.ES32VBOIpc
 import milu.kiriu2010.milugles32.R
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
 // -----------------------------------------------------------
-// Transform Feedback
+// Transform Feedback(GPGPU)
 // -----------------------------------------------------------
 //
 // -----------------------------------------------------------
-// https://wgld.org/d/webgl2/w014.html
+// https://wgld.org/d/webgl2/w015.html
 // -----------------------------------------------------------
-class A14Renderer(ctx: Context): MgRenderer(ctx) {
+class A15Renderer(ctx: Context): MgRenderer(ctx) {
     // 描画オブジェクト(画像モデル)
-    private val modelImg = A14Model()
-    // 描画オブジェクト(Feedback)
-    private val modelFeedback = A14Model()
+    private val model = A15Model()
 
-    // VBO(画像モデル)
-    private val vboImg = ES32VBOIpc()
-    // VBO(Feedback)
-    private val vboFeedback = ES32VBOIpc()
+    // VBO
+    private val vbos = arrayListOf(A15VBO(),A15VBO())
 
     // シェーダA
-    private val shaderA = ES32a14ShaderA(ctx)
+    private val shaderA = ES32a15ShaderA(ctx)
     // シェーダB
-    private val shaderB = ES32a14ShaderB(ctx)
+    private val shaderB = ES32a15ShaderB(ctx)
 
     // 画面縦横比
     var ratio: Float = 1f
@@ -43,7 +38,12 @@ class A14Renderer(ctx: Context): MgRenderer(ctx) {
 
     val s_time = System.currentTimeMillis()
 
+    // タッチの力
+    var u_move = 0f
+
     val hTransformFeedback = IntArray(1)
+
+    var cnt = 0
 
     init {
         // テクスチャ
@@ -61,25 +61,31 @@ class A14Renderer(ctx: Context): MgRenderer(ctx) {
     }
 
     override fun onDrawFrame(gl: GL10?) {
-        angle[0] =(angle[0]+1)%360
-        val t0 = angle[0].toFloat()
+        // タッチしていないときは、タッチの力を減衰させる
+        if ( isRunning === false ) {
+            u_move *= 0.95f
+        }
+
+        cnt++
+        var cntId = cnt%2
+        var invId = 1-cntId
 
         val u_time = (System.currentTimeMillis()-s_time).toFloat()*0.001f
         // -1.0～1.0の範囲に正規化
         val u_mouse = floatArrayOf(touchP.x/renderW*2f-1f,-(touchP.y/renderH*2f-1f))
 
         // ビュー×プロジェクション座標変換行列
-        vecEye = qtnNow.toVecIII(floatArrayOf(0f,0f,5f))
+        vecEye = qtnNow.toVecIII(floatArrayOf(0f,0f,3f))
         vecEyeUp = qtnNow.toVecIII(floatArrayOf(0f,1f,0f))
         Matrix.setLookAtM(matV, 0,
                 vecEye[0], vecEye[1], vecEye[2],
                 vecCenter[0], vecCenter[1], vecCenter[2],
                 vecEyeUp[0], vecEyeUp[1], vecEyeUp[2])
-        Matrix.perspectiveM(matP,0,60f,1.0f,0.1f,20f)
+        Matrix.perspectiveM(matP,0,60f,1.0f,0.1f,10f)
         Matrix.multiplyMM(matVP,0,matP,0,matV,0)
 
         // モデルをレンダリング(画像)
-        shaderA.draw(vboImg,vboFeedback,u_time,u_mouse,bmpSize)
+        shaderA.draw(vbos[cntId],vbos[invId],u_time,u_mouse,u_move,bmpSize)
 
         // フレームバッファを初期化
         GLES32.glClearColor(0f,0f,0f,1f)
@@ -87,7 +93,7 @@ class A14Renderer(ctx: Context): MgRenderer(ctx) {
         GLES32.glClear(GLES32.GL_COLOR_BUFFER_BIT or GLES32.GL_DEPTH_BUFFER_BIT)
 
         // モデルをレンダリング(feedback)
-        shaderB.draw(vboFeedback,matVP,bmpSize)
+        shaderB.draw(vbos[invId],matVP,u_move,bmpSize)
     }
 
     override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
@@ -120,16 +126,11 @@ class A14Renderer(ctx: Context): MgRenderer(ctx) {
         Log.d(javaClass.simpleName,"bmp:byteCount:"+bmpArray[0].byteCount)
 
         // モデル生成(画像)
-        modelImg.createPath(bmpArray[0],false)
-        // モデル生成(Feedback)
-        modelFeedback.createPath(bmpArray[0],true)
+        model.createPath(bmpArray[0])
 
-        // VBO(画像)
-        vboImg.makeVIBO(modelImg)
-        // VBO(Feedback)
-        vboFeedback.usagePos = GLES32.GL_DYNAMIC_COPY
-        vboFeedback.usageCol = GLES32.GL_DYNAMIC_COPY
-        vboFeedback.makeVIBO(modelFeedback)
+        // VBO
+        vbos[0].makeVIBO(model)
+        vbos[1].makeVIBO(model)
 
         // テクスチャを作成
         GLES32.glGenTextures(1,textures,0)
@@ -157,19 +158,15 @@ class A14Renderer(ctx: Context): MgRenderer(ctx) {
 
         // シェーダB
         shaderB.loadShader()
-
-        // ライトの向き
-        vecLight[0] = 5f
-        vecLight[1] = 2f
-        vecLight[2] = 5f
     }
 
     override fun setMotionParam(motionParam: MutableMap<String, Float>) {
     }
 
     override fun closeShader() {
-        vboImg.deleteVIBO()
-        vboFeedback.deleteVIBO()
+        vbos.forEach {
+            it.deleteVIBO()
+        }
         shaderA.deleteShader()
         shaderB.deleteShader()
 

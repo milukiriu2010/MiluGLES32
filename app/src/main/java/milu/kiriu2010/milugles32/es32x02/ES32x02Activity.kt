@@ -10,6 +10,7 @@ import milu.kiriu2010.milugles32.es32x02.a11.A11Fragment
 import milu.kiriu2010.milugles32.es32x02.a12.A12Fragment
 import milu.kiriu2010.milugles32.es32x02.a13.A13Fragment
 import milu.kiriu2010.milugles32.es32x02.a14.A14Fragment
+import milu.kiriu2010.milugles32.es32x02.a15.A15Fragment
 
 class ES32x02Activity : AppCompatActivity() {
 
@@ -20,7 +21,7 @@ class ES32x02Activity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, A14Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, A15Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -42,6 +43,16 @@ class ES32x02Activity : AppCompatActivity() {
             // 前画面に戻る
             android.R.id.home -> {
                 finish()
+                true
+            }
+            // Transform Feedback(GPGPU)
+            R.id.es32_a15 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("a15") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, A15Fragment.newInstance(), "a15")
+                        .commit()
+                }
                 true
             }
             // Transform Feedback

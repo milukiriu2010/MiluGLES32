@@ -3,6 +3,9 @@
 
 
     <item
+            android:id="@+id/es32_a15"
+            android:title="a15_Transform_Feedback(GPGPU)" />
+    <item
             android:id="@+id/es32_a14"
             android:title="a14_Transform_Feedback" />
     <item
