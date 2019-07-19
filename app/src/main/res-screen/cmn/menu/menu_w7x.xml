@@ -15,6 +15,9 @@
             android:id="@+id/w74"
             android:title="w74_異方性フィルタリング" />
     <item
+            android:id="@+id/w72"
+            android:title="w72_浮動小数点数VTF" />
+    <item
             android:id="@+id/w71"
             android:title="w71_頂点テクスチャフェッチ" />
     <item

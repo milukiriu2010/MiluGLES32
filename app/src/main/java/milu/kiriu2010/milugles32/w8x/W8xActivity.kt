@@ -23,7 +23,7 @@ class W8xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W85Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W82Fragment.newInstance(), "xyz")
                 .commit()
         }
 

@@ -1,4 +1,4 @@
-package milu.kiriu2010.milugles32.w8x.w82
+package milu.kiriu2010.milugles32.w7x.w72
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
 
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W82Fragment : Fragment() {
+class W72Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -26,23 +27,19 @@ class W82Fragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_a01, container, false)
 
         myGLES32View = view.findViewById(R.id.myGLES32ViewA01)
-        val renderer = W82RendererVAO(context!!)
+        val renderer = W72Renderer(context!!)
         myGLES32View.setRenderer(renderer)
         myGLES32View.setOnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
-                    renderer.isRunning = false
-                    renderer.touchP.x = event.x
-                    renderer.touchP.y = event.y
                 }
                 MotionEvent.ACTION_DOWN -> {
-                    renderer.isRunning = true
-                    renderer.touchP.x = event.x
-                    renderer.touchP.y = event.y
+                    //Log.d(javaClass.simpleName,"ex[${event.x}]ey[${event.y}]")
+                    //Log.d(javaClass.simpleName,"vw[${myGLES32View.width}]vh[${myGLES32View.height}]")
+                    renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    renderer.touchP.x = event.x
-                    renderer.touchP.y = event.y
+                    renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)
                 }
                 else -> {
                 }
@@ -66,7 +63,7 @@ class W82Fragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() =
-                W82Fragment().apply {
+                W72Fragment().apply {
                     arguments = Bundle().apply {
                     }
                 }

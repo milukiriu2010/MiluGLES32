@@ -7,6 +7,7 @@ import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.w7x.w70.W70Fragment
 import milu.kiriu2010.milugles32.w7x.w71.W71Fragment
+import milu.kiriu2010.milugles32.w7x.w72.W72Fragment
 import milu.kiriu2010.milugles32.w7x.w74.W74Fragment
 import milu.kiriu2010.milugles32.w7x.w75.W75Fragment
 import milu.kiriu2010.milugles32.w7x.w76.W76Fragment
@@ -21,7 +22,7 @@ class W7xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W74Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W72Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -81,6 +82,16 @@ class W7xActivity : AppCompatActivity() {
                 if (supportFragmentManager.findFragmentByTag("w74") == null) {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, W74Fragment.newInstance(), "w74")
+                        .commit()
+                }
+                true
+            }
+            // 浮動小数点数VTF
+            R.id.w72 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w72") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W72Fragment.newInstance(), "w72")
                         .commit()
                 }
                 true

@@ -4,17 +4,14 @@ import android.content.Context
 import android.opengl.GLES32
 import milu.kiriu2010.gui.basic.MyGLES32Func
 import milu.kiriu2010.gui.shader.es32.ES32MgShader
-import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
-import milu.kiriu2010.math.MyMathUtil
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
+import milu.kiriu2010.gui.vbo.es32.ES32VBOAbs
 
 // ------------------------------------
 // シェーダ(VBO逐次更新:パーティクル)
 // ------------------------------------
 // https://wgld.org/d/webgl/w081.html
 // ------------------------------------
-class W82Shader(ctx: Context): ES32MgShader(ctx) {
+class W82ShaderVBO(ctx: Context): ES32MgShader(ctx) {
     // 頂点シェーダ
     private val scv =
             """#version 300 es
@@ -52,6 +49,22 @@ class W82Shader(ctx: Context): ES32MgShader(ctx) {
         programHandle = MyGLES32Func.createProgram(svhandle,sfhandle)
 
         // ----------------------------------------------
+        // attributeハンドルに値をセット
+        // ----------------------------------------------
+        hATTR = IntArray(1)
+        // 属性(頂点)
+        hATTR[0] = GLES32.glGetAttribLocation(programHandle, "a_Position").also {
+            // attribute属性を有効にする
+            // ここで呼ばないと描画されない
+            GLES32.glEnableVertexAttribArray(it)
+            MyGLES32Func.checkGlError("a_Position:glEnableVertexAttribArray:${it}")
+            // attribute属性を登録
+            GLES32.glVertexAttribPointer(it,2,GLES32.GL_FLOAT,false,0,0)
+            MyGLES32Func.checkGlError("a_Position:glVertexAttribPointer")
+        }
+        MyGLES32Func.checkGlError("a_Position:glGetAttribLocation")
+
+        // ----------------------------------------------
         // uniformハンドルに値をセット
         // ----------------------------------------------
         hUNI = IntArray(2)
@@ -67,21 +80,22 @@ class W82Shader(ctx: Context): ES32MgShader(ctx) {
         return this
     }
 
-    fun draw(vao: ES32VAOAbs,
+    fun draw(vbo: ES32VBOAbs,
              u_pointSize: Float,
              u_pointColor: FloatArray,
-             renderer: W82Renderer) {
-        val model = vao.model as W82Model
+             renderer: W82RendererVAO) {
+        val model = vbo.model as W82Model
 
         GLES32.glUseProgram(programHandle)
         MyGLES32Func.checkGlError("UseProgram",this,model)
 
-        // VAOをバインド
-        GLES32.glBindVertexArray(vao.hVAO[0])
-        MyGLES32Func.checkGlError("BindVertexArray",this,model)
+        // attribute(位置)
+        GLES32.glBindBuffer(GLES32.GL_ARRAY_BUFFER,vbo.hVBO[0])
+        GLES32.glVertexAttribPointer(hATTR[0],2,GLES32.GL_FLOAT,false,0,0)
+        MyGLES32Func.checkGlError("a_Position",this,model)
 
         // 押下位置を-1～1に正規化
-        val mx = (renderer.touchP.x-renderer.renderW.toFloat()*0.5f)/renderer.renderW.toFloat()*2f
+        val mx =  (renderer.touchP.x-renderer.renderW.toFloat()*0.5f)/renderer.renderW.toFloat()*2f
         val my = -(renderer.touchP.y-renderer.renderH.toFloat()*0.5f)/renderer.renderH.toFloat()*2f
 
         // 点を更新
@@ -98,7 +112,8 @@ class W82Shader(ctx: Context): ES32MgShader(ctx) {
         // モデルを描画
         GLES32.glDrawArrays(GLES32.GL_POINTS,0,model.verticesCount)
 
-        // VAO解放
-        GLES32.glBindVertexArray(0)
+        // リソース解放
+        GLES32.glBindBuffer(GLES32.GL_ARRAY_BUFFER,0)
+        GLES32.glBindBuffer(GLES32.GL_ELEMENT_ARRAY_BUFFER,0)
     }
 }

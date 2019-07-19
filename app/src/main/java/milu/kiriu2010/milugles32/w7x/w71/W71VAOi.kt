@@ -30,7 +30,8 @@ class W71VAOi: ES32VAOAbs() {
         //Log.d(javaClass.simpleName,"makeVIBO:${modelAbs.javaClass.simpleName}")
         model = modelAbs
 
-        val datIdxSize = model.datIdx.size/3
+        // 頂点の個数分の連番を配列に格納する
+        val datIdxSize = model.datPos.size/3
         (0 until datIdxSize).forEach {
             datIndex.add(it.toFloat())
         }

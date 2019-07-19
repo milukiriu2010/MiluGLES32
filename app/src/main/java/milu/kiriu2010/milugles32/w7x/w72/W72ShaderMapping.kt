@@ -1,4 +1,4 @@
-package milu.kiriu2010.milugles32.w7x.w71
+package milu.kiriu2010.milugles32.w7x.w72
 
 import android.content.Context
 import android.opengl.GLES32
@@ -13,11 +13,11 @@ import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
 // 16ピクセルのテクスチャに
 // 頂点の座標位置を色として描く
 // ----------------------------------------
-// 頂点テクスチャフェッチ
+// 浮動小数点数VTF
 // ----------------------------------------
-// https://wgld.org/d/webgl/w071.html
+// https://wgld.org/d/webgl/w072.html
 // ----------------------------------------
-class W71ShaderMapping(ctx: Context): ES32MgShader(ctx) {
+class W72ShaderMapping(ctx: Context): ES32MgShader(ctx) {
     // 頂点シェーダ
     private val scv =
             """#version 300 es
@@ -31,12 +31,18 @@ class W71ShaderMapping(ctx: Context): ES32MgShader(ctx) {
             const float frag     = 1.0/16.0;
             // さらに半分の値
             const float texShift = 0.5 * frag;
+            
+            const float rCoef = 1.0;
+            const float gCoef = 1.0/255.0;
+            const float bCoef = 1.0/(255.0*255.0);
 
             void main() {
+                float r = a_Position.x * rCoef;
+                float g = a_Position.y * gCoef;
+                float b = a_Position.z * bCoef;
+            
                 // -1～1の範囲にある頂点の位置を0～1の範囲に収める
-                // テクスチャに描きこむ際に
-                // XYZの値をRGBの各要素に割り当てる
-                v_Color   = (normalize(a_Position)+1.0) * 0.5;
+                v_Color   = (vec3(r,g,b)+1.0) * 0.5;
                 // fract => x-floor(x)を返す
                 // 頂点の識別番号に定数fragをかけ,
                 // その結果の小数点以下の部分だけを抜き出す

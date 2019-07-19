@@ -2,10 +2,8 @@ package milu.kiriu2010.milugles32.w8x.w82
 
 import android.content.Context
 import android.opengl.GLES32
-import android.opengl.Matrix
 import milu.kiriu2010.gui.color.MgColor
 import milu.kiriu2010.gui.renderer.MgRenderer
-import milu.kiriu2010.math.MyMathUtil
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
@@ -14,7 +12,7 @@ import javax.microedition.khronos.opengles.GL10
 // ------------------------------------
 // https://wgld.org/d/webgl/w082.html
 // ------------------------------------
-class W82Renderer(ctx: Context): MgRenderer(ctx) {
+class W82RendererVAO(ctx: Context): MgRenderer(ctx) {
     // 描画オブジェクト
     private val model = W82Model()
 
@@ -22,7 +20,7 @@ class W82Renderer(ctx: Context): MgRenderer(ctx) {
     private val vao = W82VAO()
 
     // シェーダ
-    private val shader = W82Shader(ctx)
+    private val shader = W82ShaderVAO(ctx)
 
     // 画面縦横比
     var ratio: Float = 1f
@@ -37,7 +35,7 @@ class W82Renderer(ctx: Context): MgRenderer(ctx) {
 
     override fun onDrawFrame(gl: GL10?) {
         angle[0] =(angle[0]+1)%720
-        u_pointColor = MgColor.hsva(angle[0]/2,1f,1f,0.5f)
+        u_pointColor = MgColor.hsva(angle[0]/2,1f,1f,1f)
 
         // フレームバッファを初期化
         GLES32.glClearColor(0f,0f,0f,1f)
@@ -48,6 +46,8 @@ class W82Renderer(ctx: Context): MgRenderer(ctx) {
             true -> MAX_VELOCITY
             false -> velocity*0.95f
         }
+
+
 
         // -------------------------------------------------------
         // モデル描画

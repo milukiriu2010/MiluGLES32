@@ -30,6 +30,7 @@ class W82Model: MgModelAbs() {
         datCol.clear()
         datTxc.clear()
         datIdx.clear()
+        datVec.clear()
 
         val pattern = opt["pattern"]?.toInt() ?: 1
 
@@ -47,6 +48,7 @@ class W82Model: MgModelAbs() {
         (0 until resolutionX).forEach { i ->
             (0 until resolutionY).forEach { j ->
                 // 頂点データ
+                // -1～1
                 val x = i.toFloat() * intervalX * 2f - 1f
                 val y = j.toFloat() * intervalY * 2f - 1f
                 datPos.addAll(arrayListOf(x,y))
@@ -55,12 +57,38 @@ class W82Model: MgModelAbs() {
             }
         }
     }
-
     // 点を更新する
     fun updatePoint(isRunning: Boolean,velocity: Float,speed: Float,mx: Float,my: Float) {
         bufPos.position(0)
-        val size = bufPos.limit()
-        val buf = ByteBuffer.allocateDirect(datPos.toArray().size*4).run {
+        (0 until resolutionX).forEach { i ->
+            val k = i * resolutionX
+            (0 until resolutionY).forEach { j ->
+                val l = (k+j)*2
+
+                val p0 = bufPos.get(l)
+                val p1 = bufPos.get(l+1)
+
+                // マウスが押下されている場合ベクトルを更新する
+                if (isRunning) {
+                    val p = vectorUpdate(p0,p1,mx,my,datVec[l],datVec[l+1])
+                    datVec[l]   = p[0]
+                    datVec[l+1] = p[1]
+                }
+
+                bufPos.put(l,p0+velocity*speed*datVec[l])
+                bufPos.put(l+1,p1+velocity*speed*datVec[l+1])
+            }
+        }
+
+        bufPos.position(0)
+        GLES32.glBufferSubData(GLES32.GL_ARRAY_BUFFER,0,bufPos.capacity()*4,bufPos)
+    }
+
+    /*
+    // 点を更新する
+    fun updatePoint(isRunning: Boolean,velocity: Float,speed: Float,mx: Float,my: Float) {
+        bufPos.position(0)
+        val buf = ByteBuffer.allocateDirect(datPos.size*4).run {
             order(ByteOrder.nativeOrder())
 
             asFloatBuffer().apply {
@@ -76,24 +104,23 @@ class W82Model: MgModelAbs() {
 
                 val p0 = buf.get(l)
                 val p1 = buf.get(l+1)
-                val v0 = datVec[l]
-                val v1 = datVec[l+1]
 
                 // マウスが押下されている場合ベクトルを更新する
                 if (isRunning) {
-                    val p = vectorUpdate(p0,p1,mx,my,v0,v1)
-                    datVec[l] = p[0]
+                    val p = vectorUpdate(p0,p1,mx,my,datVec[l],datVec[l+1])
+                    datVec[l]   = p[0]
                     datVec[l+1] = p[1]
                 }
 
-                buf.put(l,p0+velocity*speed*v0)
-                buf.put(l+1,p1+velocity*speed*v1)
+                buf.put(l,p0+velocity*speed*datVec[l])
+                buf.put(l+1,p1+velocity*speed*datVec[l+1])
             }
         }
 
         buf.position(0)
         GLES32.glBufferSubData(GLES32.GL_ARRAY_BUFFER,0,buf.capacity()*4,buf)
     }
+    */
 
     // ベクトル演算
     private fun vectorUpdate(x: Float, y: Float, tx: Float, ty: Float, vx: Float, vy: Float): FloatArray {
