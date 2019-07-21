@@ -12,15 +12,15 @@ import javax.microedition.khronos.opengles.GL10
 // ------------------------------------
 // https://wgld.org/d/webgl/w082.html
 // ------------------------------------
-class W82RendererVAO(ctx: Context): MgRenderer(ctx) {
+class W82Renderer(ctx: Context): MgRenderer(ctx) {
     // 描画オブジェクト
     private val model = W82Model()
 
-    // VAO
-    private val vao = W82VAO()
+    // VBO
+    private val vbo = W82VBO()
 
     // シェーダ
-    private val shader = W82ShaderVAO(ctx)
+    private val shader = W82Shader(ctx)
 
     // 画面縦横比
     var ratio: Float = 1f
@@ -32,6 +32,13 @@ class W82RendererVAO(ctx: Context): MgRenderer(ctx) {
 
     // 頂点の色
     private lateinit var u_pointColor: ArrayList<Float>
+
+    // 押下位置(-1.0～1.0に正規化)
+    val m = floatArrayOf(0f,0f)
+
+    init {
+        isRunning = false
+    }
 
     override fun onDrawFrame(gl: GL10?) {
         angle[0] =(angle[0]+1)%720
@@ -48,11 +55,20 @@ class W82RendererVAO(ctx: Context): MgRenderer(ctx) {
         }
 
 
+        // タッチ位置
+        m[0] =  (touchP.x-renderW.toFloat()*0.5f)/renderW.toFloat()*2f
+        m[1] = -(touchP.y-renderH.toFloat()*0.5f)/renderH.toFloat()*2f
 
         // -------------------------------------------------------
         // モデル描画
         // -------------------------------------------------------
-        shader.draw(vao,velocity*1.25f+0.25f,u_pointColor.toFloatArray(),this)
+        shader.draw(vbo,
+            velocity*1.25f+0.25f,
+            u_pointColor.toFloatArray(),
+            isRunning,
+            velocity,
+            SPEED,
+            m)
     }
 
     override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
@@ -62,6 +78,10 @@ class W82RendererVAO(ctx: Context): MgRenderer(ctx) {
 
         renderW = width
         renderH = height
+        touchP.let{
+            it.x = renderW.toFloat()*0.5f
+            it.y = renderH.toFloat()*0.5f
+        }
     }
 
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
@@ -75,15 +95,15 @@ class W82RendererVAO(ctx: Context): MgRenderer(ctx) {
         model.createPath()
 
         // VAO生成
-        vao.usagePos = GLES32.GL_DYNAMIC_DRAW
-        vao.makeVIBO(model)
+        vbo.usagePos = GLES32.GL_DYNAMIC_DRAW
+        vbo.makeVIBO(model)
     }
 
     override fun setMotionParam(motionParam: MutableMap<String, Float>) {
     }
 
     override fun closeShader() {
-        vao.deleteVIBO()
+        vbo.deleteVIBO()
         shader.deleteShader()
     }
 }

@@ -57,6 +57,7 @@ class W82Model: MgModelAbs() {
             }
         }
     }
+
     // 点を更新する
     fun updatePoint(isRunning: Boolean,velocity: Float,speed: Float,mx: Float,my: Float) {
         bufPos.position(0)

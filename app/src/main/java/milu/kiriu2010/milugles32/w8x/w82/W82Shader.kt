@@ -5,13 +5,14 @@ import android.opengl.GLES32
 import milu.kiriu2010.gui.basic.MyGLES32Func
 import milu.kiriu2010.gui.shader.es32.ES32MgShader
 import milu.kiriu2010.gui.vbo.es32.ES32VBOAbs
+import kotlin.math.sqrt
 
 // ------------------------------------
 // シェーダ(VBO逐次更新:パーティクル)
 // ------------------------------------
 // https://wgld.org/d/webgl/w081.html
 // ------------------------------------
-class W82ShaderVBO(ctx: Context): ES32MgShader(ctx) {
+class W82Shader(ctx: Context): ES32MgShader(ctx) {
     // 頂点シェーダ
     private val scv =
             """#version 300 es
@@ -83,7 +84,10 @@ class W82ShaderVBO(ctx: Context): ES32MgShader(ctx) {
     fun draw(vbo: ES32VBOAbs,
              u_pointSize: Float,
              u_pointColor: FloatArray,
-             renderer: W82RendererVAO) {
+             isRunning: Boolean,
+             velocity: Float,
+             speed: Float,
+             m: FloatArray) {
         val model = vbo.model as W82Model
 
         GLES32.glUseProgram(programHandle)
@@ -94,12 +98,8 @@ class W82ShaderVBO(ctx: Context): ES32MgShader(ctx) {
         GLES32.glVertexAttribPointer(hATTR[0],2,GLES32.GL_FLOAT,false,0,0)
         MyGLES32Func.checkGlError("a_Position",this,model)
 
-        // 押下位置を-1～1に正規化
-        val mx =  (renderer.touchP.x-renderer.renderW.toFloat()*0.5f)/renderer.renderW.toFloat()*2f
-        val my = -(renderer.touchP.y-renderer.renderH.toFloat()*0.5f)/renderer.renderH.toFloat()*2f
-
         // 点を更新
-        model.updatePoint(renderer.isRunning,renderer.velocity,renderer.SPEED,mx,my)
+        model.updatePoint(isRunning,velocity,speed,m[0],m[1])
 
         // uniform(描画点の大きさ)
         GLES32.glUniform1f(hUNI[0],u_pointSize)

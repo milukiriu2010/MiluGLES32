@@ -26,7 +26,7 @@ class W82Fragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_a01, container, false)
 
         myGLES32View = view.findViewById(R.id.myGLES32ViewA01)
-        val renderer = W82RendererVAO(context!!)
+        val renderer = W82Renderer(context!!)
         myGLES32View.setRenderer(renderer)
         myGLES32View.setOnTouchListener { v, event ->
             when (event.action) {
