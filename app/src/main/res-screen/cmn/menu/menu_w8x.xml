@@ -26,4 +26,7 @@
     <item
             android:id="@+id/w81"
             android:title="w81_VBO逐次更新" />
+    <item
+            android:id="@+id/w80"
+            android:title="w80_クロマキー" />
 </menu>

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import milu.kiriu2010.milugles32.R
+import milu.kiriu2010.milugles32.w8x.w80.W80Fragment
 import milu.kiriu2010.milugles32.w8x.w81.W81Fragment
 import milu.kiriu2010.milugles32.w8x.w82.W82Fragment
 import milu.kiriu2010.milugles32.w8x.w83.W83Fragment
@@ -23,7 +24,7 @@ class W8xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W82Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W80Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -123,6 +124,16 @@ class W8xActivity : AppCompatActivity() {
                 if (supportFragmentManager.findFragmentByTag("w81") == null) {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, W81Fragment.newInstance(), "w81")
+                        .commit()
+                }
+                true
+            }
+            // クロマキー
+            R.id.w80 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w80") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W80Fragment.newInstance(), "w80")
                         .commit()
                 }
                 true
