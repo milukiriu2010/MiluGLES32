@@ -34,9 +34,10 @@ class W78Shader(ctx: Context): ES32MgShader(ctx) {
     // フラグメントシェーダ
     private val scf =
             """#version 300 es
+            #extension GL_OES_EGL_image_external : require
             precision highp     float;
 
-            uniform  sampler2D  u_Texture; 
+            uniform  samplerExternalOES  u_Texture; 
             
             in  vec4  v_Color;
             in  vec2  v_TexCoord;

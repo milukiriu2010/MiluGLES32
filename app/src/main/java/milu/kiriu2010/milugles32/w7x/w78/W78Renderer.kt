@@ -1,15 +1,16 @@
 package milu.kiriu2010.milugles32.w7x.w78
 
 import android.content.Context
-import android.graphics.BitmapFactory
+import android.graphics.SurfaceTexture
+import android.media.MediaPlayer
 import android.opengl.GLES32
 import android.opengl.Matrix
+import android.view.Surface
 import milu.kiriu2010.gui.basic.MyGLES32Func
 import milu.kiriu2010.gui.model.d3.Cube01Model
 import milu.kiriu2010.gui.model.d3.Sphere01Model
 import milu.kiriu2010.gui.renderer.MgRenderer
 import milu.kiriu2010.gui.vbo.es32.ES32VAOIpct
-import milu.kiriu2010.gui.vbo.es32.ES32VAOIpnc
 import milu.kiriu2010.milugles32.R
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
@@ -19,7 +20,8 @@ import javax.microedition.khronos.opengles.GL10
 // --------------------------------------
 // https://wgld.org/d/webgl/w078.html
 // --------------------------------------
-class W78Renderer(ctx: Context): MgRenderer(ctx) {
+class W78Renderer(ctx: Context): MgRenderer(ctx), SurfaceTexture.OnFrameAvailableListener {
+
     // 描画オブジェクト(立方体)
     private val modelCube = Cube01Model()
     // 描画オブジェクト(球体)
@@ -36,23 +38,45 @@ class W78Renderer(ctx: Context): MgRenderer(ctx) {
     // 画面縦横比
     var ratio: Float = 1f
 
+    // プレイヤー
+    private val player = MediaPlayer()
+
+    private lateinit var surfaceTexture: SurfaceTexture
+    private var updateSurface = false
+
+    private val GL_TEXTURE_EXTERNAL_OES = 0x8D65
+
     init {
         // テクスチャ
         textures = IntArray(1)
 
+        /*
         // ビットマップをロード
         bmpArray.clear()
         val bmp0 = BitmapFactory.decodeResource(ctx.resources, R.drawable.texture_w26)
         bmpArray.add(bmp0)
+        */
+
+        val afd = ctx.resources.openRawResourceFd(R.raw.w78_video)
+        player.setDataSource(afd.fileDescriptor, afd.startOffset,afd.length)
+        afd.close()
     }
 
     override fun onDrawFrame(gl: GL10?) {
+        synchronized(this,{
+            if (updateSurface) {
+                surfaceTexture.updateTexImage()
+                //surfaceTexture.getTransformMatrix()
+                updateSurface = false
+            }
+        })
+
         angle[0] =(angle[0]+1)%360
         val t0 = angle[0].toFloat()
 
         // テクスチャをバインドする
         GLES32.glActiveTexture(GLES32.GL_TEXTURE0)
-        GLES32.glBindTexture(GLES32.GL_TEXTURE_2D, textures[0])
+        GLES32.glBindTexture(GL_TEXTURE_EXTERNAL_OES, textures[0])
 
         // フレームバッファを初期化
         GLES32.glClearColor(0f,0.7f,0.7f,1f)
@@ -86,6 +110,10 @@ class W78Renderer(ctx: Context): MgRenderer(ctx) {
         Matrix.rotateM(matM,0,t0,1f,1f,0f)
         Matrix.multiplyMM(matMVP,0,matVP,0,matM,0)
         shader.draw(vaoCube,matMVP,0)
+    }
+
+    @Synchronized override fun onFrameAvailable(surfaceTexture: SurfaceTexture?) {
+        updateSurface = true
     }
 
     override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
@@ -133,7 +161,27 @@ class W78Renderer(ctx: Context): MgRenderer(ctx) {
 
         // テクスチャ作成し、idをtexturesに保存
         GLES32.glGenTextures(1,textures,0)
-        MyGLES32Func.createTexture(0,textures,bmpArray[0])
+        //MyGLES32Func.createTexture(0,textures,bmpArray[0])
+        GLES32.glBindTexture(GL_TEXTURE_EXTERNAL_OES,textures[0])
+        MyGLES32Func.checkGlError("BindTexture")
+        GLES32.glTexParameteri(GL_TEXTURE_EXTERNAL_OES,GLES32.GL_TEXTURE_MIN_FILTER,GLES32.GL_NEAREST)
+        GLES32.glTexParameteri(GL_TEXTURE_EXTERNAL_OES,GLES32.GL_TEXTURE_MAG_FILTER,GLES32.GL_LINEAR)
+
+        surfaceTexture = SurfaceTexture(textures[0])
+        surfaceTexture.setOnFrameAvailableListener(this)
+
+        val surface = Surface(surfaceTexture)
+        player.setSurface(surface)
+        player.setScreenOnWhilePlaying(true)
+        surface.release()
+
+        player.prepare()
+
+        synchronized( this ,{
+            updateSurface = false
+        })
+
+        player.start()
     }
 
     override fun setMotionParam(motionParam: MutableMap<String, Float>) {
