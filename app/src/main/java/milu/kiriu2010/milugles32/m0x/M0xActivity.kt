@@ -28,7 +28,7 @@ class M0xActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_w8x, menu)
+        menuInflater.inflate(R.menu.menu_m0x, menu)
         return super.onCreateOptionsMenu(menu)
     }
 

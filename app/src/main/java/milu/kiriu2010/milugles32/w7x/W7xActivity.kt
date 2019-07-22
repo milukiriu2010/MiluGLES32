@@ -12,6 +12,7 @@ import milu.kiriu2010.milugles32.w7x.w74.W74Fragment
 import milu.kiriu2010.milugles32.w7x.w75.W75Fragment
 import milu.kiriu2010.milugles32.w7x.w76.W76Fragment
 import milu.kiriu2010.milugles32.w7x.w77.W77Fragment
+import milu.kiriu2010.milugles32.w7x.w78.W78Fragment
 
 class W7xActivity : AppCompatActivity() {
 
@@ -22,7 +23,7 @@ class W7xActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         if (supportFragmentManager.findFragmentByTag("xyz") == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W72Fragment.newInstance(), "xyz")
+                .replace(R.id.frameLayout, W78Fragment.newInstance(), "xyz")
                 .commit()
         }
 
@@ -44,6 +45,16 @@ class W7xActivity : AppCompatActivity() {
             // 前画面に戻る
             android.R.id.home -> {
                 finish()
+                true
+            }
+            // ビデオ
+            R.id.w78 -> {
+                supportFragmentManager.popBackStack()
+                if (supportFragmentManager.findFragmentByTag("w78") == null) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, W78Fragment.newInstance(), "w78")
+                        .commit()
+                }
                 true
             }
             // ラインシェード
