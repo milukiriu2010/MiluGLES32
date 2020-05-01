@@ -1,7 +1,7 @@
 package milu.kiriu2010.milugles32.g0x.g02
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -11,7 +11,7 @@ import android.widget.SeekBar
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class G02Fragment : Fragment() {
+class G02Fragment : androidx.fragment.app.Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -30,7 +30,7 @@ class G02Fragment : Fragment() {
         val renderer = G02Renderer(context!!)
         myGLES32View.setRenderer(renderer)
 
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                     renderer.touchP.x = event.x.toFloat()/renderer.renderW.toFloat()

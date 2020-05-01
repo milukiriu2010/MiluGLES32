@@ -1,7 +1,7 @@
 package milu.kiriu2010.milugles32.w3x.w35
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.*
 import android.widget.Switch
@@ -10,7 +10,7 @@ import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
 
-class W35Fragment : Fragment() {
+class W35Fragment : androidx.fragment.app.Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
     private lateinit var switch: Switch

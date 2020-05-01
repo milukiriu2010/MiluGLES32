@@ -25,7 +25,7 @@ class Board00Model: MgModelAbs() {
             // XY平面(右回り)
             1 -> createPathPattern1(opt)
             // XY平面(右回り)(アルファブレンディング)
-            29 -> createPathPattern29(opt)
+            29 -> createPathPattern29()
             // XY平面(左回り)
             53 -> createPathPattern53(opt)
             // XY平面(左+右回り)
@@ -35,9 +35,9 @@ class Board00Model: MgModelAbs() {
             // XZ平面(右回り)
             51 -> createPathPattern51(opt)
             // XY平面(左回り)画像貼り付け
-            100 -> createPathPattern100(opt)
+            100 -> createPathPattern100()
             // XY平面
-            101 -> createPathPattern101(opt)
+            101 -> createPathPattern101()
             else -> createPathPattern1(opt)
         }
 
@@ -78,15 +78,15 @@ class Board00Model: MgModelAbs() {
         datTxc.addAll(arrayListOf(1f,1f))
 
         // インデックスデータ
-        datIdx.addAll(arrayListOf<Short>(0,1,2))
-        datIdx.addAll(arrayListOf<Short>(3,2,1))
+        datIdx.addAll(arrayListOf(0,1,2))
+        datIdx.addAll(arrayListOf(3,2,1))
     }
 
     // XY平面(右回り)
     //   アルファブレンディング
     //   ステンシルバッファ
     // w29,w30,w38,w86
-    private fun createPathPattern29(opt: Map<String, Float>) {
+    private fun createPathPattern29() {
         // 頂点データ
         datPos.addAll(arrayListOf(-1f, 1f,0f))
         datPos.addAll(arrayListOf( 1f, 1f,0f))
@@ -147,8 +147,8 @@ class Board00Model: MgModelAbs() {
         datTxc.addAll(arrayListOf(1f,1f))
 
         // インデックスデータ
-        datIdx.addAll(arrayListOf<Short>(0,2,1))
-        datIdx.addAll(arrayListOf<Short>(2,3,1))
+        datIdx.addAll(arrayListOf(0,2,1))
+        datIdx.addAll(arrayListOf(2,3,1))
     }
 
     // XY平面(左+右回り)
@@ -183,8 +183,8 @@ class Board00Model: MgModelAbs() {
         datTxc.addAll(arrayListOf(1f,1f))
 
         // インデックスデータ
-        datIdx.addAll(arrayListOf<Short>(0,2,1))
-        datIdx.addAll(arrayListOf<Short>(1,2,3))
+        datIdx.addAll(arrayListOf(0,2,1))
+        datIdx.addAll(arrayListOf(1,2,3))
     }
 
     // XZ平面(左回り)
@@ -209,12 +209,12 @@ class Board00Model: MgModelAbs() {
 
         // 色データ
         (0..3).forEach {
-            datCol.addAll(arrayListOf<Float>(color[0],color[1],color[2],color[3]))
+            datCol.addAll(arrayListOf(color[0],color[1],color[2],color[3]))
         }
 
         // インデックスデータ
-        datIdx.addAll(arrayListOf<Short>(0,1,2))
-        datIdx.addAll(arrayListOf<Short>(3,2,1))
+        datIdx.addAll(arrayListOf(0,1,2))
+        datIdx.addAll(arrayListOf(3,2,1))
     }
 
     // XZ平面(右回り)
@@ -239,17 +239,17 @@ class Board00Model: MgModelAbs() {
 
         // 色データ
         (0..3).forEach {
-            datCol.addAll(arrayListOf<Float>(color[0],color[1],color[2],color[3]))
+            datCol.addAll(arrayListOf(color[0],color[1],color[2],color[3]))
         }
 
         // インデックスデータ
-        datIdx.addAll(arrayListOf<Short>(0,2,1))
-        datIdx.addAll(arrayListOf<Short>(3,1,2))
+        datIdx.addAll(arrayListOf(0,2,1))
+        datIdx.addAll(arrayListOf(3,1,2))
     }
 
     // XY平面(左回り)画像貼り付け
     //  a03,a06,a07
-    private fun createPathPattern100(opt: Map<String, Float>) {
+    private fun createPathPattern100() {
         // 頂点データ
         datPos.addAll(arrayListOf( 1f, 1f,0f))
         datPos.addAll(arrayListOf(-1f, 1f,0f))
@@ -268,13 +268,13 @@ class Board00Model: MgModelAbs() {
         datTxc.addAll(arrayListOf(0f,1f))
 
         // インデックスデータ
-        datIdx.addAll(arrayListOf<Short>(0,1,2))
-        datIdx.addAll(arrayListOf<Short>(2,1,3))
+        datIdx.addAll(arrayListOf(0,1,2))
+        datIdx.addAll(arrayListOf(2,1,3))
     }
 
     // XY平面
     //  a13
-    private fun createPathPattern101(opt: Map<String, Float>) {
+    private fun createPathPattern101() {
         // 頂点データ
         datPos.addAll(arrayListOf( 1f, 1f,0f))
         datPos.addAll(arrayListOf(-1f, 1f,0f))

@@ -1,7 +1,7 @@
 package milu.kiriu2010.milugles32.g0x.g07
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -12,7 +12,7 @@ import android.widget.RadioGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class G07Fragment : Fragment() {
+class G07Fragment : androidx.fragment.app.Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -31,7 +31,7 @@ class G07Fragment : Fragment() {
         val renderer = G07Renderer(context!!)
         myGLES32View.setRenderer(renderer)
 
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                     renderer.touchP.x = event.x.toFloat()/renderer.renderW.toFloat()
@@ -54,7 +54,7 @@ class G07Fragment : Fragment() {
         val radioGroupG07 = view.findViewById<RadioGroup>(R.id.radioGroupG07)
         val radioButtonG07Noise = view.findViewById<RadioButton>(R.id.radioButtonG07Noise)
         val radioButtonG07Seamless = view.findViewById<RadioButton>(R.id.radioButtonG07Seamless)
-        radioGroupG07.setOnCheckedChangeListener { group, checkedId ->
+        radioGroupG07.setOnCheckedChangeListener { _, checkedId ->
             renderer.u_noiseType = when (checkedId) {
                 radioButtonG07Noise.id    ->  0
                 radioButtonG07Seamless.id ->  1

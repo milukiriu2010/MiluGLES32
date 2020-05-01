@@ -138,8 +138,8 @@ class Sphere01Model: MgModelAbs() {
                 datTxc.add(1f/row.toFloat()*i.toFloat())
             }
 
-            (0 until datPos.size/3).forEach { i ->
-                datIdx.add(i.toShort())
+            (0 until datPos.size/3).forEach { ii ->
+                datIdx.add(ii.toShort())
             }
 
         }

@@ -1,7 +1,7 @@
 package milu.kiriu2010.milugles32.g1x.g11
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -11,7 +11,7 @@ import android.widget.CheckBox
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class G11Fragment : Fragment() {
+class G11Fragment : androidx.fragment.app.Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -30,7 +30,7 @@ class G11Fragment : Fragment() {
         val renderer = G11Renderer(context!!)
         myGLES32View.setRenderer(renderer)
 
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                     renderer.touchP.x = event.x.toFloat()/renderer.renderW.toFloat()
@@ -51,7 +51,7 @@ class G11Fragment : Fragment() {
         }
 
         val checkBoxG10 = view.findViewById<CheckBox>(R.id.checkBoxG10)
-        checkBoxG10.setOnCheckedChangeListener { buttonView, isChecked ->
+        checkBoxG10.setOnCheckedChangeListener { _, isChecked ->
             renderer.u_showNormal = when (isChecked) {
                 true  -> 1
                 false -> 0

@@ -109,7 +109,7 @@ data class MyPointF(
         // 各頂点の角度の合計
         var angleTotal = 0f
         var p2: MyPointF = pointLst[pointLst.size-1]
-        pointLst.forEachIndexed { id, p1 ->
+        pointLst.forEachIndexed { _, p1 ->
             val angle = getAngle(p2,p1)
             angleTotal += angle
             p2 = p1

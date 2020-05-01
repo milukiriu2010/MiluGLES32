@@ -2,7 +2,7 @@ package milu.kiriu2010.milugles32.w3x.w30
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
+import androidx.fragment.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +10,7 @@ import android.widget.Button
 import android.widget.SeekBar
 import milu.kiriu2010.milugles32.R
 
-class W30BlendDialog: DialogFragment() {
+class W30BlendDialog: androidx.fragment.app.DialogFragment() {
 
     // 0.0 - 1.0
     var red = 0f

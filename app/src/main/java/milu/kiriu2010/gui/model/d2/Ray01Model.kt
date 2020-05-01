@@ -17,17 +17,15 @@ class Ray01Model: MgModelAbs() {
         val pattern = opt["pattern"]?.toInt() ?: 1
 
         when ( pattern ) {
-            1 -> createPathPattern1(opt)
-            else -> createPathPattern1(opt)
+            1 -> createPathPattern1()
+            else -> createPathPattern1()
         }
 
         // バッファ割り当て
         allocateBuffer()
     }
 
-    private fun createPathPattern1(opt: Map<String, Float>) {
-        val color = FloatArray(4)
-
+    private fun createPathPattern1() {
         // 頂点データ
         datPos.addAll(arrayListOf(   0f, 0f, -2f))
         datPos.addAll(arrayListOf(   0f, 0f,  2f))

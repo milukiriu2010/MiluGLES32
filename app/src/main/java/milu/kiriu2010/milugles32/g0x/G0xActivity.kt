@@ -1,6 +1,6 @@
 package milu.kiriu2010.milugles32.g0x
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -49,11 +49,11 @@ class G0xActivity : AppCompatActivity() {
                 true
             }
             // レイマーチング(球体)
-            R.id.g08 -> {
+            R.id.g09 -> {
                 supportFragmentManager.popBackStack()
                 if (supportFragmentManager.findFragmentByTag("g09") == null) {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G08Fragment.newInstance(), "g08")
+                        .replace(R.id.frameLayout, G09Fragment.newInstance(), "g09")
                         .commit()
                 }
                 true

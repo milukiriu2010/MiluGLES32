@@ -280,12 +280,12 @@ class MyMathUtil {
         fun normalize(dat1: FloatArray): FloatArray {
             val dat2 = FloatArray(dat1.size)
             var sq = 0f
-            dat1.forEachIndexed { id, fl ->
+            dat1.forEachIndexed { id, _ ->
                 dat2[id] = dat1[id]*dat1[id]
                 sq += dat2[id]
             }
             val sq2 = 1f/ sqrt(sq)
-            dat2.forEachIndexed { id, fl ->
+            dat2.forEachIndexed { id, _ ->
                 dat2[id] *= sq2
             }
             return dat2

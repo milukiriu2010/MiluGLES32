@@ -62,7 +62,7 @@ class A14Renderer(ctx: Context): MgRenderer(ctx) {
 
     override fun onDrawFrame(gl: GL10?) {
         angle[0] =(angle[0]+1)%360
-        val t0 = angle[0].toFloat()
+        //val t0 = angle[0].toFloat()
 
         val u_time = (System.currentTimeMillis()-s_time).toFloat()*0.001f
         // -1.0～1.0の範囲に正規化

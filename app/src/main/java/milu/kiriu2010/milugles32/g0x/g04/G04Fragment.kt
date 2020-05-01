@@ -1,7 +1,7 @@
 package milu.kiriu2010.milugles32.g0x.g04
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -12,7 +12,7 @@ import android.widget.RadioGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class G04Fragment : Fragment() {
+class G04Fragment : androidx.fragment.app.Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -31,7 +31,7 @@ class G04Fragment : Fragment() {
         val renderer = G04Renderer(context!!)
         myGLES32View.setRenderer(renderer)
 
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                     renderer.touchP.x = event.x.toFloat()/renderer.renderW.toFloat()
@@ -65,7 +65,7 @@ class G04Fragment : Fragment() {
         val radioButtonG04Flower2 = view.findViewById<RadioButton>(R.id.radioButtonG04Flower2)
         val radioButtonG04Fan = view.findViewById<RadioButton>(R.id.radioButtonG04Fan)
 
-        radioGroupG04A.setOnCheckedChangeListener { group, checkedId ->
+        radioGroupG04A.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 radioButtonG04Ring.id      -> {
                     renderer.u_type = 1
@@ -93,7 +93,7 @@ class G04Fragment : Fragment() {
             }
         }
 
-        radioGroupG04B.setOnCheckedChangeListener { group, checkedId ->
+        radioGroupG04B.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 radioButtonG04Flower1.id    -> {
                     renderer.u_type = 6

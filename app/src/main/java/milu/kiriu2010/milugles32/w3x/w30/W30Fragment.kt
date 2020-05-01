@@ -3,7 +3,7 @@ package milu.kiriu2010.milugles32.w3x.w30
 import android.content.Intent
 import android.opengl.GLES32
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -14,7 +14,7 @@ import android.widget.*
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W30Fragment : Fragment() {
+class W30Fragment : androidx.fragment.app.Fragment() {
 
     private lateinit var scrollViewW30y: ScrollView
 
@@ -68,7 +68,7 @@ class W30Fragment : Fragment() {
 
             val dlg = W30ContextDialog.newInstance(bundle)
             dlg.setTargetFragment(this,1)
-            dlg.show(fragmentManager,"context clear color")
+            dlg.show(fragmentManager!!,"context clear color")
         }
 
         // ブレンドの色を変更するダイアログを開く
@@ -83,7 +83,7 @@ class W30Fragment : Fragment() {
 
             val dlg = W30BlendDialog.newInstance(bundle)
             dlg.setTargetFragment(this,2)
-            dlg.show(fragmentManager,"blend constant color")
+            dlg.show(fragmentManager!!,"blend constant color")
         }
 
         // パラメータを変更するダイアログを開く(テクスチャ)
@@ -112,7 +112,7 @@ class W30Fragment : Fragment() {
 
             val dlg = W30ModelDialog.newInstance(bundle)
             dlg.setTargetFragment(this,3)
-            dlg.show(fragmentManager,"Model1")
+            dlg.show(fragmentManager!!,"Model1")
         }
 
         // パラメータを変更するダイアログを開く(板ポリゴン)
@@ -141,14 +141,18 @@ class W30Fragment : Fragment() {
 
             val dlg = W30ModelDialog.newInstance(bundle)
             dlg.setTargetFragment(this,4)
-            dlg.show(fragmentManager,"Model2")
+            dlg.show(fragmentManager!!,"Model2")
         }
 
         return view
     }
 
     // ダイアログ上での変更結果をレンダリングに反映
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, dataX: Intent?) {
+        if (dataX == null) {
+            return super.onActivityResult(requestCode, resultCode, dataX)
+        }
+        var data = dataX
         when (requestCode) {
             // コンテキストの色
             1 -> {

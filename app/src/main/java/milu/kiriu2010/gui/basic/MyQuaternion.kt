@@ -48,7 +48,7 @@ data class MyQuaternion(
         val z = q[2]
         val w = q[3]
         val l = sqrt(x*x+y*y+z*z+w*w)
-        if ( l === 0f ) {
+        if ( l == 0f ) {
             q[0] = 0f
             q[1] = 0f
             q[2] = 0f

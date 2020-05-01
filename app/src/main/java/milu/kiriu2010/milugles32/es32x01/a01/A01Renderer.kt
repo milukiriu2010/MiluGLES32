@@ -45,8 +45,8 @@ class A01Renderer(ctx: Context): MgRenderer(ctx) {
         angle[0] =(angle[0]+1)%360
         val t1 = angle[0].toFloat()
 
-        val x = MyMathUtil.cosf(t1)
-        val y = MyMathUtil.sinf(t1)
+        //val x = MyMathUtil.cosf(t1)
+        //val y = MyMathUtil.sinf(t1)
 
         // ビュー×プロジェクション
         vecEye = qtnNow.toVecIII(floatArrayOf(0f,0f,10f))

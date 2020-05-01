@@ -62,7 +62,7 @@ class A15Renderer(ctx: Context): MgRenderer(ctx) {
 
     override fun onDrawFrame(gl: GL10?) {
         // タッチしていないときは、タッチの力を減衰させる
-        if ( isRunning === false ) {
+        if ( isRunning == false ) {
             u_move *= 0.95f
         }
 

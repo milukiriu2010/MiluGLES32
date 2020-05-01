@@ -35,7 +35,7 @@ class MgColor {
             val m = v*(1f-s)
             val n = v*(1f-s*f)
             val k = v*(1-s*(1-f))
-            if ( ((s>0f) === false) and ((s<0f) === false) ) {
+            if ( ((s>0f) == false) and ((s<0f) == false) ) {
                 color.addAll(arrayListOf<Float>(v,v,v,a))
             }
             else {
