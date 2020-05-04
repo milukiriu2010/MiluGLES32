@@ -43,7 +43,7 @@ class W74Renderer(ctx: Context): MgRenderer(ctx) {
         //Log.d(javaClass.simpleName,"onDrawFrame:start")
 
         angle[0] =(angle[0]+1)%360
-        val t0 = angle[0].toFloat()
+        //val t0 = angle[0].toFloat()
 
         // ビュー×プロジェクション座標変換行列
         vecEye = qtnNow.toVecIII(floatArrayOf(0f,1f,10f))

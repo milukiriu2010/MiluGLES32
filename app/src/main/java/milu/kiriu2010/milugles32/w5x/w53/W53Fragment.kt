@@ -30,7 +30,7 @@ class W53Fragment : androidx.fragment.app.Fragment() {
         myGLES32View = view.findViewById(R.id.myGLES32ViewW53)
         val render = W53Renderer(context!!)
         myGLES32View.setRenderer(render)
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                 }
@@ -49,7 +49,7 @@ class W53Fragment : androidx.fragment.app.Fragment() {
         }
 
         val switchW53 = view.findViewById<Switch>(R.id.switchW53)
-        switchW53.setOnCheckedChangeListener { buttonView, isChecked ->
+        switchW53.setOnCheckedChangeListener { _, isChecked ->
             Log.d(javaClass.simpleName,"W53:switch:${isChecked}")
             when (isChecked) {
                 true -> render.u_grayScale = 1

@@ -30,7 +30,7 @@ class W57Fragment : androidx.fragment.app.Fragment() {
         myGLES32View = view.findViewById(R.id.myGLES32ViewW57)
         val renderer = W57Renderer(context!!)
         myGLES32View.setRenderer(renderer)
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                 }
@@ -52,7 +52,7 @@ class W57Fragment : androidx.fragment.app.Fragment() {
         val radioButtonW57Render = view.findViewById<RadioButton>(R.id.radioButtonW57Render)
         val radioButtonW57Texture1 = view.findViewById<RadioButton>(R.id.radioButtonW57Texture1)
         val radioButtonW57Texture2 = view.findViewById<RadioButton>(R.id.radioButtonW57Texture2)
-        radioGroupW57.setOnCheckedChangeListener { group, checkedId ->
+        radioGroupW57.setOnCheckedChangeListener { _, checkedId ->
             renderer.textureType = when (checkedId) {
                 radioButtonW57Render.id -> 0
                 radioButtonW57Texture1.id -> 1
@@ -66,7 +66,7 @@ class W57Fragment : androidx.fragment.app.Fragment() {
             1 -> true
             else -> false
         }
-        checkBoxW57Gaussian.setOnCheckedChangeListener { buttonView, isChecked ->
+        checkBoxW57Gaussian.setOnCheckedChangeListener { _, isChecked ->
             renderer.u_gaussian = when (isChecked) {
                 true -> 1
                 else -> 0

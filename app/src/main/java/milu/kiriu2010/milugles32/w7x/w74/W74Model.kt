@@ -19,13 +19,13 @@ class W74Model: MgModelAbs() {
         datTxc.clear()
         datIdx.clear()
 
-        createPathPattern1(opt)
+        createPathPattern1()
 
         // バッファ割り当て
         allocateBuffer()
     }
 
-    private fun createPathPattern1(opt: Map<String, Float>) {
+    private fun createPathPattern1() {
         // 頂点データ(Zを描くような順序)
         datPos.addAll(arrayListOf(-10f, 0f,-10f))
         datPos.addAll(arrayListOf( 10f, 0f,-10f))

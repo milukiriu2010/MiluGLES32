@@ -34,7 +34,7 @@ class W51Fragment : androidx.fragment.app.Fragment() {
         myGLES32View = view.findViewById(R.id.myGLES32ViewW51)
         val renderer = W51Renderer(context!!)
         myGLES32View.setRenderer(renderer)
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                     renderer.isRunning = false
@@ -70,7 +70,7 @@ class W51Fragment : androidx.fragment.app.Fragment() {
         val radioGroupW51 = view.findViewById<RadioGroup>(R.id.radioGroupW51)
         val radioButtonW51Frag = view.findViewById<RadioButton>(R.id.radioButtonW51Frag)
         val radioButtonW51Vertex = view.findViewById<RadioButton>(R.id.radioButtonW51Vertex)
-        radioGroupW51.setOnCheckedChangeListener { group, checkedId ->
+        radioGroupW51.setOnCheckedChangeListener { _, checkedId ->
             renderer.u_depthBuffer = when (checkedId) {
                 radioButtonW51Frag.id   -> 1
                 radioButtonW51Vertex.id -> 0

@@ -29,7 +29,7 @@ class W35Fragment : androidx.fragment.app.Fragment() {
         myGLES32View = view.findViewById(R.id.myGLES32ViewW35)
         val renderer = W35Renderer(context!!)
         myGLES32View.setRenderer(renderer)
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                 }
@@ -48,7 +48,7 @@ class W35Fragment : androidx.fragment.app.Fragment() {
         }
 
         switch = view.findViewById(R.id.switchW35)
-        switch.setOnCheckedChangeListener { buttonView, isChecked ->
+        switch.setOnCheckedChangeListener { _, isChecked ->
             renderer.isBillBoard = isChecked
         }
 

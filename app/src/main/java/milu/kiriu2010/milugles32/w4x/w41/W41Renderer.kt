@@ -67,7 +67,7 @@ class W41Renderer(ctx: Context): MgRenderer(ctx) {
         angle[0] =(angle[0]+1)%360
         angle[1] =(angle[1]+1)%360
         val t0 = angle[0].toFloat()
-        val t1 = angle[1].toFloat()
+        //val t1 = angle[1].toFloat()
 
         // ---------------------------------------------------------
         // フレームバッファへ地球と背景をレンダリング

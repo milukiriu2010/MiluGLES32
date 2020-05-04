@@ -30,7 +30,7 @@ class W67Fragment : androidx.fragment.app.Fragment() {
         myGLES32View = view.findViewById(R.id.myGLES32ViewW67)
         val renderer = W67Renderer(context!!)
         myGLES32View.setRenderer(renderer)
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                 }
@@ -53,7 +53,7 @@ class W67Fragment : androidx.fragment.app.Fragment() {
         val radioButtonW67Texture1 = view.findViewById<RadioButton>(R.id.radioButtonW67Texture1)
         val radioButtonW67Texture2 = view.findViewById<RadioButton>(R.id.radioButtonW67Texture2)
 
-        radioGroupW67.setOnCheckedChangeListener { group, checkedId ->
+        radioGroupW67.setOnCheckedChangeListener { _, checkedId ->
             renderer.textureType = when (checkedId) {
                 radioButtonW67Render.id -> 0
                 radioButtonW67Texture1.id -> 1

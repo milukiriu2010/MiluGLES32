@@ -32,7 +32,7 @@ class W66Fragment : androidx.fragment.app.Fragment() {
         myGLES32View = view.findViewById(R.id.myGLES32ViewW66)
         val renderer = W66Renderer(context!!)
         myGLES32View.setRenderer(renderer)
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                 }
@@ -55,7 +55,7 @@ class W66Fragment : androidx.fragment.app.Fragment() {
         val radioButtonW66Texture1 = view.findViewById<RadioButton>(R.id.radioButtonW66Texture1)
         val radioButtonW66Texture2 = view.findViewById<RadioButton>(R.id.radioButtonW66Texture2)
 
-        radioGroupW66.setOnCheckedChangeListener { group, checkedId ->
+        radioGroupW66.setOnCheckedChangeListener { _, checkedId ->
             renderer.textureType = when (checkedId) {
                 radioButtonW66Render.id -> 0
                 radioButtonW66Texture1.id -> 1

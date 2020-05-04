@@ -38,7 +38,7 @@ class W36Fragment : androidx.fragment.app.Fragment() {
         myGLES32View = view.findViewById(R.id.myGLES32ViewW36)
         val renderer = W36Renderer(context!!)
         myGLES32View.setRenderer(renderer)
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                     renderer.isRunning = false
@@ -78,7 +78,7 @@ class W36Fragment : androidx.fragment.app.Fragment() {
         val rbnW36Lines = view.findViewById<RadioButton>(R.id.rbnW36Lines)
         val rbnW36LineStrip = view.findViewById<RadioButton>(R.id.rbnW36LineStrip)
         val rbnW36LineLoop = view.findViewById<RadioButton>(R.id.rbnW36LineLoop)
-        radioGroupW36.setOnCheckedChangeListener { group, checkedId ->
+        radioGroupW36.setOnCheckedChangeListener { _, checkedId ->
             renderer.lineType = when (checkedId) {
                 rbnW36Lines.id     -> GLES32.GL_LINES
                 rbnW36LineStrip.id -> GLES32.GL_LINE_STRIP

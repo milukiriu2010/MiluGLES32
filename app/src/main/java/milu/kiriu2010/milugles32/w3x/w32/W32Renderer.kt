@@ -38,7 +38,7 @@ class W32Renderer(ctx: Context): MgRenderer(ctx) {
         // 回転角度
         angle[0] =(angle[0]+5)%360
         angle[1] =(angle[1]+2)%360
-        val t0 = angle[0].toFloat()
+        //val t0 = angle[0].toFloat()
         val t1 = angle[1].toFloat()
 
         // canvasを初期化

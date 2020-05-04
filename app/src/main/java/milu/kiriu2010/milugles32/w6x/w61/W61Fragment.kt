@@ -30,7 +30,7 @@ class W61Fragment : androidx.fragment.app.Fragment() {
         myGLES32View = view.findViewById(R.id.myGLES32ViewW61)
         val renderer = W61Renderer(context!!)
         myGLES32View.setRenderer(renderer)
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                 }
@@ -49,7 +49,7 @@ class W61Fragment : androidx.fragment.app.Fragment() {
         }
 
         val checkBoxW61Fog = view.findViewById<CheckBox>(R.id.checkBoxW61Fog)
-        checkBoxW61Fog.setOnCheckedChangeListener { buttonView, isChecked ->
+        checkBoxW61Fog.setOnCheckedChangeListener { _, isChecked ->
             renderer.u_softParticle = when(isChecked) {
                 true -> 1
                 else -> 0

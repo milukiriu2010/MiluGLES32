@@ -21,10 +21,10 @@ class W30ContextDialog: androidx.fragment.app.DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            red   = it.getFloat("RED")   ?: 0f
-            green = it.getFloat("GREEN") ?: 0f
-            blue  = it.getFloat("BLUE")  ?: 0f
-            alpha = it.getFloat("ALPHA") ?: 0f
+            red   = it.getFloat("RED")
+            green = it.getFloat("GREEN")
+            blue  = it.getFloat("BLUE")
+            alpha = it.getFloat("ALPHA")
         }
     }
 
@@ -32,7 +32,7 @@ class W30ContextDialog: androidx.fragment.app.DialogFragment() {
         //return super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_w30_context, container, false)
 
-        val ctx = context ?: return view
+        //val ctx = context ?: return view
 
         val seekBarW30ContextRed = view.findViewById<SeekBar>(R.id.seekBarW30ContextRed)
         seekBarW30ContextRed.progress = (red * 10f).toInt()
@@ -120,10 +120,10 @@ class W30ContextDialog: androidx.fragment.app.DialogFragment() {
         fun newInstance(bundle: Bundle) =
                 W30ContextDialog().apply {
                     arguments = Bundle().also {
-                        it.putFloat("RED"  , bundle.getFloat("RED")   ?: 0f)
-                        it.putFloat("GREEN", bundle.getFloat("GREEN") ?: 0f)
-                        it.putFloat("BLUE" , bundle.getFloat("BLUE")  ?: 0f)
-                        it.putFloat("ALPHA", bundle.getFloat("ALPHA") ?: 0f)
+                        it.putFloat("RED"  , bundle.getFloat("RED"))
+                        it.putFloat("GREEN", bundle.getFloat("GREEN"))
+                        it.putFloat("BLUE" , bundle.getFloat("BLUE"))
+                        it.putFloat("ALPHA", bundle.getFloat("ALPHA"))
                     }
                 }
     }

@@ -36,17 +36,17 @@ class W19Fragment : androidx.fragment.app.Fragment() {
         myGLES32View.setRenderer(renderer)
 
         switchCulling = view.findViewById(R.id.switchCullingW19)
-        switchCulling.setOnCheckedChangeListener { buttonView, isChecked ->
+        switchCulling.setOnCheckedChangeListener { _, isChecked ->
             renderer.culling = isChecked
         }
 
         switchFront = view.findViewById(R.id.switchFrontW19)
-        switchFront.setOnCheckedChangeListener { buttonView, isChecked ->
+        switchFront.setOnCheckedChangeListener { _, isChecked ->
             renderer.frontFace = isChecked
         }
 
         switchDepth = view.findViewById(R.id.switchDepthW19)
-        switchDepth.setOnCheckedChangeListener { buttonView, isChecked ->
+        switchDepth.setOnCheckedChangeListener { _, isChecked ->
             renderer.depthTest = isChecked
         }
 

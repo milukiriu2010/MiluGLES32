@@ -17,8 +17,8 @@ class W83ModelBoard: MgModelAbs() {
         val pattern = opt["pattern"]?.toInt() ?: 1
 
         when ( pattern ) {
-            1 -> createPathPattern1(opt)
-            else -> createPathPattern1(opt)
+            1 -> createPathPattern1()
+            else -> createPathPattern1()
         }
 
         // バッファ割り当て
@@ -26,7 +26,7 @@ class W83ModelBoard: MgModelAbs() {
     }
 
     // 面
-    private fun createPathPattern1( opt: Map<String,Float> ) {
+    private fun createPathPattern1() {
         datPos.addAll(arrayListOf(-1f, 1f,0f))
         datPos.addAll(arrayListOf(-1f,-1f,0f))
         datPos.addAll(arrayListOf( 1f, 1f,0f))

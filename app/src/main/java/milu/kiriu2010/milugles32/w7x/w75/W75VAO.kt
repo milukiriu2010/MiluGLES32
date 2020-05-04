@@ -32,9 +32,9 @@ class W75VAO: ES32VAOAbs() {
     // インスタンス色データ
     private var datInstanceColor = arrayListOf<Float>()
     // インスタンス位置バッファ
-    private lateinit var bufInstancePosition: FloatBuffer
+    private var bufInstancePosition: FloatBuffer
     // インスタンス色バッファ
-    private lateinit var bufInstanceColor: FloatBuffer
+    private var bufInstanceColor: FloatBuffer
 
     init {
         (0 until instanceCnt).forEach { i ->

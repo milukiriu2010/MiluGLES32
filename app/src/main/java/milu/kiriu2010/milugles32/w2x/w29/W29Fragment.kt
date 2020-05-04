@@ -31,7 +31,7 @@ class W29Fragment : androidx.fragment.app.Fragment() {
         myGLES32View = view.findViewById(R.id.myGLES32ViewW29)
         val renderer = W29Renderer(context!!)
         myGLES32View.setRenderer(renderer)
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                 }
@@ -55,7 +55,7 @@ class W29Fragment : androidx.fragment.app.Fragment() {
         val btnW29PhotoShop = view.findViewById<RadioButton>(R.id.btnW29PhotoShop)
         val btnW29Mult = view.findViewById<RadioButton>(R.id.btnW29Mult)
         radioGroupW29.check(btnW29Transparency.id)
-        radioGroupW29.setOnCheckedChangeListener { group, checkedId ->
+        radioGroupW29.setOnCheckedChangeListener { _, checkedId ->
             renderer.blendType = when (checkedId) {
                 // 通常
                 btnW29Normal.id -> 0

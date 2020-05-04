@@ -30,7 +30,7 @@ class W56Fragment : androidx.fragment.app.Fragment() {
         myGLES32View = view.findViewById(R.id.myGLES32ViewW56)
         val renderer = W56Renderer(context!!)
         myGLES32View.setRenderer(renderer)
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                 }
@@ -53,7 +53,7 @@ class W56Fragment : androidx.fragment.app.Fragment() {
         val radioButtonW56Texture1 = view.findViewById<RadioButton>(R.id.radioButtonW56Texture1)
         val radioButtonW56Texture2 = view.findViewById<RadioButton>(R.id.radioButtonW56Texture2)
 
-        radioGroupW56.setOnCheckedChangeListener { group, checkedId ->
+        radioGroupW56.setOnCheckedChangeListener { _, checkedId ->
             renderer.textureType = when (checkedId) {
                 radioButtonW56Render.id -> 0
                 radioButtonW56Texture1.id -> 1
@@ -63,7 +63,7 @@ class W56Fragment : androidx.fragment.app.Fragment() {
         }
 
         val checkBoxW56Laplacian = view.findViewById<CheckBox>(R.id.checkBoxW56Laplacian)
-        checkBoxW56Laplacian.setOnCheckedChangeListener { buttonView, isChecked ->
+        checkBoxW56Laplacian.setOnCheckedChangeListener { _, isChecked ->
             renderer.u_laplacian = when (isChecked) {
                 true -> 1
                 else -> 0
@@ -71,7 +71,7 @@ class W56Fragment : androidx.fragment.app.Fragment() {
         }
 
         val checkBoxW56Gray = view.findViewById<CheckBox>(R.id.checkBoxW56Gray)
-        checkBoxW56Gray.setOnCheckedChangeListener { buttonView, isChecked ->
+        checkBoxW56Gray.setOnCheckedChangeListener { _, isChecked ->
             renderer.u_laplacianGray = when (isChecked) {
                 true -> 1
                 else -> 0

@@ -30,7 +30,7 @@ class W58Fragment : androidx.fragment.app.Fragment() {
         myGLES32View = view.findViewById(R.id.myGLES32ViewW58)
         val renderer = W58Renderer(context!!)
         myGLES32View.setRenderer(renderer)
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                 }
@@ -53,7 +53,7 @@ class W58Fragment : androidx.fragment.app.Fragment() {
             1 -> true
             else -> false
         }
-        checkBoxW58Glare.setOnCheckedChangeListener { buttonView, isChecked ->
+        checkBoxW58Glare.setOnCheckedChangeListener { _, isChecked ->
             renderer.u_glare = when (isChecked) {
                 true -> 1
                 else -> 0

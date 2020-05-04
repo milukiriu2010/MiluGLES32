@@ -31,7 +31,7 @@ class W54Fragment : androidx.fragment.app.Fragment() {
         myGLES32View = view.findViewById(R.id.myGLES32ViewW54)
         val renderer = W54Renderer(context!!)
         myGLES32View.setRenderer(renderer)
-        myGLES32View.setOnTouchListener { v, event ->
+        myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
                 }
@@ -54,7 +54,7 @@ class W54Fragment : androidx.fragment.app.Fragment() {
         val radioButtonW54Gray = view.findViewById<RadioButton>(R.id.radioButtonW54Gray)
         val radioButtonW54Sepia = view.findViewById<RadioButton>(R.id.radioButtonW54Sepia)
 
-        radioGroupW54.setOnCheckedChangeListener { group, checkedId ->
+        radioGroupW54.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 radioButtonW54Color.id -> {
                     renderer.u_grayScale = 0

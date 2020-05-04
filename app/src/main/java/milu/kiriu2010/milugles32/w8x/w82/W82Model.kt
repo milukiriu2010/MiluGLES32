@@ -35,15 +35,15 @@ class W82Model: MgModelAbs() {
         val pattern = opt["pattern"]?.toInt() ?: 1
 
         when ( pattern ) {
-            1 -> createPathPattern1(opt)
-            else -> createPathPattern1(opt)
+            1 -> createPathPattern1()
+            else -> createPathPattern1()
         }
 
         // バッファ割り当て
         allocateBuffer()
     }
 
-    private fun createPathPattern1(opt: Map<String, Float>) {
+    private fun createPathPattern1() {
 
         (0 until resolutionX).forEach { i ->
             (0 until resolutionY).forEach { j ->
