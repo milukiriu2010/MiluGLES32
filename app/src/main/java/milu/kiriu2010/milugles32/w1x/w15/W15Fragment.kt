@@ -9,6 +9,15 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
+// ----------------------------------------------
+// ポリゴンに色を塗る(頂点色の指定)
+// OpenGL ES 3.2
+// ----------------------------------------------
+// https://wgld.org/d/webgl/w015.html
+// https://android.googlesource.com/platform/development/+/master/samples/OpenGL/HelloOpenGLES32/src/com/example/android/opengl/MyGLRenderer.java
+// https://android.keicode.com/basics/opengl-drawing-basic-shapes.php
+// https://developer.android.com/training/graphics/opengl/draw
+// ----------------------------------------------
 class W15Fragment : androidx.fragment.app.Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View

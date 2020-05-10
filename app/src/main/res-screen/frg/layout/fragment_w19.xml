@@ -22,37 +22,37 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
-        android:id="@+id/switchCullingW19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Culling"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myGLES32ViewW19" />
+            android:id="@+id/switchCullingW19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/W19_SW_CULLING"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/myGLES32ViewW19" />
 
     <Switch
-        android:id="@+id/switchFrontW19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Front Face(CW)"
-        app:layout_constraintBottom_toBottomOf="@+id/switchCullingW19"
-        app:layout_constraintStart_toEndOf="@+id/switchCullingW19"
-        app:layout_constraintTop_toTopOf="@+id/switchCullingW19" />
+            android:id="@+id/switchFrontW19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/W19_SW_FRONT"
+            app:layout_constraintBottom_toBottomOf="@+id/switchCullingW19"
+            app:layout_constraintStart_toEndOf="@+id/switchCullingW19"
+            app:layout_constraintTop_toTopOf="@+id/switchCullingW19" />
 
     <Switch
-        android:id="@+id/switchDepthW19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Depth"
-        app:layout_constraintBottom_toBottomOf="@+id/switchFrontW19"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/switchFrontW19"
-        app:layout_constraintTop_toTopOf="@+id/switchFrontW19" />
+            android:id="@+id/switchDepthW19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/W19_SW_DEPTH"
+            app:layout_constraintBottom_toBottomOf="@+id/switchFrontW19"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/switchFrontW19"
+            app:layout_constraintTop_toTopOf="@+id/switchFrontW19" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

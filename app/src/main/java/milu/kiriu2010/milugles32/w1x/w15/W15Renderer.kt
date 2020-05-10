@@ -12,6 +12,7 @@ import milu.kiriu2010.gui.vbo.es32.ES32VAOIpc
 
 // ----------------------------------------------
 // ポリゴンに色を塗る(頂点色の指定)
+// OpenGL ES 3.2
 // ----------------------------------------------
 // https://wgld.org/d/webgl/w015.html
 // https://android.googlesource.com/platform/development/+/master/samples/OpenGL/HelloOpenGLES32/src/com/example/android/opengl/MyGLRenderer.java

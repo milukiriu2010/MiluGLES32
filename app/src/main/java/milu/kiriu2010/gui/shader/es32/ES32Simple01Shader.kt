@@ -13,11 +13,12 @@ import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
 // 2019.04.27 コメントアウト
 // 2019.05.22 リソース解放
 // 2019.06.17 ES3.0用をコピー
+// 2020.05.10 300 => 320
 // ------------------------------------------
 class ES32Simple01Shader(ctx: Context): ES32MgShader(ctx) {
     // 頂点シェーダ
     private val scv =
-            """#version 300 es
+            """#version 320 es
             layout (location = 0) in vec3 a_Position;
             layout (location = 1) in vec4 a_Color;
 
@@ -33,7 +34,7 @@ class ES32Simple01Shader(ctx: Context): ES32MgShader(ctx) {
 
     // フラグメントシェーダ
     private val scf =
-            """#version 300 es
+            """#version 320 es
             precision highp float;
 
             in  vec4 v_Color;

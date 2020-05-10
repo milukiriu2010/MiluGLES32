@@ -10,6 +10,12 @@ import android.widget.Switch
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
+// ---------------------------------------------
+// カリングと深度テスト
+// OpenGL ES 3.2
+// ---------------------------------------------
+// https://wgld.org/d/webgl/w019.html
+// ---------------------------------------------
 class W19Fragment : androidx.fragment.app.Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View

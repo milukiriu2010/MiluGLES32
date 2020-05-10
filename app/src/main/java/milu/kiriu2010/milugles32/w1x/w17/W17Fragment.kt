@@ -9,6 +9,12 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
+// --------------------------------------------------------
+// 移動・回転・拡大縮小
+// OpenGL ES 3.2
+// --------------------------------------------------------
+// https://wgld.org/d/webgl/w017.html
+// --------------------------------------------------------
 class W17Fragment : androidx.fragment.app.Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View

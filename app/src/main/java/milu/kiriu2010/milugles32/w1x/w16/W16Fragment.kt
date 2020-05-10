@@ -9,6 +9,12 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
+// ------------------------------------
+// 複数モデルをレンダリング
+// OpenGL ES 3.2
+// ------------------------------------
+// https://wgld.org/d/webgl/w016.html
+// ------------------------------------
 class W16Fragment : androidx.fragment.app.Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View

@@ -17,12 +17,8 @@ class W1xActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_es32x01)
 
-        supportFragmentManager.popBackStack()
-        if (supportFragmentManager.findFragmentByTag("xyz") == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W19Fragment.newInstance(), "xyz")
-                .commit()
-        }
+        // 初期表示のフラグメントを設定
+        changeFragment("w15")
 
         // アクションバーの設定を行う
         supportActionBar?.apply {
@@ -44,57 +40,59 @@ class W1xActivity : AppCompatActivity() {
                 finish()
                 true
             }
-            // カリング・深度テスト
+            // w19_カリング・深度テスト
             R.id.w19 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w19") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W19Fragment.newInstance(), "w19")
-                        .commit()
-                }
+                changeFragment("w19")
                 true
             }
-            // IBO
+            // w18_IBO
             R.id.w18 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w18") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W18Fragment.newInstance(), "w18")
-                        .commit()
-                }
+                changeFragment("w18")
                 true
             }
-            // 異動・回転・拡大縮小
+            // w17_移動・回転・拡大縮小
             R.id.w17 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w17") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W17Fragment.newInstance(), "w17")
-                        .commit()
-                }
+                changeFragment("w17")
                 true
             }
-            // 複数モデル
+            // w16_複数モデル
             R.id.w16 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w16") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W16Fragment.newInstance(), "w16")
-                        .commit()
-                }
+                changeFragment("w16")
                 true
             }
-            // 頂点色
+            // w15_頂点色
             R.id.w15 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w15") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W15Fragment.newInstance(), "w15")
-                        .commit()
-                }
+                changeFragment("w15")
                 true
             }
             else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    // 表示するフラグメントを切り替える
+    private fun changeFragment(tag: String) {
+        val fragment = when (tag) {
+            // w19_カリング・深度テスト
+            "w19" -> W19Fragment.newInstance()
+            // w18_IBO
+            "w18" -> W18Fragment.newInstance()
+            // w17_移動・回転・拡大縮小
+            "w17" -> W17Fragment.newInstance()
+            // w16_複数モデル
+            "w16" -> W16Fragment.newInstance()
+            // w15_頂点色
+            "w15" -> W15Fragment.newInstance()
+            // w15_頂点色
+            else -> W15Fragment.newInstance()
+        }
+
+        // 現在表示しているフラグメントをスタックから外す
+        supportFragmentManager.popBackStack()
+        // 選択したフラグメントを表示する
+        if ( supportFragmentManager.findFragmentByTag(tag) == null ) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frameLayout, fragment, tag)
+                .commit()
         }
     }
 }

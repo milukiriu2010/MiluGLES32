@@ -4,17 +4,17 @@
 
     <item
             android:id="@+id/w19"
-            android:title="w19_カリング・深度テスト" />
+            android:title="@string/ITEM_W19" />
     <item
             android:id="@+id/w18"
-            android:title="w18_IBO" />
+            android:title="@string/ITEM_W18" />
     <item
             android:id="@+id/w17"
-            android:title="w17_移動・回転・拡大縮小" />
+            android:title="@string/ITEM_W17" />
     <item
             android:id="@+id/w16"
-            android:title="w16_複数モデル" />
+            android:title="@string/ITEM_W16" />
     <item
             android:id="@+id/w15"
-            android:title="w15_頂点色" />
+            android:title="@string/ITEM_W15" />
 </menu>

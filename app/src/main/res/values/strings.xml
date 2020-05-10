@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">MiluGLES32</string>
 
+    <string name="ITEM_W15">w15_頂点色</string>
+    <string name="ITEM_W16">w16_複数モデル</string>
+    <string name="ITEM_W17">w17_移動・回転・拡大縮小</string>
+    <string name="ITEM_W18">w18_IBO</string>
+    <string name="ITEM_W19">w19_カリング・深度テスト</string>
+
+    <string name="W19_SW_CULLING">Culling</string>
+    <string name="W19_SW_FRONT">Front Face(CW)</string>
+    <string name="W19_SW_DEPTH">Depth</string>
+
 
     <string-array name="w30_equation">
         <item>FUNC_ADD</item>
