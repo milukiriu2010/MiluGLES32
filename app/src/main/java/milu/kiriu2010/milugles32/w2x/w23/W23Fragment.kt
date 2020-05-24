@@ -11,7 +11,12 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W23Fragment : androidx.fragment.app.Fragment() {
+// ---------------------------------------------------
+// 反射光によるライティング
+// ---------------------------------------------------
+// https://wgld.org/d/webgl/w023.html
+// ---------------------------------------------------
+class W23Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

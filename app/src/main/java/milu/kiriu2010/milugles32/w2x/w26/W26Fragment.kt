@@ -11,7 +11,17 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W26Fragment : androidx.fragment.app.Fragment() {
+// ---------------------------------------------------
+// テクスチャ
+// ---------------------------------------------------
+// ミップマップとは、
+// あらかじめ複数の大きさのイメージデータを
+// 内部的に用意しておく仕組み
+// テクスチャイメージを縮小表示する際に力を発揮する
+// ---------------------------------------------------
+// https://wgld.org/d/webgl/w026.html
+// ---------------------------------------------------
+class W26Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

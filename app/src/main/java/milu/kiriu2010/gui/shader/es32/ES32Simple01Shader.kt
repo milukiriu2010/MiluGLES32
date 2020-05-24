@@ -8,7 +8,7 @@ import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
 // ------------------------------------------
 // 特殊効果なし
 // ------------------------------------------
-// ES3.2用
+// OpenGL ES 3.2
 // ------------------------------------------
 // 2019.04.27 コメントアウト
 // 2019.05.22 リソース解放
@@ -91,18 +91,23 @@ class ES32Simple01Shader(ctx: Context): ES32MgShader(ctx) {
                 MyGLES32Func.checkGlError("glDrawElements",this,model)
             }
             // 線を描画
+            // 0 => 1
+            // 2 => 3
+            // 4 => 5
             GLES32.GL_LINES -> {
                 val cnt = model.datPos.size/3
                 GLES32.glDrawArrays(GLES32.GL_LINES,0,cnt)
                 MyGLES32Func.checkGlError("glDrawArrays:GL_LINES",this,model)
             }
             // 線を描画
+            // 0 => 1 => 2 => 3 => 4 => 5
             GLES32.GL_LINE_STRIP -> {
                 val cnt = model.datPos.size/3
                 GLES32.glDrawArrays(GLES32.GL_LINE_STRIP,0,cnt)
                 MyGLES32Func.checkGlError("glDrawArrays:GL_LINE_STRIP",this,model)
             }
             // 線を描画
+            // 0 => 1 => 2 => 3 => 4 => 5 => 0
             GLES32.GL_LINE_LOOP -> {
                 val cnt = model.datPos.size/3
                 GLES32.glDrawArrays(GLES32.GL_LINE_LOOP,0,cnt)

@@ -15,7 +15,7 @@ import milu.kiriu2010.milugles32.R
 // ------------------------------------
 // https://wgld.org/d/webgl/w016.html
 // ------------------------------------
-class W16Fragment : androidx.fragment.app.Fragment() {
+class W16Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

@@ -18,7 +18,7 @@ import milu.kiriu2010.milugles32.R
 // https://android.keicode.com/basics/opengl-drawing-basic-shapes.php
 // https://developer.android.com/training/graphics/opengl/draw
 // ----------------------------------------------
-class W15Fragment : androidx.fragment.app.Fragment() {
+class W15Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

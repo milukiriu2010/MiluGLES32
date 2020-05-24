@@ -11,7 +11,12 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W25Fragment : androidx.fragment.app.Fragment() {
+// ---------------------------------------------------
+// 点光源によるライティング
+// ---------------------------------------------------
+// https://wgld.org/d/webgl/w025.html
+// ---------------------------------------------------
+class W25Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

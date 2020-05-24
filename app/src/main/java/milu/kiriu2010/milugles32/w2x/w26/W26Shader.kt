@@ -20,7 +20,7 @@ import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
 class W26Shader(ctx: Context): ES32MgShader(ctx) {
     // 頂点シェーダ
     private val scv =
-            """#version 300 es
+            """#version 320 es
             layout (location = 0) in vec3 a_Position;
             layout (location = 1) in vec4 a_Color;
             layout (location = 2) in vec2 a_TextureCoord;
@@ -39,7 +39,7 @@ class W26Shader(ctx: Context): ES32MgShader(ctx) {
 
     // フラグメントシェーダ
     private val scf =
-            """#version 300 es
+            """#version 320 es
             precision mediump float;
 
             uniform   sampler2D  u_Texture;

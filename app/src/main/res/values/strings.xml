@@ -6,10 +6,34 @@
     <string name="ITEM_W17">w17_移動・回転・拡大縮小</string>
     <string name="ITEM_W18">w18_IBO</string>
     <string name="ITEM_W19">w19_カリング・深度テスト</string>
+    <string name="ITEM_W20">w20_トーラス</string>
+    <string name="ITEM_W21">w21_平行光源</string>
+    <string name="ITEM_W22">w22_環境光</string>
+    <string name="ITEM_W23">w23_反射光</string>
+    <string name="ITEM_W24">w24_フォンシェーディング</string>
+    <string name="ITEM_W25">w25_点光源</string>
+    <string name="ITEM_W26">w26_テクスチャ</string>
+    <string name="ITEM_W27">w27_マルチテクスチャ</string>
+    <string name="ITEM_W28">w28_テクスチャパラメータ</string>
+    <string name="ITEM_W29">w29_アルファブレンディング"</string>
 
+    <!-- fragment_w19.xml -->
     <string name="W19_SW_CULLING">Culling</string>
     <string name="W19_SW_FRONT">Front Face(CW)</string>
     <string name="W19_SW_DEPTH">Depth</string>
+
+    <!-- fragment_w29.xml -->
+    <string name="RB_W29_NORMAL">通常</string>
+    <string name="RB_W29_TRANSPARANCY">半透明</string>
+    <string name="RB_W29_ADD">加算</string>
+    <string name="RB_W29_REVERSE">反転</string>
+    <string name="RB_W29_PHOTOSHOP">加算α</string>
+    <string name="RB_W29_MULTI">乗算</string>
+    <string name="TV_W29_BLENDALPHA">α成分</string>
+    <string name="TV_W29_BACKRED">背景R</string>
+    <string name="TV_W29_BACKGREEN">背景G</string>
+    <string name="TV_W29_BACKBLUE">背景B</string>
+    <string name="TV_W29_BACKALPHA">背景A</string>
 
 
     <string-array name="w30_equation">

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.w1x.w15.W15Fragment
 import milu.kiriu2010.milugles32.w1x.w16.W16Fragment
@@ -18,7 +19,7 @@ class W1xActivity : AppCompatActivity() {
         setContentView(R.layout.activity_es32x01)
 
         // 初期表示のフラグメントを設定
-        changeFragment("w15")
+        changeFragment(W15Fragment.newInstance())
 
         // アクションバーの設定を行う
         supportActionBar?.apply {
@@ -42,27 +43,27 @@ class W1xActivity : AppCompatActivity() {
             }
             // w19_カリング・深度テスト
             R.id.w19 -> {
-                changeFragment("w19")
+                changeFragment(W19Fragment.newInstance())
                 true
             }
             // w18_IBO
             R.id.w18 -> {
-                changeFragment("w18")
+                changeFragment(W18Fragment.newInstance())
                 true
             }
             // w17_移動・回転・拡大縮小
             R.id.w17 -> {
-                changeFragment("w17")
+                changeFragment(W17Fragment.newInstance())
                 true
             }
             // w16_複数モデル
             R.id.w16 -> {
-                changeFragment("w16")
+                changeFragment(W16Fragment.newInstance())
                 true
             }
             // w15_頂点色
             R.id.w15 -> {
-                changeFragment("w15")
+                changeFragment(W15Fragment.newInstance())
                 true
             }
             else -> return super.onOptionsItemSelected(item)
@@ -70,28 +71,13 @@ class W1xActivity : AppCompatActivity() {
     }
 
     // 表示するフラグメントを切り替える
-    private fun changeFragment(tag: String) {
-        val fragment = when (tag) {
-            // w19_カリング・深度テスト
-            "w19" -> W19Fragment.newInstance()
-            // w18_IBO
-            "w18" -> W18Fragment.newInstance()
-            // w17_移動・回転・拡大縮小
-            "w17" -> W17Fragment.newInstance()
-            // w16_複数モデル
-            "w16" -> W16Fragment.newInstance()
-            // w15_頂点色
-            "w15" -> W15Fragment.newInstance()
-            // w15_頂点色
-            else -> W15Fragment.newInstance()
-        }
-
+    private fun changeFragment(fragment: Fragment) {
         // 現在表示しているフラグメントをスタックから外す
         supportFragmentManager.popBackStack()
         // 選択したフラグメントを表示する
-        if ( supportFragmentManager.findFragmentByTag(tag) == null ) {
+        if ( supportFragmentManager.findFragmentByTag(fragment.javaClass.simpleName) == null ) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, fragment, tag)
+                .replace(R.id.frameLayout, fragment, fragment.javaClass.simpleName)
                 .commit()
         }
     }

@@ -8,12 +8,15 @@ import milu.kiriu2010.gui.vbo.es32.ES32VAOAbs
 // --------------------------------------
 // 平行光源
 // --------------------------------------
+// OpenGL ES 3.2
+// --------------------------------------
 // 2019.06.01
+// 2020.05.24 300 => 320
 // --------------------------------------
 class ES32DirectionalLight01Shader(ctx: Context): ES32MgShader(ctx) {
     // 頂点シェーダ
     private val scv =
-            """#version 300 es
+            """#version 320 es
             layout (location = 0) in vec3 a_Position;
             layout (location = 1) in vec3 a_Normal;
             layout (location = 2) in vec4 a_Color;
@@ -50,7 +53,7 @@ class ES32DirectionalLight01Shader(ctx: Context): ES32MgShader(ctx) {
 
     // フラグメントシェーダ
     private val scf =
-            """#version 300 es
+            """#version 320 es
             precision highp float;
 
             in  vec4 v_Color;

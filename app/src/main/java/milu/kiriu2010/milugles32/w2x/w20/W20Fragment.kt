@@ -1,5 +1,6 @@
 package milu.kiriu2010.milugles32.w2x.w20
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.util.Log
@@ -11,7 +12,12 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W20Fragment : androidx.fragment.app.Fragment() {
+// --------------------------------------------------
+// トーラスの描画
+// --------------------------------------------------
+// https://wgld.org/d/webgl/w020.html
+// --------------------------------------------------
+class W20Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -21,6 +27,7 @@ class W20Fragment : androidx.fragment.app.Fragment() {
         }
     }
 
+    // @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment

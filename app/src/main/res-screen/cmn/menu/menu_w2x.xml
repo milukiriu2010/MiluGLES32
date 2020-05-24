@@ -3,32 +3,32 @@
 
     <item
             android:id="@+id/w29"
-            android:title="w29_アルファブレンド" />
+            android:title="@string/ITEM_W29" />
     <item
             android:id="@+id/w28"
-            android:title="w28_テクスチャパラメータ" />
+            android:title="@string/ITEM_W28" />
     <item
             android:id="@+id/w27"
-            android:title="w27_マルチテクスチャ" />
+            android:title="@string/ITEM_W27" />
     <item
             android:id="@+id/w26"
-            android:title="w26_テクスチャ" />
+            android:title="@string/ITEM_W26" />
     <item
             android:id="@+id/w25"
-            android:title="w25_点光源" />
+            android:title="@string/ITEM_W25" />
     <item
             android:id="@+id/w24"
-            android:title="w24_フォンシェーディング" />
+            android:title="@string/ITEM_W24" />
     <item
             android:id="@+id/w23"
-            android:title="w23_反射光" />
+            android:title="@string/ITEM_W23" />
     <item
             android:id="@+id/w22"
-            android:title="w22_環境光" />
+            android:title="@string/ITEM_W22" />
     <item
             android:id="@+id/w21"
-            android:title="w21_平行光源" />
+            android:title="@string/ITEM_W21" />
     <item
             android:id="@+id/w20"
-            android:title="w20_トーラス" />
+            android:title="@string/ITEM_W20" />
 </menu>

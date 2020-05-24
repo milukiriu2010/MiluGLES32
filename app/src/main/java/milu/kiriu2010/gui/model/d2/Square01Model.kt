@@ -52,8 +52,8 @@ class Square01Model: MgModelAbs() {
         datCol.addAll(arrayListOf(1f,1f,1f,1f))
 
         // インデックスデータ
-        datIdx.addAll(arrayListOf<Short>(0,1,2))
-        datIdx.addAll(arrayListOf<Short>(1,2,3))
+        datIdx.addAll(arrayListOf(0,1,2))
+        datIdx.addAll(arrayListOf(1,2,3))
     }
 
 }

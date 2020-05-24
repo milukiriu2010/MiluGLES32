@@ -31,62 +31,62 @@
         app:layout_constraintTop_toBottomOf="@+id/myGLES32ViewW29">
 
         <RadioButton
-            android:id="@+id/btnW29Normal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:text="通常"
-            tools:layout_editor_absoluteX="137dp"
-            tools:layout_editor_absoluteY="444dp" />
+                android:id="@+id/btnW29Normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="@string/RB_W29_NORMAL"
+                tools:layout_editor_absoluteX="137dp"
+                tools:layout_editor_absoluteY="444dp" />
 
         <RadioButton
-            android:id="@+id/btnW29TransParency"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="半透明"
-            tools:layout_editor_absoluteX="137dp"
-            tools:layout_editor_absoluteY="444dp" />
+                android:id="@+id/btnW29TransParency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/RB_W29_TRANSPARANCY"
+                tools:layout_editor_absoluteX="137dp"
+                tools:layout_editor_absoluteY="444dp" />
 
         <RadioButton
-            android:id="@+id/btnW29Add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="加算" />
+                android:id="@+id/btnW29Add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/RB_W29_ADD" />
 
         <RadioButton
-            android:id="@+id/btnW29Reverse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="反転" />
+                android:id="@+id/btnW29Reverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/RB_W29_REVERSE" />
 
         <RadioButton
-            android:id="@+id/btnW29PhotoShop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="加算α" />
+                android:id="@+id/btnW29PhotoShop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/RB_W29_PHOTOSHOP" />
 
         <RadioButton
-            android:id="@+id/btnW29Mult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="乗算" />
+                android:id="@+id/btnW29Mult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/RB_W29_MULTI" />
     </RadioGroup>
 
     <TextView
-        android:id="@+id/textViewW29BlendAlpha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="α成分"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupW29" />
+            android:id="@+id/textViewW29BlendAlpha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/TV_W29_BLENDALPHA"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroupW29" />
 
     <SeekBar
         android:id="@+id/seekBarW29BlendAlpha"
@@ -103,14 +103,14 @@
         app:layout_constraintTop_toTopOf="@+id/textViewW29BlendAlpha" />
 
     <TextView
-        android:id="@+id/textViewW29BackRed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="背景R"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewW29BlendAlpha" />
+            android:id="@+id/textViewW29BackRed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/TV_W29_BACKRED"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewW29BlendAlpha" />
 
     <SeekBar
         android:id="@+id/seekBarW29BackRed"
@@ -127,14 +127,14 @@
         app:layout_constraintTop_toTopOf="@+id/textViewW29BackRed" />
 
     <TextView
-        android:id="@+id/textViewW29BackGreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="背景G"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewW29BackRed" />
+            android:id="@+id/textViewW29BackGreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/TV_W29_BACKGREEN"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewW29BackRed" />
 
     <SeekBar
         android:id="@+id/seekBarW29BackGreen"
@@ -151,14 +151,14 @@
         app:layout_constraintTop_toTopOf="@+id/textViewW29BackGreen" />
 
     <TextView
-        android:id="@+id/textViewW29BackBlue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="背景B"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewW29BackGreen" />
+            android:id="@+id/textViewW29BackBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/TV_W29_BACKBLUE"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewW29BackGreen" />
 
     <SeekBar
         android:id="@+id/seekBarW29BackBlue"
@@ -175,14 +175,14 @@
         app:layout_constraintTop_toTopOf="@+id/textViewW29BackBlue" />
 
     <TextView
-        android:id="@+id/textViewW29BackAlpha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="背景A"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewW29BackBlue" />
+            android:id="@+id/textViewW29BackAlpha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/TV_W29_BACKALPHA"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewW29BackBlue" />
 
     <SeekBar
         android:id="@+id/seekBarW29BackAlpha"

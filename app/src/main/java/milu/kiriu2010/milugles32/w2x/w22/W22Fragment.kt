@@ -11,6 +11,11 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
+// ---------------------------------------------------
+// 環境光によるライティング
+// ---------------------------------------------------
+// https://wgld.org/d/webgl/w022.html
+// ---------------------------------------------------
 class W22Fragment : androidx.fragment.app.Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View

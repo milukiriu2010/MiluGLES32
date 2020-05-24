@@ -38,7 +38,7 @@ class W19Fragment : androidx.fragment.app.Fragment() {
         val view = inflater.inflate(R.layout.fragment_w19, container, false)
 
         myGLES32View = view.findViewById(R.id.myGLES32ViewW19)
-        var renderer = W19Renderer(context!!)
+        val renderer = W19Renderer(context!!)
         myGLES32View.setRenderer(renderer)
 
         switchCulling = view.findViewById(R.id.switchCullingW19)
