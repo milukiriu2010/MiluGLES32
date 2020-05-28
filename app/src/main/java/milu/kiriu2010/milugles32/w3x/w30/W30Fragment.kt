@@ -14,9 +14,12 @@ import android.widget.*
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W30Fragment : androidx.fragment.app.Fragment() {
-
-    private lateinit var scrollViewW30y: ScrollView
+// ---------------------------------------------------
+// ブレンドファクター
+// ---------------------------------------------------
+// https://wgld.org/d/webgl/w030.html
+// ---------------------------------------------------
+class W30Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -152,7 +155,7 @@ class W30Fragment : androidx.fragment.app.Fragment() {
         if (dataX == null) {
             return super.onActivityResult(requestCode, resultCode, dataX)
         }
-        var data = dataX
+        val data = dataX
         when (requestCode) {
             // コンテキストの色
             1 -> {

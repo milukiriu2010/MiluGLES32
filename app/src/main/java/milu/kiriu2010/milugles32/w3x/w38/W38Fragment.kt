@@ -11,7 +11,14 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W38Fragment : androidx.fragment.app.Fragment() {
+// ------------------------------------------------
+// ステンシルバッファ
+// ------------------------------------------------
+// 基準値を保存するためのバッファとして機能する
+// ------------------------------------------------
+// https://wgld.org/d/webgl/w038.html
+// ------------------------------------------------
+class W38Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

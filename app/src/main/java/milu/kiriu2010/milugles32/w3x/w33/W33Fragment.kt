@@ -11,7 +11,13 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W33Fragment : androidx.fragment.app.Fragment() {
+// ---------------------------------------
+// クォータニオン
+//   マウス座標による回転
+// ---------------------------------------
+// https://wgld.org/d/webgl/w033.html
+// ---------------------------------------
+class W33Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

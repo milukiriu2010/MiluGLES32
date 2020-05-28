@@ -16,7 +16,12 @@ import android.widget.TextView
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W36Fragment : androidx.fragment.app.Fragment() {
+// --------------------------------------
+// 点や線のレンダリング
+// --------------------------------------
+// https://wgld.org/d/webgl/w036.html
+// --------------------------------------
+class W36Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

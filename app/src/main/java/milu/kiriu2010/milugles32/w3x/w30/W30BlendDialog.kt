@@ -10,7 +10,12 @@ import android.widget.Button
 import android.widget.SeekBar
 import milu.kiriu2010.milugles32.R
 
-class W30BlendDialog: androidx.fragment.app.DialogFragment() {
+// ---------------------------------------------------
+// ブレンドファクター
+// ---------------------------------------------------
+// https://wgld.org/d/webgl/w030.html
+// ---------------------------------------------------
+class W30BlendDialog: DialogFragment() {
 
     // 0.0 - 1.0
     var red = 0f

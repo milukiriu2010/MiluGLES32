@@ -16,6 +16,15 @@
     <string name="ITEM_W27">w27_マルチテクスチャ</string>
     <string name="ITEM_W28">w28_テクスチャパラメータ</string>
     <string name="ITEM_W29">w29_アルファブレンディング"</string>
+    <string name="ITEM_W30">w30_ブレンドファクター"</string>
+    <string name="ITEM_W32">w32_クォータニオン"</string>
+    <string name="ITEM_W33">w33_マウスによる回転"</string>
+    <string name="ITEM_W34">w34_球面線形補間"</string>
+    <string name="ITEM_W35">w35_ビルボード"</string>
+    <string name="ITEM_W36">w36_点・線"</string>
+    <string name="ITEM_W37">w37_ポイントスプライト"</string>
+    <string name="ITEM_W38">w38_ステンシルバッファ"</string>
+    <string name="ITEM_W39">w39_アウトライン"</string>
 
     <!-- fragment_w19.xml -->
     <string name="W19_SW_CULLING">Culling</string>
@@ -35,14 +44,46 @@
     <string name="TV_W29_BACKBLUE">背景B</string>
     <string name="TV_W29_BACKALPHA">背景A</string>
 
+    <!-- fragment_w30.xml -->
+    <string name="BTN_W30_CONTEXT_CLEAR_COLOR">背景色</string>
+    <string name="BTN_W30_BLEND_CONSTANT_COLOR">ブレンド定数</string>
+    <string name="BTN_W30_MODE1">テクスチャ</string>
+    <string name="BTN_W30_MODE2">板ポリゴン</string>
 
-    <string-array name="w30_equation">
+    <!-- fragment_w30_blend.xml -->
+    <string name="TV_W30_BLEND_CLEAR_COLOR">ブレンド定数</string>
+    <string name="TV_W30_BLEND_RED">Red    </string>
+    <string name="TV_W30_BLEND_GREEN">Green</string>
+    <string name="TV_W30_BLEND_BLUE">Blue   </string>
+    <string name="TV_W30_BLEND_ALPHA">Alpha</string>
+    <string name="BTN_W30_BLEND_CLOSE">Close</string>
+
+    <!-- fragment_w30_context.xml -->
+    <string name="TV_W30_CONTEXT_CLEAR_COLOR">背景色</string>
+    <string name="TV_W30_CONTEXT_RED">Red    </string>
+    <string name="TV_W30_CONTEXT_GREEN">Green</string>
+    <string name="TV_W30_CONTEXT_BLUE">Blue   </string>
+    <string name="TV_W30_CONTEXT_ALPHA">Alpha</string>
+    <string name="BTN_W30_CONTEXT_CLOSE">Close</string>
+
+    <!-- fragment_w30_context.xml -->
+    <string name="TV_W30_MODEL">Model</string>
+    <string name="CB_W30_BLEND">Enable Blend</string>
+    <string name="TV_W30_VERTEX_ALPHA">Vertex Alpha</string>
+    <string name="TV_W30_CE">color equation</string>
+    <string name="TV_W30_AE">alpha equation</string>
+    <string name="TV_W30_SCBF">Source Color Blend Factor</string>
+    <string name="TV_W30_DCBF">Destination Color Blend Factor</string>
+    <string name="TV_W30_SABF">Source Alpha Blend Factor</string>
+    <string name="TV_W30_DABF">Destination Alpha Blend Factor</string>
+
+    <string-array name="W30_EQUATION">
         <item>FUNC_ADD</item>
         <item>FUNC_SUBTRACT</item>
         <item>FUNC_REVERSE_SUBTRACT</item>
     </string-array>
 
-    <string-array name="w30_blend_factor">
+    <string-array name="W30_BLEND_FACTOR">
         <item>ZERO</item>
         <item>ONE</item>
         <item>SRC_COLOR</item>
@@ -59,6 +100,19 @@
         <item>ONE_MINUS_CONSTANT_ALPHA</item>
         <item>SRC_ALPHA_SATURATE</item>
     </string-array>
+
+    <!-- fragment_w34.xml -->
+    <string name="TV_W34">球面線形補間</string>
+
+    <!-- fragment_w35.xml -->
+    <string name="SW_W35">ビルボード</string>
+
+    <!-- fragment_w36.xml -->
+    <string name="RB_W36_LINES">LINES</string>
+    <string name="RB_W36_LINE_STRIP">LINE_STRIP</string>
+    <string name="RB_W36_LINE_LOOP">LINE_LOOP</string>
+    <string name="TV_W36_MIN_SIZE_TXT">点サイズ(最小)</string>
+    <string name="TV_W36_MAX_SIZE_TXT">点サイズ(最大)</string>
 
     <string name="w59_depth_of_field">depth of field</string>
     <string name="w59_depth">depth</string>

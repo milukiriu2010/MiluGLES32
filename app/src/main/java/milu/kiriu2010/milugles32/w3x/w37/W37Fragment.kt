@@ -16,7 +16,12 @@ import android.widget.TextView
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W37Fragment : androidx.fragment.app.Fragment() {
+// ------------------------------------
+// ポイントスプライト
+// ------------------------------------
+// https://wgld.org/d/webgl/w037.html
+// ------------------------------------
+class W37Fragment : Fragment() {
     private lateinit var renderer: W37Renderer
 
     private lateinit var myGLES32View: MyGLES32View

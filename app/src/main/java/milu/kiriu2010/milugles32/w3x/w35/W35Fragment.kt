@@ -9,8 +9,14 @@ import android.widget.Switch
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-
-class W35Fragment : androidx.fragment.app.Fragment() {
+// ------------------------------------------------------------------------------
+// ビルボード
+// ------------------------------------------------------------------------------
+// カメラの視線ベクトルに対し常に垂直な姿勢を持つようにモデルをレンダリングする
+// ------------------------------------------------------------------------------
+// https://wgld.org/d/webgl/w035.html
+// ------------------------------------------------------------------------------
+class W35Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
     private lateinit var switch: Switch

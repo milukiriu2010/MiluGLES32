@@ -12,7 +12,12 @@ import android.widget.SeekBar
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W34Fragment : androidx.fragment.app.Fragment() {
+// --------------------------------------
+// クォータニオンによる球面線形補間
+// --------------------------------------
+// https://wgld.org/d/webgl/w034.html
+// --------------------------------------
+class W34Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

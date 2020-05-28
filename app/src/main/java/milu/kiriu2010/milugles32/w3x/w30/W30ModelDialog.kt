@@ -10,7 +10,12 @@ import android.view.ViewGroup
 import android.widget.*
 import milu.kiriu2010.milugles32.R
 
-class W30ModelDialog: androidx.fragment.app.DialogFragment() {
+// ---------------------------------------------------
+// ブレンドファクター
+// ---------------------------------------------------
+// https://wgld.org/d/webgl/w030.html
+// ---------------------------------------------------
+class W30ModelDialog: DialogFragment() {
 
     // リクエストコード
     var reqCode = -1

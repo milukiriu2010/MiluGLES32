@@ -11,7 +11,13 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W32Fragment : androidx.fragment.app.Fragment() {
+// ---------------------------------------
+// クォータニオン
+//   カメラの位置を回転させる
+// ---------------------------------------
+// https://wgld.org/d/webgl/w032.html
+// ---------------------------------------
+class W32Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

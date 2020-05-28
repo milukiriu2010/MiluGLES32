@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-
     <item
             android:id="@+id/w39"
-            android:title="w39_アウトライン" />
+            android:title="@string/ITEM_W39" />
     <item
             android:id="@+id/w38"
-            android:title="w38_ステンシルバッファ" />
+            android:title="@string/ITEM_W38" />
     <item
             android:id="@+id/w37"
-            android:title="w37_ポイントスプライト" />
+            android:title="@string/ITEM_W37" />
     <item
             android:id="@+id/w36"
-            android:title="w36_点・線" />
+            android:title="@string/ITEM_W36" />
     <item
             android:id="@+id/w35"
-            android:title="w35_ビルボード" />
+            android:title="@string/ITEM_W35" />
     <item
             android:id="@+id/w34"
-            android:title="w34_球面線形補間" />
+            android:title="@string/ITEM_W34" />
     <item
             android:id="@+id/w33"
-            android:title="w33_マウスによる回転" />
+            android:title="@string/ITEM_W33" />
     <item
             android:id="@+id/w32"
-            android:title="w32_クォータニオン" />
+            android:title="@string/ITEM_W32" />
     <item
             android:id="@+id/w30"
-            android:title="w30_ブレンドファクター" />
+            android:title="@string/ITEM_W30" />
 </menu>
