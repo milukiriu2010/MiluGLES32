@@ -106,13 +106,13 @@ abstract class MgRenderer(val context: Context): GLSurfaceView.Renderer {
         }
 
         // キャンバスの対角線の長さの逆数
-        var wh = 1f/ sqrt((w*w+h*h).toFloat())
+        val wh = 1f/ sqrt((w*w+h*h).toFloat())
         // タッチ点からみた座標
         var x = ev.x - touchP.x
         var y = ev.y - touchP.y
         var sq = sqrt(x*x+y*y)
         // 回転角
-        var r = sq*wh*360f
+        val r = sq*wh*360f
         // 単位化する
         if ( (sq != 1f) and ( sq != 0f ) ) {
             sq = 1f/sq

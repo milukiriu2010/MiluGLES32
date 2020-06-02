@@ -11,7 +11,19 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W44Fragment : androidx.fragment.app.Fragment() {
+// ------------------------------------------------------------------------------------------
+// キューブ環境マッピング
+// ------------------------------------------------------------------------------------------
+// 環境マッピングを用いると
+// レンダリングされるモデルは鏡や磨き抜かれた金属のように周囲の景色を映すことが可能
+// ------------------------------------------------------------------------------------------
+// 視点から延びるベクトルがモデルの表面にあたって反射し、
+// その結果到達した箱の内側の座標をサンプリングすることでキューブ環境マッピングは行われる。
+// ------------------------------------------------------------------------------------------
+// https://wgld.org/d/webgl/w044.html
+// http://opengles2learning.blogspot.com/2011/06/texturing-cube-different-textures-on.html
+// ------------------------------------------------------------------------------------------
+class W44Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -39,6 +51,7 @@ class W44Fragment : androidx.fragment.app.Fragment() {
                     Log.d(javaClass.simpleName,"vw[${myGLES32View.width}]vh[${myGLES32View.height}]")
                     renderer.isRunning = true
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)

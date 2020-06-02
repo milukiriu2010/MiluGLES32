@@ -47,6 +47,7 @@ class W29Fragment : Fragment() {
                 }
                 MotionEvent.ACTION_DOWN -> {
                     renderer.isRunning = !renderer.isRunning
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                 }

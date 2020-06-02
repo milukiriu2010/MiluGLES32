@@ -12,7 +12,15 @@ import android.widget.SeekBar
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W46Fragment : androidx.fragment.app.Fragment() {
+// -------------------------------------------------------
+// 屈折マッピング
+// -------------------------------------------------------
+// ガラスのように少しゆがんだ風景の映りこみを表現できる
+// ビー玉のような質感を演出できる
+// -------------------------------------------------------
+// https://wgld.org/d/webgl/w046.html
+// -------------------------------------------------------
+class W46Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -40,6 +48,7 @@ class W46Fragment : androidx.fragment.app.Fragment() {
                     Log.d(javaClass.simpleName,"vw[${myGLES32View.width}]vh[${myGLES32View.height}]")
                     renderer.isRunning = true
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.w3x.w30.W30Fragment
 import milu.kiriu2010.milugles32.w3x.w32.W32Fragment
@@ -22,12 +23,8 @@ class W3xActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_es32x01)
 
-        supportFragmentManager.popBackStack()
-        if (supportFragmentManager.findFragmentByTag("xyz") == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W39Fragment.newInstance(), "xyz")
-                .commit()
-        }
+        // 初期表示のフラグメントを設定
+        changeFragment(W39Fragment.newInstance())
 
         // アクションバーの設定を行う
         supportActionBar?.apply {
@@ -51,95 +48,62 @@ class W3xActivity : AppCompatActivity() {
             }
             // アウトライン
             R.id.w39 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w39") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W39Fragment.newInstance(), "w39")
-                        .commit()
-                }
+                changeFragment(W39Fragment.newInstance())
                 true
             }
             // ステンシルバッファ
             R.id.w38 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w38") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W38Fragment.newInstance(), "w38")
-                        .commit()
-                }
+                changeFragment(W38Fragment.newInstance())
                 true
             }
             // ポイントスプライト
             R.id.w37 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w37") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W37Fragment.newInstance(), "w37")
-                        .commit()
-                }
+                changeFragment(W37Fragment.newInstance())
                 true
             }
             // 点・線
             R.id.w36 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w36") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W36Fragment.newInstance(), "w36")
-                        .commit()
-                }
+                changeFragment(W36Fragment.newInstance())
                 true
             }
             // ビルボード
             R.id.w35 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w35") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W35Fragment.newInstance(), "w35")
-                        .commit()
-                }
+                changeFragment(W35Fragment.newInstance())
                 true
             }
             // 球面線形補間
             R.id.w34 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w34") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W34Fragment.newInstance(), "w34")
-                        .commit()
-                }
+                changeFragment(W34Fragment.newInstance())
                 true
             }
             // マウスによる回転
             R.id.w33 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w33") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W33Fragment.newInstance(), "w33")
-                        .commit()
-                }
+                changeFragment(W33Fragment.newInstance())
                 true
             }
             // クォータニオン
             R.id.w32 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w32") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W32Fragment.newInstance(), "w32")
-                        .commit()
-                }
+                changeFragment(W32Fragment.newInstance())
                 true
             }
             // ブレンドファクター
             R.id.w30 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w30") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W30Fragment.newInstance(), "w30")
-                        .commit()
-                }
+                changeFragment(W30Fragment.newInstance())
                 true
             }
             else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    // 表示するフラグメントを切り替える
+    private fun changeFragment(fragment: Fragment) {
+        // 現在表示しているフラグメントをスタックから外す
+        supportFragmentManager.popBackStack()
+        // 選択したフラグメントを表示する
+        if ( supportFragmentManager.findFragmentByTag(fragment.javaClass.simpleName) == null ) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frameLayout, fragment, fragment.javaClass.simpleName)
+                .commit()
         }
     }
 }

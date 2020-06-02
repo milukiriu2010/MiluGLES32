@@ -4,32 +4,32 @@
 
     <item
             android:id="@+id/w49"
-            android:title="w49_射影テクスチャマッピング" />
+            android:title="@string/ITEM_W49" />
     <item
             android:id="@+id/w48"
-            android:title="w48_トゥーンレンダリング" />
+            android:title="@string/ITEM_W48" />
     <item
             android:id="@+id/w47"
-            android:title="w47_動的キューブマッピング" />
+            android:title="@string/ITEM_W47" />
     <item
             android:id="@+id/w46"
-            android:title="w46_屈折マッピング" />
+            android:title="@string/ITEM_W46" />
     <item
             android:id="@+id/w45"
-            android:title="w45_キューブ環境バンプマッピング" />
+            android:title="@string/ITEM_W45" />
     <item
             android:id="@+id/w44"
-            android:title="w44_キューブ環境マッピング" />
+            android:title="@string/ITEM_W44" />
     <item
             android:id="@+id/w43"
-            android:title="w43_視差マッピング" />
+            android:title="@string/ITEM_W43" />
     <item
             android:id="@+id/w42"
-            android:title="w42_バンプマッピング" />
+            android:title="@string/ITEM_W42" />
     <item
             android:id="@+id/w41"
-            android:title="w41_ブラーフィルタ" />
+            android:title="@string/ITEM_W41" />
     <item
             android:id="@+id/w40"
-            android:title="w40_フレームバッファ" />
+            android:title="@string/ITEM_W40" />
 </menu>

@@ -15,16 +15,26 @@
     <string name="ITEM_W26">w26_テクスチャ</string>
     <string name="ITEM_W27">w27_マルチテクスチャ</string>
     <string name="ITEM_W28">w28_テクスチャパラメータ</string>
-    <string name="ITEM_W29">w29_アルファブレンディング"</string>
-    <string name="ITEM_W30">w30_ブレンドファクター"</string>
-    <string name="ITEM_W32">w32_クォータニオン"</string>
-    <string name="ITEM_W33">w33_マウスによる回転"</string>
-    <string name="ITEM_W34">w34_球面線形補間"</string>
-    <string name="ITEM_W35">w35_ビルボード"</string>
-    <string name="ITEM_W36">w36_点・線"</string>
-    <string name="ITEM_W37">w37_ポイントスプライト"</string>
-    <string name="ITEM_W38">w38_ステンシルバッファ"</string>
-    <string name="ITEM_W39">w39_アウトライン"</string>
+    <string name="ITEM_W29">w29_アルファブレンディング</string>
+    <string name="ITEM_W30">w30_ブレンドファクター</string>
+    <string name="ITEM_W32">w32_クォータニオン</string>
+    <string name="ITEM_W33">w33_マウスによる回転</string>
+    <string name="ITEM_W34">w34_球面線形補間</string>
+    <string name="ITEM_W35">w35_ビルボード</string>
+    <string name="ITEM_W36">w36_点・線</string>
+    <string name="ITEM_W37">w37_ポイントスプライト</string>
+    <string name="ITEM_W38">w38_ステンシルバッファ</string>
+    <string name="ITEM_W39">w39_アウトライン</string>
+    <string name="ITEM_W40">w40_フレームバッファ</string>
+    <string name="ITEM_W41">w41_ブラーフィルタ</string>
+    <string name="ITEM_W42">w42_バンプマッピング</string>
+    <string name="ITEM_W43">w43_視差マッピング</string>
+    <string name="ITEM_W44">w44_キューブ環境マッピング</string>
+    <string name="ITEM_W45">w45_キューブ環境バンプマッピング</string>
+    <string name="ITEM_W46">w46_屈折マッピング</string>
+    <string name="ITEM_W47">w47_動的キューブマッピング</string>
+    <string name="ITEM_W48">w48_トゥーンレンダリング</string>
+    <string name="ITEM_W49">w49_射影テクスチャマッピング</string>
 
     <!-- fragment_w19.xml -->
     <string name="W19_SW_CULLING">Culling</string>
@@ -113,6 +123,18 @@
     <string name="RB_W36_LINE_LOOP">LINE_LOOP</string>
     <string name="TV_W36_MIN_SIZE_TXT">点サイズ(最小)</string>
     <string name="TV_W36_MAX_SIZE_TXT">点サイズ(最大)</string>
+
+    <!-- fragment_w41.xml -->
+    <string name="SW_W41">blur</string>
+
+    <!-- fragment_w43.xml -->
+    <string name="TV_W43">高さ(0.0–1.0)</string>
+
+    <!-- fragment_w46.xml -->
+    <string name="TV_W46">屈折率(0.0–1.0)</string>
+
+    <!-- fragment_w49.xml -->
+    <string name="TV_W49">光源位置補正係数(0–20)</string>
 
     <string name="w59_depth_of_field">depth of field</string>
     <string name="w59_depth">depth</string>

@@ -12,7 +12,17 @@ import android.widget.SeekBar
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W45Fragment : androidx.fragment.app.Fragment() {
+// ----------------------------------------------------------------------------------
+// キューブ環境バンプマッピング
+// ----------------------------------------------------------------------------------
+// バンプマッピングでは、法線マップの参照を行う上で"接空間"での計算を行う必要がある。
+// 一方、キューブマップ環境では"視線空間"での計算を行う必要がある。
+// この２つの空間上での変換をいかにして行うのかが、キューブ環境マッピングの肝
+// ----------------------------------------------------------------------------------
+// https://wgld.org/d/webgl/w045.html
+// http://opengles2learning.blogspot.com/2011/06/texturing-cube-different-textures-on.html
+// ----------------------------------------------------------------------------------
+class W45Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -40,6 +50,7 @@ class W45Fragment : androidx.fragment.app.Fragment() {
                     Log.d(javaClass.simpleName,"vw[${myGLES32View.width}]vh[${myGLES32View.height}]")
                     renderer.isRunning = true
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)
