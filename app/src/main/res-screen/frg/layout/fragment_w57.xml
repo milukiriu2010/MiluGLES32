@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <milu.kiriu2010.gui.view.MyGLES32View
         android:id="@+id/myGLES32ViewW57"
         android:layout_width="0dp"
@@ -36,14 +34,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
-            android:text="Render" />
+            android:text="@string/RB_W57_RENDER" />
 
         <RadioButton
             android:id="@+id/radioButtonW57Texture1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Texture1" />
+            android:text="@string/RB_W57_TEXTURE1" />
 
         <RadioButton
             android:id="@+id/radioButtonW57Texture2"
@@ -51,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="false"
-            android:text="Texture2" />
+            android:text="@string/RB_W57_TEXTURE2" />
     </RadioGroup>
 
     <CheckBox
@@ -61,7 +59,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:checked="true"
-        android:text="Gaussian"
+        android:text="@string/CB_W57_GAUSSIAN"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroupW57" />
 
@@ -71,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="分散(1.0-10.0)"
+        android:text="@string/TV_W57"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxW57Gaussian" />
 
@@ -89,6 +87,5 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewW57Dispersion" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

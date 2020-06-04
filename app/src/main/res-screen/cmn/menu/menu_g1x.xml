@@ -3,35 +3,35 @@
 
     <item
             android:id="@+id/g20"
-            android:title="g20_レイマーチング(シャドウ)" />
+            android:title="@string/ITEM_G20" />
     <item
             android:id="@+id/g19"
-            android:title="g19_レイマーチング(テクスチャ)" />
+            android:title="@string/ITEM_G19" />
     <item
             android:id="@+id/g18"
-            android:title="g18_レイマーチング(ツイスト)" />
+            android:title="@string/ITEM_G18" />
     <item
             android:id="@+id/g17"
-            android:title="g17_レイマーチング(回転)" />
+            android:title="@string/ITEM_G17" />
     <item
             android:id="@+id/g16"
-            android:title="g16_レイマーチング(スムース補間)" />
+            android:title="@string/ITEM_G16" />
     <item
             android:id="@+id/g15"
-            android:title="g15_レイマーチング(リング+板)" />
+            android:title="@string/ITEM_G15" />
     <item
             android:id="@+id/g14"
-            android:title="g14_レイマーチング(床+トーラス)" />
+            android:title="@string/ITEM_G14" />
     <item
             android:id="@+id/g13"
-            android:title="g13_レイマーチング(ボックス)" />
+            android:title="@string/ITEM_G13" />
     <item
             android:id="@+id/g12"
-            android:title="g12_レイマーチング(複製)" />
+            android:title="@string/ITEM_G12" />
     <item
             android:id="@+id/g11"
-            android:title="g11_レイマーチング(視野角)" />
+            android:title="@string/ITEM_G11" />
     <item
             android:id="@+id/g10"
-            android:title="g10_レイマーチング(球体+ライティング)" />
+            android:title="@string/ITEM_G10" />
 </menu>

@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <milu.kiriu2010.gui.view.MyGLES32View
         android:id="@+id/myGLES32ViewG10"
         android:layout_width="0dp"
@@ -25,7 +23,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="法線"
+        android:text="@string/G10_CB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myGLES32ViewG10" />

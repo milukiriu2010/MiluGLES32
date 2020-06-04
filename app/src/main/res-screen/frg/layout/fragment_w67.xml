@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <milu.kiriu2010.gui.view.MyGLES32View
         android:id="@+id/myGLES32ViewW67"
         android:layout_width="0dp"
@@ -36,14 +34,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
-            android:text="Render" />
+            android:text="@string/RB_W67_RENDER" />
 
         <RadioButton
             android:id="@+id/radioButtonW67Texture1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Texture1" />
+            android:text="@string/RB_W67_TEXTURE1" />
 
         <RadioButton
             android:id="@+id/radioButtonW67Texture2"
@@ -51,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="false"
-            android:text="Texture2" />
+            android:text="@string/RB_W67_TEXTURE2" />
     </RadioGroup>
 
     <TextView
@@ -60,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Strength(0-30)"
+        android:text="@string/TV_W67"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroupW67" />
 

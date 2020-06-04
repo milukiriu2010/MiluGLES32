@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.w5x.w50.W50Fragment
 import milu.kiriu2010.milugles32.w5x.w51.W51Fragment
@@ -21,12 +22,8 @@ class W5xActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_es32x01)
 
-        supportFragmentManager.popBackStack()
-        if (supportFragmentManager.findFragmentByTag("xyz") == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W59Fragment.newInstance(), "xyz")
-                .commit()
-        }
+        // 初期表示のフラグメントを設定
+        changeFragment(W59Fragment.newInstance())
 
         // アクションバーの設定を行う
         supportActionBar?.apply {
@@ -50,95 +47,62 @@ class W5xActivity : AppCompatActivity() {
             }
             // 被写界深度
             R.id.w59 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w59") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W59Fragment.newInstance(), "w59")
-                        .commit()
-                }
+                changeFragment(W59Fragment.newInstance())
                 true
             }
             // グレアフィルタ
             R.id.w58 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w58") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W58Fragment.newInstance(), "w58")
-                        .commit()
-                }
+                changeFragment(W58Fragment.newInstance())
                 true
             }
             // gaussianフィルタ
             R.id.w57 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w57") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W57Fragment.newInstance(), "w57")
-                        .commit()
-                }
+                changeFragment(W57Fragment.newInstance())
                 true
             }
             // laplacianフィルタ
             R.id.w56 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w56") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W56Fragment.newInstance(), "w56")
-                        .commit()
-                }
+                changeFragment(W56Fragment.newInstance())
                 true
             }
             // sobelフィルタ
             R.id.w55 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w55") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W55Fragment.newInstance(), "w55")
-                        .commit()
-                }
+                changeFragment(W55Fragment.newInstance())
                 true
             }
             // セピア調変換
             R.id.w54 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w54") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W54Fragment.newInstance(), "w54")
-                        .commit()
-                }
+                changeFragment(W54Fragment.newInstance())
                 true
             }
             // グレイスケール
             R.id.w53 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w53") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W53Fragment.newInstance(), "w53")
-                        .commit()
-                }
+                changeFragment(W53Fragment.newInstance())
                 true
             }
             // シャドウマッピング
             R.id.w51 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w51") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W51Fragment.newInstance(), "w51")
-                        .commit()
-                }
+                changeFragment(W51Fragment.newInstance())
                 true
             }
             // 光学迷彩
             R.id.w50 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w50") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W50Fragment.newInstance(), "w50")
-                        .commit()
-                }
+                changeFragment(W50Fragment.newInstance())
                 true
             }
             else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    // 表示するフラグメントを切り替える
+    private fun changeFragment(fragment: Fragment) {
+        // 現在表示しているフラグメントをスタックから外す
+        supportFragmentManager.popBackStack()
+        // 選択したフラグメントを表示する
+        if ( supportFragmentManager.findFragmentByTag(fragment.javaClass.simpleName) == null ) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frameLayout, fragment, fragment.javaClass.simpleName)
+                .commit()
         }
     }
 }

@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <item
             android:id="@+id/w59"
-            android:title="w59_被写界深度" />
+            android:title="@string/ITEM_W59" />
     <item
             android:id="@+id/w58"
-            android:title="w58_グレアフィルタ" />
+            android:title="@string/ITEM_W58" />
     <item
             android:id="@+id/w57"
-            android:title="w57_gaussianフィルタ" />
+            android:title="@string/ITEM_W57" />
     <item
             android:id="@+id/w56"
-            android:title="w56_laplacianフィルタ" />
+            android:title="@string/ITEM_W56" />
     <item
             android:id="@+id/w55"
-            android:title="w55_sobelフィルタ" />
+            android:title="@string/ITEM_W55" />
     <item
             android:id="@+id/w54"
-            android:title="w54_セピア調変換" />
+            android:title="@string/ITEM_W54" />
     <item
             android:id="@+id/w53"
-            android:title="w53_グレイスケール" />
+            android:title="@string/ITEM_W53" />
     <item
             android:id="@+id/w51"
-            android:title="w51_シャドウマッピング" />
+            android:title="@string/ITEM_W51" />
     <item
             android:id="@+id/w50"
-            android:title="w50_光学迷彩" />
+            android:title="@string/ITEM_W50" />
 </menu>

@@ -12,7 +12,12 @@ import android.widget.*
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W57Fragment : androidx.fragment.app.Fragment() {
+// -------------------------------------------
+// gaussianフィルタ
+// -------------------------------------------
+// https://wgld.org/d/webgl/w057.html
+// -------------------------------------------
+class W57Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

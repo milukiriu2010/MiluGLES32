@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <milu.kiriu2010.gui.view.MyGLES32View
         android:id="@+id/myGLES32ViewW58"
         android:layout_width="0dp"
@@ -26,7 +24,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:checked="true"
-        android:text="Glare"
+        android:text="@string/CB_W58_GLARE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myGLES32ViewW58" />
 
@@ -35,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="分散(1.0-10.0)"
+        android:text="@string/TV_W58"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxW58Glare" />
 

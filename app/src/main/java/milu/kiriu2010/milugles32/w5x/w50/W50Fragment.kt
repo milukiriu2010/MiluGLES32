@@ -12,6 +12,16 @@ import android.widget.SeekBar
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
+// -----------------------------------------------------------------------------
+// 光学迷彩
+// -----------------------------------------------------------------------------
+// 奥にあるモデルが透けて見えるようにするので、フレームバッファを使う
+// モデルに背景を投影するので、射影テクスチャマッピングを使う
+// 射影テクスチャマッピングだけでは、モデルが背景に完全に溶け込んでしまうので、
+// 投影させるテクスチャの参照座標をモデルの法線を使って少しずつずらす
+// -----------------------------------------------------------------------------
+// https://wgld.org/d/webgl/w050.html
+// -----------------------------------------------------------------------------
 class W50Fragment : androidx.fragment.app.Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
@@ -40,6 +50,7 @@ class W50Fragment : androidx.fragment.app.Fragment() {
                     Log.d(javaClass.simpleName,"vw[${myGLES32View.width}]vh[${myGLES32View.height}]")
                     renderer.isRunning = true
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)

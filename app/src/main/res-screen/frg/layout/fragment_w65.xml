@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <milu.kiriu2010.gui.view.MyGLES32View
         android:id="@+id/myGLES32ViewW65"
         android:layout_width="0dp"

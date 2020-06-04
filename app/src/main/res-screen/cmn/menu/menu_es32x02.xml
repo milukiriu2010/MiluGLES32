@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <item
             android:id="@+id/es32_a15"
-            android:title="a15_Transform_Feedback(GPGPU)" />
+            android:title="@string/ITEM_A15" />
     <item
             android:id="@+id/es32_a14"
-            android:title="a14_Transform_Feedback" />
+            android:title="@string/ITEM_A14" />
     <item
             android:id="@+id/es32_a13"
-            android:title="a13_centroid" />
+            android:title="@string/ITEM_A13" />
     <item
             android:id="@+id/es32_a12"
-            android:title="a12_derivative" />
+            android:title="@string/ITEM_A12" />
     <item
             android:id="@+id/es32_a11"
-            android:title="a11_MRT" />
+            android:title="@string/ITEM_A11" />
     <item
             android:id="@+id/es32_a10"
-            android:title="a10_SamplerObject" />
+            android:title="@string/ITEM_A10" />
 </menu>

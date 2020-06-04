@@ -12,7 +12,15 @@ import android.widget.*
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W58Fragment : androidx.fragment.app.Fragment() {
+// --------------------------------------------
+// グレアフィルタ
+// --------------------------------------------
+// まぶしい光や反射光などがあふれて見える現象
+// 別名ライトブルーム
+// --------------------------------------------
+// https://wgld.org/d/webgl/w058.html
+// --------------------------------------------
+class W58Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -38,6 +46,7 @@ class W58Fragment : androidx.fragment.app.Fragment() {
                     Log.d(javaClass.simpleName,"ex[${event.x}]ey[${event.y}]")
                     Log.d(javaClass.simpleName,"vw[${myGLES32View.width}]vh[${myGLES32View.height}]")
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)

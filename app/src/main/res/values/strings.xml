@@ -1,6 +1,41 @@
 <resources>
     <string name="app_name">MiluGLES32</string>
 
+    <string name="ITEM_A01">回転(立方体)01_ES32</string>
+    <string name="ITEM_A03">a03_ES32</string>
+    <string name="ITEM_A04">a04_layout</string>
+    <string name="ITEM_A05">a05_flat補間</string>
+    <string name="ITEM_A06">a06_VAO</string>
+    <string name="ITEM_A07">a07_インスタンシング</string>
+    <string name="ITEM_A08">a08_gl_VertexID</string>
+    <string name="ITEM_A09">a09_UBO</string>
+    <string name="ITEM_A10">a10_SamplerObject</string>
+    <string name="ITEM_A11">a11_MRT</string>
+    <string name="ITEM_A12">a12_derivative</string>
+    <string name="ITEM_A13">a13_centroid</string>
+    <string name="ITEM_A14">a14_Transform_Feedback</string>
+    <string name="ITEM_A15">a15_Transform_Feedback(GPGPU)</string>
+    <string name="ITEM_G01">g01_GLSL</string>
+    <string name="ITEM_G02">g02_同心円</string>
+    <string name="ITEM_G03">g03_オーブ</string>
+    <string name="ITEM_G04">g04_様々な図形</string>
+    <string name="ITEM_G05">g05_マンデルブロ集合</string>
+    <string name="ITEM_G06">g06_ジュリア集合</string>
+    <string name="ITEM_G07">g07_ノイズ</string>
+    <string name="ITEM_G08">g08_レイマーチング(RGB)</string>
+    <string name="ITEM_G09">g09_レイマーチング(球体)</string>
+    <string name="ITEM_G10">g10_レイマーチング(球体+ライティング)</string>
+    <string name="ITEM_G11">g11_レイマーチング(視野角)</string>
+    <string name="ITEM_G12">g12_レイマーチング(複製)</string>
+    <string name="ITEM_G13">g13_レイマーチング(ボックス)</string>
+    <string name="ITEM_G14">g14_レイマーチング(床+トーラス)</string>
+    <string name="ITEM_G15">g15_レイマーチング(リング+板)</string>
+    <string name="ITEM_G16">g16_レイマーチング(スムース補間)</string>
+    <string name="ITEM_G17">g17_レイマーチング(回転)</string>
+    <string name="ITEM_G18">g18_レイマーチング(ツイスト)</string>
+    <string name="ITEM_G19">g19_レイマーチング(テクスチャ)</string>
+    <string name="ITEM_G20">g20_レイマーチング(シャドウ)</string>
+    <string name="ITEM_M01">m01_ノイズ</string>
     <string name="ITEM_W15">w15_頂点色</string>
     <string name="ITEM_W16">w16_複数モデル</string>
     <string name="ITEM_W17">w17_移動・回転・拡大縮小</string>
@@ -35,6 +70,60 @@
     <string name="ITEM_W47">w47_動的キューブマッピング</string>
     <string name="ITEM_W48">w48_トゥーンレンダリング</string>
     <string name="ITEM_W49">w49_射影テクスチャマッピング</string>
+    <string name="ITEM_W50">w50_光学迷彩</string>
+    <string name="ITEM_W51">w51_シャドウマッピング</string>
+    <string name="ITEM_W53">w53_グレイスケール</string>
+    <string name="ITEM_W54">w54_セピア調変換</string>
+    <string name="ITEM_W55">w55_sobelフィルタ</string>
+    <string name="ITEM_W56">w56_laplacianフィルタ</string>
+    <string name="ITEM_W57">w57_gaussianフィルタ</string>
+    <string name="ITEM_W58">w58_グレアフィルタ</string>
+    <string name="ITEM_W59">w59_被写界深度</string>
+    <string name="ITEM_W60">w60_距離フォグ</string>
+    <string name="ITEM_W61">w61_パーティクルフォグ</string>
+    <string name="ITEM_W62">w62_ステンシル鏡面反射</string>
+    <string name="ITEM_W63">w63_半球ライティング</string>
+    <string name="ITEM_W64">w64_リムライティング</string>
+    <string name="ITEM_W65">w65_後光表面化散乱</string>
+    <string name="ITEM_W66">w66_mosaicフィルタ</string>
+    <string name="ITEM_W67">w67_ズームブラー</string>
+    <string name="ITEM_W68">w68_ゴッドレイ</string>
+    <string name="ITEM_W69">w69_深度値</string>
+    <string name="ITEM_W70">w70_浮動小数点数テクスチャ</string>
+    <string name="ITEM_W71">w71_頂点テクスチャフェッチ</string>
+    <string name="ITEM_W72">w72_浮動小数点数VTF</string>
+    <string name="ITEM_W74">w74_異方性フィルタリング</string>
+    <string name="ITEM_W75">w75_インスタンシング</string>
+    <string name="ITEM_W76">w76_ハーフトーン</string>
+    <string name="ITEM_W77">w77_ラインシェード</string>
+    <string name="ITEM_W78">w78_ビデオ</string>
+    <string name="ITEM_W80">w80_クロマキー</string>
+    <string name="ITEM_W81">w81_VBO逐次更新</string>
+    <string name="ITEM_W82">w82_VBO逐次更新:パーティクル</string>
+    <string name="ITEM_W83">w83_GPGPU</string>
+    <string name="ITEM_W84">w84_MRT</string>
+    <string name="ITEM_W85">w85_MRTエッジ検出</string>
+    <string name="ITEM_W86">w86_色取得</string>
+    <string name="ITEM_W87">w87_フラットシェーディング</string>
+    <string name="ITEM_W89">w89_スフィア環境マッピング</string>
+
+    <!-- fragment_a01.xml -->
+
+    <!-- fragment_g02.xml -->
+
+    <!-- fragment_g04.xml -->
+
+
+
+
+
+
+    <!-- fragment_g07.xml -->
+    <string name="G07_RB_NOISE">ノイズ</string>
+    <string name="G07_RB_SEAMLESS">シームレスなノイズ</string>
+
+    <!-- fragment_g10.xml -->
+    <string name="G10_CB">法線</string>
 
     <!-- fragment_w19.xml -->
     <string name="W19_SW_CULLING">Culling</string>
@@ -136,6 +225,50 @@
     <!-- fragment_w49.xml -->
     <string name="TV_W49">光源位置補正係数(0–20)</string>
 
+    <!-- fragment_w50.xml -->
+    <string name="TV_W50">光学迷彩係数(-1.0～1.0)</string>
+
+    <!-- fragment_w51.xml -->
+    <string name="TV_W51">光源位置補正係数(20–40)</string>
+    <string name="RB_W51_FRAG">gl_FragCoord.z(デプスバッファを使った深度値比較)</string>
+    <string name="RB_W51_VERTEX">Vertex Position(頂点座標を用いた深度値比較)</string>
+
+    <!-- fragment_w53.xml -->
+    <string name="TV_W53">GrayScale</string>
+
+    <!-- fragment_w54.xml -->
+    <string name="RB_W54_COLOR">Color</string>
+    <string name="RB_W54_GRAY">Gray</string>
+    <string name="RB_W54_SEPIA">Sepia</string>
+
+    <!-- fragment_w55.xml -->
+    <string name="RB_W55_RENDER">Render</string>
+    <string name="RB_W55_TEXTURE1">Texture1</string>
+    <string name="RB_W55_TEXTURE2">Texture2</string>
+    <string name="CB_W55_SOBEL">Sobel</string>
+    <string name="CB_W55_GRAY">Gray</string>
+
+    <!-- fragment_w56.xml -->
+    <string name="RB_W56_RENDER">Render</string>
+    <string name="RB_W56_TEXTURE1">Texture1</string>
+    <string name="RB_W56_TEXTURE2">Texture2</string>
+    <string name="CB_W56_LAPLACIAN">Laplacian</string>
+    <string name="CB_W56_GRAY">Gray</string>
+
+    <!-- fragment_w57.xml -->
+    <string name="RB_W57_RENDER">Render</string>
+    <string name="RB_W57_TEXTURE1">Texture1</string>
+    <string name="RB_W57_TEXTURE2">Texture2</string>
+    <string name="CB_W57_GAUSSIAN">Gaussian</string>
+    <string name="TV_W57">分散(1.0–10.0)</string>
+
+    <!-- fragment_w58.xml -->
+    <string name="CB_W58_GLARE">Glare</string>
+    <string name="TV_W58">分散(1.0–10.0)</string>
+
+    <!-- fragment_w59.xml -->
+    <string name="TV_W59">TargetDepth(-0.425～+0.425)</string>
+
     <string name="w59_depth_of_field">depth of field</string>
     <string name="w59_depth">depth</string>
     <string name="w59_scene">scene</string>
@@ -150,6 +283,53 @@
         <item>@string/w59_blur2</item>
     </string-array>
 
+    <!-- fragment_w60.xml -->
+    <string name="TV_W60_FOG_START">FogStart(0.0–1.0)</string>
+    <string name="TV_W60_FOG_END">FogEnd(0.0–1.0)</string>
+
+    <!-- fragment_w61.xml -->
+    <string name="CB_W61_FOG">Soft Particle Fog</string>
+    <string name="TV_W61">Depth Coef(0.0–0.1)</string>
+
+    <!-- fragment_w62.xml -->
+    <string name="TV_W62">Reflection Alpha(0.0–1.0)</string>
+
+    <!-- fragment_w64.xml -->
+    <string name="TV_W64">Rim Light Coefficient(0.0–2.0)</string>
+
+    <!-- fragment_w66.xml -->
+    <string name="RB_W66_RENDER">Render</string>
+    <string name="RB_W66_TEXTURE1">Texture1</string>
+    <string name="RB_W66_TEXTURE2">Texture2</string>
+
+    <!-- fragment_w67.xml -->
+    <string name="RB_W67_RENDER">Render</string>
+    <string name="RB_W67_TEXTURE1">Texture1</string>
+    <string name="RB_W67_TEXTURE2">Texture2</string>
+    <string name="TV_W67">Strength(0–30)</string>
+
+    <!-- fragment_w68.xml -->
+    <string name="TV_W68">Strength(0–10)</string>
+
+    <!-- fragment_w69.xml -->
+    <string name="TV_W69">光源位置補正係数(20–40)</string>
+
+    <!-- fragment_w76.xml -->
+    <string name="TV_W76">ドットサイズ(0.1–1.1)</string>
+
+    <!-- fragment_w77.xml -->
+    <string name="TV_W77">ラインサイズ(0.1–1.1)</string>
+
+    <!-- fragment_w80.xml -->
+    <string name="TV_W80">difference(0.0–1.0)</string>
+
+    <!-- fragment_w81.xml -->
+    <string name="TV_W81">描画点サイズ(10–40)</string>
+
+    <!-- fragment_w86.xml -->
+    <string name="TV_W86">RGBA</string>
+
+    <!-- fragment_w89.xml -->
     <string name="w89_texture0">Texture0</string>
     <string name="w89_texture1">Texture1</string>
     <string name="w89_texture2">Texture2</string>

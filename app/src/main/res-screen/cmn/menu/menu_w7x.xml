@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <item
             android:id="@+id/w78"
-            android:title="w78_ビデオ" />
+            android:title="@string/ITEM_W78" />
     <item
             android:id="@+id/w77"
-            android:title="w77_ラインシェード" />
+            android:title="@string/ITEM_W77" />
     <item
             android:id="@+id/w76"
-            android:title="w76_ハーフトーン" />
+            android:title="@string/ITEM_W76" />
     <item
             android:id="@+id/w75"
-            android:title="w75_インスタンシング" />
+            android:title="@string/ITEM_W75" />
     <item
             android:id="@+id/w74"
-            android:title="w74_異方性フィルタリング" />
+            android:title="@string/ITEM_W74" />
     <item
             android:id="@+id/w72"
-            android:title="w72_浮動小数点数VTF" />
+            android:title="@string/ITEM_W72" />
     <item
             android:id="@+id/w71"
-            android:title="w71_頂点テクスチャフェッチ" />
+            android:title="@string/ITEM_W71" />
     <item
             android:id="@+id/w70"
-            android:title="w70_浮動小数点数テクスチャ" />
+            android:title="@string/ITEM_W70" />
 </menu>

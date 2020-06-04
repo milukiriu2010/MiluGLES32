@@ -1,35 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <item
             android:id="@+id/w69"
-            android:title="w69_深度値" />
+            android:title="@string/ITEM_W69" />
     <item
             android:id="@+id/w68"
-            android:title="w68_ゴッドレイ" />
+            android:title="@string/ITEM_W68" />
     <item
             android:id="@+id/w67"
-            android:title="w67_ズームブラー" />
+            android:title="@string/ITEM_W67" />
     <item
             android:id="@+id/w66"
-            android:title="w66_mosaicフィルタ" />
+            android:title="@string/ITEM_W66" />
     <item
             android:id="@+id/w65"
-            android:title="w65_後光表面化散乱" />
+            android:title="@string/ITEM_W65" />
     <item
             android:id="@+id/w64"
-            android:title="w64_リムライティング" />
+            android:title="@string/ITEM_W64" />
     <item
             android:id="@+id/w63"
-            android:title="w63_半球ライティング" />
+            android:title="@string/ITEM_W63" />
     <item
             android:id="@+id/w62"
-            android:title="w62_ステンシル鏡面反射" />
+            android:title="@string/ITEM_W62" />
     <item
             android:id="@+id/w61"
-            android:title="w61_パーティクルフォグ" />
+            android:title="@string/ITEM_W61" />
     <item
             android:id="@+id/w60"
-            android:title="w60_距離フォグ" />
+            android:title="@string/ITEM_W60" />
 </menu>

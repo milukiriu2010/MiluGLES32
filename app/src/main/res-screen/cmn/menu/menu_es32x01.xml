@@ -3,26 +3,26 @@
 
     <item
             android:id="@+id/es32_a09"
-            android:title="a09_UBO" />
+            android:title="@string/ITEM_A09" />
     <item
             android:id="@+id/es32_a08"
-            android:title="a08_gl_VertexID" />
+            android:title="@string/ITEM_A08" />
     <item
             android:id="@+id/es32_a07"
-            android:title="a07_インスタンシング" />
+            android:title="@string/ITEM_A07" />
     <item
             android:id="@+id/es32_a06"
-            android:title="a06_VAO" />
+            android:title="@string/ITEM_A06" />
     <item
             android:id="@+id/es32_a05"
-            android:title="a05_flat補間" />
+            android:title="@string/ITEM_A05" />
     <item
             android:id="@+id/es32_a04"
-            android:title="a04_layout" />
+            android:title="@string/ITEM_A04" />
     <item
             android:id="@+id/es32_a03"
-            android:title="a03_ES32" />
+            android:title="@string/ITEM_A03" />
     <item
         android:id="@+id/es32_a01"
-        android:title="回転(立方体)01_ES32" />
+        android:title="@string/ITEM_A01" />
 </menu>

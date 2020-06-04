@@ -12,7 +12,12 @@ import android.widget.*
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W55Fragment : androidx.fragment.app.Fragment() {
+// ------------------------------------
+// sobelフィルタ
+// ------------------------------------
+// https://wgld.org/d/webgl/w055.html
+// ------------------------------------
+class W55Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

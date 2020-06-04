@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <item
             android:id="@+id/w89"
-            android:title="w89_スフィア環境マッピング" />
+            android:title="@string/ITEM_W89" />
     <item
             android:id="@+id/w87"
-            android:title="w87_フラットシェーディング" />
+            android:title="@string/ITEM_W87" />
     <item
             android:id="@+id/w86"
-            android:title="w86_色取得" />
+            android:title="@string/ITEM_W86" />
     <item
             android:id="@+id/w85"
-            android:title="w85_MRTエッジ検出" />
+            android:title="@string/ITEM_W85" />
     <item
             android:id="@+id/w84"
-            android:title="w84_MRT" />
+            android:title="@string/ITEM_W84" />
     <item
             android:id="@+id/w83"
-            android:title="w83_GPGPU" />
+            android:title="@string/ITEM_W83" />
     <item
             android:id="@+id/w82"
-            android:title="w82_VBO逐次更新:パーティクル" />
+            android:title="@string/ITEM_W82" />
     <item
             android:id="@+id/w81"
-            android:title="w81_VBO逐次更新" />
+            android:title="@string/ITEM_W81" />
     <item
             android:id="@+id/w80"
-            android:title="w80_クロマキー" />
+            android:title="@string/ITEM_W80" />
 </menu>

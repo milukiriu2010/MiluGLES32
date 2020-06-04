@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <milu.kiriu2010.gui.view.MyGLES32View
         android:id="@+id/myGLES32ViewW61"
         android:layout_width="0dp"
@@ -25,7 +23,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:checked="true"
-        android:text="Soft Particle Fog"
+        android:text="@string/CB_W61_FOG"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myGLES32ViewW61" />
 
@@ -35,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Depth Coef(0.0-0.1)"
+        android:text="@string/TV_W61"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxW61Fog" />
 
