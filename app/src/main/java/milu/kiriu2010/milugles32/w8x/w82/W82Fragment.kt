@@ -10,7 +10,12 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W82Fragment : androidx.fragment.app.Fragment() {
+// ------------------------------------
+// VBO逐次更新:パーティクル
+// ------------------------------------
+// https://wgld.org/d/webgl/w082.html
+// ------------------------------------
+class W82Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -39,6 +44,7 @@ class W82Fragment : androidx.fragment.app.Fragment() {
                     renderer.isRunning = true
                     renderer.touchP.x = event.x
                     renderer.touchP.y = event.y
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                     renderer.touchP.x = event.x

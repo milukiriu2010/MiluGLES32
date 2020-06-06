@@ -11,7 +11,13 @@ import android.widget.SeekBar
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class G02Fragment : androidx.fragment.app.Fragment() {
+// ----------------------------------------------
+// 同心円を描く
+// 時間経過とマウスカーソル座標を利用したサンプル
+// ----------------------------------------------
+// https://wgld.org/d/glsl/g002.html
+// ----------------------------------------------
+class G02Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

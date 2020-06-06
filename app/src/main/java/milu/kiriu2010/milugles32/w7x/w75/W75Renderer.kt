@@ -14,6 +14,7 @@ import javax.microedition.khronos.opengles.GL10
 // -----------------------------------------
 // インスタンシング
 // -----------------------------------------
+// https://wgld.org/d/webgl/w075.html
 // https://wgld.org/d/webgl2/w008.html
 // -----------------------------------------
 class W75Renderer(ctx: Context): MgRenderer(ctx) {

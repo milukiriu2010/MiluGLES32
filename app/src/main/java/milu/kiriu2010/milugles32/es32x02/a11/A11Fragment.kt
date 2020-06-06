@@ -11,7 +11,14 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class A11Fragment : androidx.fragment.app.Fragment() {
+// -----------------------------------------------------------
+// MRT(Multiple Render Targets)
+// -----------------------------------------------------------
+// 複数のレンダリングターゲットに対して同時に異なる出力を行う
+// -----------------------------------------------------------
+// https://wgld.org/d/webgl2/w011.html
+// -----------------------------------------------------------
+class A11Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -37,6 +44,7 @@ class A11Fragment : androidx.fragment.app.Fragment() {
                     Log.d(javaClass.simpleName,"ex[${event.x}]ey[${event.y}]")
                     Log.d(javaClass.simpleName,"vw[${myGLES32View.width}]vh[${myGLES32View.height}]")
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)

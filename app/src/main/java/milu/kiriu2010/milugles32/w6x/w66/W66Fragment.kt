@@ -12,7 +12,15 @@ import android.widget.*
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W66Fragment : androidx.fragment.app.Fragment() {
+// ---------------------------------------
+// emuglGLESv2_enc: device/generic/goldfish-opengl/system/GLESv2_enc/GL2Encoder.cpp:s_glVertexAttribPointer:599 GL error 0x501
+// WV066ShaderMosaic:a_TexCoord:Board00Model:1281
+// ---------------------------------------
+// モザイク
+// ---------------------------------------
+// https://wgld.org/d/webgl/w066.html
+// ---------------------------------------
+class W66Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.w7x.w70.W70Fragment
 import milu.kiriu2010.milugles32.w7x.w71.W71Fragment
@@ -20,12 +21,8 @@ class W7xActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_es32x01)
 
-        supportFragmentManager.popBackStack()
-        if (supportFragmentManager.findFragmentByTag("xyz") == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W78Fragment.newInstance(), "xyz")
-                .commit()
-        }
+        // 初期表示のフラグメントを設定
+        changeFragment(W77Fragment.newInstance())
 
         // アクションバーの設定を行う
         supportActionBar?.apply {
@@ -49,85 +46,57 @@ class W7xActivity : AppCompatActivity() {
             }
             // ビデオ
             R.id.w78 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w78") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W78Fragment.newInstance(), "w78")
-                        .commit()
-                }
+                changeFragment(W78Fragment.newInstance())
                 true
             }
             // ラインシェード
             R.id.w77 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w77") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W77Fragment.newInstance(), "w77")
-                        .commit()
-                }
+                changeFragment(W77Fragment.newInstance())
                 true
             }
             // ハーフトーン
             R.id.w76 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w76") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W76Fragment.newInstance(), "w76")
-                        .commit()
-                }
+                changeFragment(W76Fragment.newInstance())
                 true
             }
             // インスタンシング
             R.id.w75 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w75") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W75Fragment.newInstance(), "w75")
-                        .commit()
-                }
+                changeFragment(W75Fragment.newInstance())
                 true
             }
             // 異方性フィルタリング
             R.id.w74 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w74") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W74Fragment.newInstance(), "w74")
-                        .commit()
-                }
+                changeFragment(W74Fragment.newInstance())
                 true
             }
             // 浮動小数点数VTF
             R.id.w72 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w72") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W72Fragment.newInstance(), "w72")
-                        .commit()
-                }
+                changeFragment(W72Fragment.newInstance())
                 true
             }
             // 頂点テクスチャフェッチ
             R.id.w71 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w71") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W71Fragment.newInstance(), "w71")
-                        .commit()
-                }
+                changeFragment(W71Fragment.newInstance())
                 true
             }
             // 浮動小数点数テクスチャ
             R.id.w70 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w70") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W70Fragment.newInstance(), "w70")
-                        .commit()
-                }
+                changeFragment(W70Fragment.newInstance())
                 true
             }
             else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    // 表示するフラグメントを切り替える
+    private fun changeFragment(fragment: Fragment) {
+        // 現在表示しているフラグメントをスタックから外す
+        supportFragmentManager.popBackStack()
+        // 選択したフラグメントを表示する
+        if ( supportFragmentManager.findFragmentByTag(fragment.javaClass.simpleName) == null ) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frameLayout, fragment, fragment.javaClass.simpleName)
+                .commit()
         }
     }
 }

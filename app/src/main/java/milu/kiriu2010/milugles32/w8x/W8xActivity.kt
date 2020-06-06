@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.w8x.w80.W80Fragment
 import milu.kiriu2010.milugles32.w8x.w81.W81Fragment
@@ -21,12 +22,8 @@ class W8xActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_es32x01)
 
-        supportFragmentManager.popBackStack()
-        if (supportFragmentManager.findFragmentByTag("xyz") == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W80Fragment.newInstance(), "xyz")
-                .commit()
-        }
+        // 初期表示のフラグメントを設定
+        changeFragment(W80Fragment.newInstance())
 
         // アクションバーの設定を行う
         supportActionBar?.apply {
@@ -50,95 +47,62 @@ class W8xActivity : AppCompatActivity() {
             }
             // スフィア環境マッピング
             R.id.w89 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w89") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W89Fragment.newInstance(), "w89")
-                        .commit()
-                }
+                changeFragment(W89Fragment.newInstance())
                 true
             }
             // フラットシェーディング
             R.id.w87 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w87") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W87Fragment.newInstance(), "w87")
-                        .commit()
-                }
+                changeFragment(W87Fragment.newInstance())
                 true
             }
             // 色取得
             R.id.w86 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w86") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W86Fragment.newInstance(), "w86")
-                        .commit()
-                }
+                changeFragment(W86Fragment.newInstance())
                 true
             }
             // MRTエッジ検出
             R.id.w85 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w85") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W85Fragment.newInstance(), "w85")
-                        .commit()
-                }
+                changeFragment(W85Fragment.newInstance())
                 true
             }
             // MRT
             R.id.w84 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w84") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W84Fragment.newInstance(), "w84")
-                        .commit()
-                }
+                changeFragment(W84Fragment.newInstance())
                 true
             }
             // GPGPU
             R.id.w83 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w83") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W83Fragment.newInstance(), "w83")
-                        .commit()
-                }
+                changeFragment(W83Fragment.newInstance())
                 true
             }
             // VBO逐次更新:パーティクル
             R.id.w82 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w82") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W82Fragment.newInstance(), "w82")
-                        .commit()
-                }
+                changeFragment(W82Fragment.newInstance())
                 true
             }
             // VBO逐次更新
             R.id.w81 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w81") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W81Fragment.newInstance(), "w81")
-                        .commit()
-                }
+                changeFragment(W81Fragment.newInstance())
                 true
             }
             // クロマキー
             R.id.w80 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w80") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W80Fragment.newInstance(), "w80")
-                        .commit()
-                }
+                changeFragment(W80Fragment.newInstance())
                 true
             }
             else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    // 表示するフラグメントを切り替える
+    private fun changeFragment(fragment: Fragment) {
+        // 現在表示しているフラグメントをスタックから外す
+        supportFragmentManager.popBackStack()
+        // 選択したフラグメントを表示する
+        if ( supportFragmentManager.findFragmentByTag(fragment.javaClass.simpleName) == null ) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frameLayout, fragment, fragment.javaClass.simpleName)
+                .commit()
         }
     }
 }

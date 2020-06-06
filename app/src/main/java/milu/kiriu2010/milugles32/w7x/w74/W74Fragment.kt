@@ -11,7 +11,12 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W74Fragment : androidx.fragment.app.Fragment() {
+// -----------------------------------------
+// 異方性フィルタリング
+// ------------------------------------
+// https://wgld.org/d/webgl/w074.html
+// -----------------------------------------
+class W74Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

@@ -12,7 +12,12 @@ import android.widget.RadioGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class G04Fragment : androidx.fragment.app.Fragment() {
+// ----------------------------------------------
+// 様々な図形を描く
+// ----------------------------------------------
+// https://wgld.org/d/glsl/g004.html
+// ----------------------------------------------
+class G04Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -40,6 +45,7 @@ class G04Fragment : androidx.fragment.app.Fragment() {
                 MotionEvent.ACTION_DOWN -> {
                     renderer.touchP.x = event.x.toFloat()/renderer.renderW.toFloat()
                     renderer.touchP.y = event.y.toFloat()/renderer.renderH.toFloat()
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                     renderer.touchP.x = event.x.toFloat()/renderer.renderW.toFloat()

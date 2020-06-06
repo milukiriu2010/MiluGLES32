@@ -107,14 +107,21 @@
     <string name="ITEM_W87">w87_フラットシェーディング</string>
     <string name="ITEM_W89">w89_スフィア環境マッピング</string>
 
-    <!-- fragment_a01.xml -->
 
     <!-- fragment_g02.xml -->
+    <string name="G02_TV_SPEED">Speed</string>
+    <string name="G02_TV_GAP">Gap</string>
 
     <!-- fragment_g04.xml -->
-
-
-
+    <string name="G04_RB_RING">輪</string>
+    <string name="G04_RB_RINGTIME">輪(時間)</string>
+    <string name="G04_RB_GRADATION">グラデーション</string>
+    <string name="G04_RB_CONE">円錐を真上から見る</string>
+    <string name="G04_RB_ZOOMLINE">放射状のライン</string>
+    <string name="G04_RB_FLOWER1">花その１</string>
+    <string name="G04_RB_WAVE">波打つリング</string>
+    <string name="G04_RB_FLOWER2">花その２</string>
+    <string name="G04_RB_FAN">ファン</string>
 
 
 

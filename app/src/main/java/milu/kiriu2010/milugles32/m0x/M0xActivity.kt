@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.m0x.m01.M01Fragment
 
@@ -13,12 +14,8 @@ class M0xActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_es32x01)
 
-        supportFragmentManager.popBackStack()
-        if (supportFragmentManager.findFragmentByTag("xyz") == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, M01Fragment.newInstance(), "xyz")
-                .commit()
-        }
+        // 初期表示のフラグメントを設定
+        changeFragment(M01Fragment.newInstance())
 
         // アクションバーの設定を行う
         supportActionBar?.apply {
@@ -42,15 +39,23 @@ class M0xActivity : AppCompatActivity() {
             }
             // ノイズ
             R.id.m01 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("m01") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, M01Fragment.newInstance(), "m01")
-                        .commit()
-                }
+                changeFragment(M01Fragment.newInstance())
                 true
             }
             else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+
+    // 表示するフラグメントを切り替える
+    private fun changeFragment(fragment: Fragment) {
+        // 現在表示しているフラグメントをスタックから外す
+        supportFragmentManager.popBackStack()
+        // 選択したフラグメントを表示する
+        if ( supportFragmentManager.findFragmentByTag(fragment.javaClass.simpleName) == null ) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frameLayout, fragment, fragment.javaClass.simpleName)
+                .commit()
         }
     }
 }

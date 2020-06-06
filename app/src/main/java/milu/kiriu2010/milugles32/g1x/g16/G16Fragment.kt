@@ -11,7 +11,12 @@ import android.widget.CheckBox
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class G16Fragment : androidx.fragment.app.Fragment() {
+// ---------------------------------------
+/// レイマーチング(スムース補間)
+// ---------------------------------------
+// https://wgld.org/d/glsl/g016.html
+// ---------------------------------------
+class G16Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -33,16 +38,17 @@ class G16Fragment : androidx.fragment.app.Fragment() {
         myGLES32View.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
-                    renderer.touchP.x = event.x.toFloat()/renderer.renderW.toFloat()
-                    renderer.touchP.y = event.y.toFloat()/renderer.renderH.toFloat()
+                    renderer.touchP.x = event.x /renderer.renderW.toFloat()
+                    renderer.touchP.y = event.y /renderer.renderH.toFloat()
                 }
                 MotionEvent.ACTION_DOWN -> {
-                    renderer.touchP.x = event.x.toFloat()/renderer.renderW.toFloat()
-                    renderer.touchP.y = event.y.toFloat()/renderer.renderH.toFloat()
+                    renderer.touchP.x = event.x /renderer.renderW.toFloat()
+                    renderer.touchP.y = event.y /renderer.renderH.toFloat()
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    renderer.touchP.x = event.x.toFloat()/renderer.renderW.toFloat()
-                    renderer.touchP.y = event.y.toFloat()/renderer.renderH.toFloat()
+                    renderer.touchP.x = event.x /renderer.renderW.toFloat()
+                    renderer.touchP.y = event.y /renderer.renderH.toFloat()
                 }
                 else -> {
                 }

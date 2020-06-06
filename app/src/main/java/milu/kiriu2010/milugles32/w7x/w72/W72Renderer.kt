@@ -17,7 +17,7 @@ import javax.microedition.khronos.opengles.GL10
 // いまいちよくわからない
 // -------------------------------------
 // 浮動小数点数VTF
-// ----------------------------------------
+// -------------------------------------
 // https://wgld.org/d/webgl/w072.html
 // -------------------------------------
 class W72Renderer(ctx: Context): MgRenderer(ctx) {

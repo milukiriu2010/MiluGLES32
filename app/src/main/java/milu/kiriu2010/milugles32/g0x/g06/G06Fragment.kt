@@ -10,7 +10,12 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class G06Fragment : androidx.fragment.app.Fragment() {
+// ---------------------------------------
+// ジュリア集合
+// ---------------------------------------
+// https://wgld.org/d/glsl/g006.html
+// ---------------------------------------
+class G06Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -38,6 +43,7 @@ class G06Fragment : androidx.fragment.app.Fragment() {
                 MotionEvent.ACTION_DOWN -> {
                     renderer.touchP.x = event.x.toFloat()/renderer.renderW.toFloat()
                     renderer.touchP.y = event.y.toFloat()/renderer.renderH.toFloat()
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                     renderer.touchP.x = event.x.toFloat()/renderer.renderW.toFloat()

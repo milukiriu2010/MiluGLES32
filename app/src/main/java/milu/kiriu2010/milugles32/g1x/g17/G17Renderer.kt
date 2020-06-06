@@ -12,7 +12,7 @@ import milu.kiriu2010.gui.vbo.es32.ES32VAOIp
 // ---------------------------------------
 // レイマーチング(回転)
 // ---------------------------------------
-// https://wgld.org/d/glsl/g016.html
+// https://wgld.org/d/glsl/g017.html
 // ---------------------------------------
 class G17Renderer(ctx: Context): MgRenderer(ctx) {
     // 描画モデル

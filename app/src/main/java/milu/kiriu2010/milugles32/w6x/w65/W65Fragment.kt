@@ -11,7 +11,15 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W65Fragment : androidx.fragment.app.Fragment() {
+// ----------------------------------------
+// emuglGLESv2_enc: device/generic/goldfish-opengl/system/GLESv2_enc/GL2Encoder.cpp:s_glVertexAttribPointer:599
+// WV065ShaderGaussian:a_TexCoord:Board00Model:1281
+// ----------------------------------------
+// 後光表面化散乱
+// ----------------------------------------
+// https://wgld.org/d/webgl/w065.html
+// ----------------------------------------
+class W65Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -37,6 +45,7 @@ class W65Fragment : androidx.fragment.app.Fragment() {
                     Log.d(javaClass.simpleName,"ex[${event.x}]ey[${event.y}]")
                     Log.d(javaClass.simpleName,"vw[${myGLES32View.width}]vh[${myGLES32View.height}]")
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)

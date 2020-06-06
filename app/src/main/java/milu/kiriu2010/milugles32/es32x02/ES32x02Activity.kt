@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.es32x02.a10.A10Fragment
 import milu.kiriu2010.milugles32.es32x02.a11.A11Fragment
@@ -18,12 +19,8 @@ class ES32x02Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_es32x01)
 
-        supportFragmentManager.popBackStack()
-        if (supportFragmentManager.findFragmentByTag("xyz") == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, A15Fragment.newInstance(), "xyz")
-                .commit()
-        }
+        // 初期表示のフラグメントを設定
+        changeFragment(A15Fragment.newInstance())
 
         // アクションバーの設定を行う
         supportActionBar?.apply {
@@ -47,65 +44,47 @@ class ES32x02Activity : AppCompatActivity() {
             }
             // Transform Feedback(GPGPU)
             R.id.es32_a15 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("a15") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, A15Fragment.newInstance(), "a15")
-                        .commit()
-                }
+                changeFragment(A15Fragment.newInstance())
                 true
             }
             // Transform Feedback
             R.id.es32_a14 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("a14") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, A14Fragment.newInstance(), "a14")
-                        .commit()
-                }
+                changeFragment(A14Fragment.newInstance())
                 true
             }
             // centroid
             R.id.es32_a13 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("a13") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, A13Fragment.newInstance(), "a13")
-                        .commit()
-                }
+                changeFragment(A13Fragment.newInstance())
                 true
             }
             // derivative関数
             R.id.es32_a12 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("a12") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, A12Fragment.newInstance(), "a12")
-                        .commit()
-                }
+                changeFragment(A12Fragment.newInstance())
                 true
             }
             // MRT
             R.id.es32_a11 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("a11") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, A11Fragment.newInstance(), "a11")
-                        .commit()
-                }
+                changeFragment(A11Fragment.newInstance())
                 true
             }
             // Sampler Object
             R.id.es32_a10 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("a10") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, A10Fragment.newInstance(), "a10")
-                        .commit()
-                }
+                changeFragment(A10Fragment.newInstance())
                 true
             }
             else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    // 表示するフラグメントを切り替える
+    private fun changeFragment(fragment: Fragment) {
+        // 現在表示しているフラグメントをスタックから外す
+        supportFragmentManager.popBackStack()
+        // 選択したフラグメントを表示する
+        if ( supportFragmentManager.findFragmentByTag(fragment.javaClass.simpleName) == null ) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frameLayout, fragment, fragment.javaClass.simpleName)
+                .commit()
         }
     }
 }

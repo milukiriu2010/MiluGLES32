@@ -11,7 +11,14 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class A15Fragment : androidx.fragment.app.Fragment() {
+// -----------------------------------------------------------
+// Transform Feedback(GPGPU)
+// -----------------------------------------------------------
+//
+// -----------------------------------------------------------
+// https://wgld.org/d/webgl2/w015.html
+// -----------------------------------------------------------
+class A15Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -40,6 +47,7 @@ class A15Fragment : androidx.fragment.app.Fragment() {
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)
                     renderer.u_move = 1f
                     renderer.isRunning = true
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)

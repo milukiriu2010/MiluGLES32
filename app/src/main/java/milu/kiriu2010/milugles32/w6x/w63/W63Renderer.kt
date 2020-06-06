@@ -10,7 +10,11 @@ import milu.kiriu2010.gui.vbo.es32.ES32VAOIpnc
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
+// ----------------------------------------------------------
 // 半球ライティング
+// ----------------------------------------------------------
+// https://wgld.org/d/webgl/w063.html
+// ----------------------------------------------------------
 class W63Renderer(ctx: Context): MgRenderer(ctx) {
     // 描画オブジェクト(トーラス)
     private val modelTorus = Torus01Model()

@@ -10,7 +10,12 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class G05Fragment : androidx.fragment.app.Fragment() {
+// ----------------------------------------------
+// マンデルブロ集合
+// ---------------------------------------
+// https://wgld.org/d/glsl/g005.html
+// ----------------------------------------------
+class G05Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

@@ -11,7 +11,12 @@ import android.widget.CheckBox
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class G15Fragment : androidx.fragment.app.Fragment() {
+// ---------------------------------------
+// レイマーチング(リング＋板)
+// ---------------------------------------
+// https://wgld.org/d/glsl/g015.html
+// ---------------------------------------
+class G15Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

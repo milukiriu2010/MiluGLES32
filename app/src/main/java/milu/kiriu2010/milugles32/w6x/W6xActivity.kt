@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.w6x.w60.W60Fragment
 import milu.kiriu2010.milugles32.w6x.w61.W61Fragment
@@ -22,12 +23,8 @@ class W6xActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_es32x01)
 
-        supportFragmentManager.popBackStack()
-        if (supportFragmentManager.findFragmentByTag("xyz") == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, W68Fragment.newInstance(), "xyz")
-                .commit()
-        }
+        // 初期表示のフラグメントを設定
+        changeFragment(W68Fragment.newInstance())
 
         // アクションバーの設定を行う
         supportActionBar?.apply {
@@ -51,105 +48,68 @@ class W6xActivity : AppCompatActivity() {
             }
             // 深度値
             R.id.w69 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w69") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W69Fragment.newInstance(), "w69")
-                        .commit()
-                }
+                changeFragment(W69Fragment.newInstance())
                 true
             }
             // ゴッドレイ
             R.id.w68 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w68") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W68Fragment.newInstance(), "w68")
-                        .commit()
-                }
+                changeFragment(W68Fragment.newInstance())
                 true
             }
             // ズームブラー
             R.id.w67 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w67") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W67Fragment.newInstance(), "w67")
-                        .commit()
-                }
+                changeFragment(W67Fragment.newInstance())
                 true
             }
             // mosaicフィルタ
             R.id.w66 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w66") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W66Fragment.newInstance(), "w66")
-                        .commit()
-                }
+                changeFragment(W66Fragment.newInstance())
                 true
             }
             // 後光表面化散乱
             R.id.w65 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w65") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W65Fragment.newInstance(), "w65")
-                        .commit()
-                }
+                changeFragment(W65Fragment.newInstance())
                 true
             }
             // リムライティング
             R.id.w64 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w64") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W64Fragment.newInstance(), "w64")
-                        .commit()
-                }
+                changeFragment(W64Fragment.newInstance())
                 true
             }
             // 半球ライティング
             R.id.w63 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w63") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W63Fragment.newInstance(), "w63")
-                        .commit()
-                }
+                changeFragment(W63Fragment.newInstance())
                 true
             }
             // ステンシル鏡面
             R.id.w62 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w62") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W62Fragment.newInstance(), "w62")
-                        .commit()
-                }
+                changeFragment(W62Fragment.newInstance())
                 true
             }
             // パーティクルフォグ
             R.id.w61 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w61") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W61Fragment.newInstance(), "w61")
-                        .commit()
-                }
+                changeFragment(W61Fragment.newInstance())
                 true
             }
             // 距離フォグ
             R.id.w60 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("w60") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, W60Fragment.newInstance(), "w60")
-                        .commit()
-                }
+                changeFragment(W60Fragment.newInstance())
                 true
             }
             else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+
+    // 表示するフラグメントを切り替える
+    private fun changeFragment(fragment: Fragment) {
+        // 現在表示しているフラグメントをスタックから外す
+        supportFragmentManager.popBackStack()
+        // 選択したフラグメントを表示する
+        if ( supportFragmentManager.findFragmentByTag(fragment.javaClass.simpleName) == null ) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frameLayout, fragment, fragment.javaClass.simpleName)
+                .commit()
         }
     }
 }

@@ -10,7 +10,12 @@ import android.view.ViewGroup
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class M01Fragment : androidx.fragment.app.Fragment() {
+// ---------------------------------------------------
+// パーリンノイズで生成した画像をテクスチャとして貼る
+// ---------------------------------------------------
+// https://wgld.org/d/webgl/w026.html
+// ---------------------------------------------------
+class M01Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -37,6 +42,7 @@ class M01Fragment : androidx.fragment.app.Fragment() {
                         true  -> false
                         false -> true
                     }
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                 }

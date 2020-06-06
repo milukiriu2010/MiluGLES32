@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import milu.kiriu2010.milugles32.R
 import milu.kiriu2010.milugles32.g0x.g01.G01Fragment
 import milu.kiriu2010.milugles32.g0x.g02.G02Fragment
@@ -21,12 +22,8 @@ class G0xActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_es32x01)
 
-        supportFragmentManager.popBackStack()
-        if (supportFragmentManager.findFragmentByTag("xyz") == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, G09Fragment.newInstance(), "xyz")
-                .commit()
-        }
+        // 初期表示のフラグメントを設定
+        changeFragment(G09Fragment.newInstance())
 
         // アクションバーの設定を行う
         supportActionBar?.apply {
@@ -50,95 +47,62 @@ class G0xActivity : AppCompatActivity() {
             }
             // レイマーチング(球体)
             R.id.g09 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g09") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G09Fragment.newInstance(), "g09")
-                        .commit()
-                }
+                changeFragment(G09Fragment.newInstance())
                 true
             }
             // レイマーチング(RGB)
             R.id.g08 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g08") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G08Fragment.newInstance(), "g08")
-                        .commit()
-                }
+                changeFragment(G08Fragment.newInstance())
                 true
             }
             // ノイズ
             R.id.g07 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g07") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G07Fragment.newInstance(), "g07")
-                        .commit()
-                }
+                changeFragment(G07Fragment.newInstance())
                 true
             }
             // ジュリア集合
             R.id.g06 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g06") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G06Fragment.newInstance(), "g06")
-                        .commit()
-                }
+                changeFragment(G06Fragment.newInstance())
                 true
             }
             // マンデルブロ集合
             R.id.g05 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g05") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G05Fragment.newInstance(), "g05")
-                        .commit()
-                }
+                changeFragment(G05Fragment.newInstance())
                 true
             }
             // 様々な図形
             R.id.g04 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g04") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G04Fragment.newInstance(), "g04")
-                        .commit()
-                }
+                changeFragment(G04Fragment.newInstance())
                 true
             }
             // オーブ
             R.id.g03 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g03") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G03Fragment.newInstance(), "g03")
-                        .commit()
-                }
+                changeFragment(G03Fragment.newInstance())
                 true
             }
             // 同心円
             R.id.g02 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g02") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G02Fragment.newInstance(), "g02")
-                        .commit()
-                }
+                changeFragment(G02Fragment.newInstance())
                 true
             }
             // GLSL
             R.id.g01 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("g01") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, G01Fragment.newInstance(), "g01")
-                        .commit()
-                }
+                changeFragment(G01Fragment.newInstance())
                 true
             }
             else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    // 表示するフラグメントを切り替える
+    private fun changeFragment(fragment: Fragment) {
+        // 現在表示しているフラグメントをスタックから外す
+        supportFragmentManager.popBackStack()
+        // 選択したフラグメントを表示する
+        if ( supportFragmentManager.findFragmentByTag(fragment.javaClass.simpleName) == null ) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frameLayout, fragment, fragment.javaClass.simpleName)
+                .commit()
         }
     }
 }

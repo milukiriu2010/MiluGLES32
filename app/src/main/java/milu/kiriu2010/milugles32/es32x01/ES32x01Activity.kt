@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import milu.kiriu2010.milugles32.es32x01.a01.A01Fragment
 import milu.kiriu2010.milugles32.es32x01.a06.A06Fragment
 import milu.kiriu2010.milugles32.R
@@ -20,12 +21,8 @@ class ES32x01Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_es32x01)
 
-        supportFragmentManager.popBackStack()
-        if (supportFragmentManager.findFragmentByTag("xyz") == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, A07Fragment.newInstance(), "xyz")
-                .commit()
-        }
+        // 初期表示のフラグメントを設定
+        changeFragment(A07Fragment.newInstance())
 
         // アクションバーの設定を行う
         supportActionBar?.apply {
@@ -49,85 +46,57 @@ class ES32x01Activity : AppCompatActivity() {
             }
             // UBO
             R.id.es32_a09 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("a09") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, A09Fragment.newInstance(), "a09")
-                        .commit()
-                }
+                changeFragment(A09Fragment.newInstance())
                 true
             }
             // gl_VertexID
             R.id.es32_a08 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("a08") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, A08Fragment.newInstance(), "a08")
-                        .commit()
-                }
+                changeFragment(A08Fragment.newInstance())
                 true
             }
             // インスタンシング
             R.id.es32_a07 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("a07") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, A07Fragment.newInstance(), "a07")
-                        .commit()
-                }
+                changeFragment(A07Fragment.newInstance())
                 true
             }
             // VAO
             R.id.es32_a06 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("a06") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, A06Fragment.newInstance(), "a06")
-                        .commit()
-                }
+                changeFragment(A06Fragment.newInstance())
                 true
             }
             // flat補間
             R.id.es32_a05 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("a05") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, A05Fragment.newInstance(), "a05")
-                        .commit()
-                }
+                changeFragment(A05Fragment.newInstance())
                 true
             }
             // layout
             R.id.es32_a04 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("a04") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, A04Fragment.newInstance(), "a04")
-                        .commit()
-                }
+                changeFragment(A04Fragment.newInstance())
                 true
             }
             // GLSL ES3.2
             R.id.es32_a03 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("a03") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, A03Fragment.newInstance(), "a03")
-                        .commit()
-                }
+                changeFragment(A03Fragment.newInstance())
                 true
             }
             // 回転(立方体)01_ES32
             R.id.es32_a01 -> {
-                supportFragmentManager.popBackStack()
-                if (supportFragmentManager.findFragmentByTag("a01") == null) {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, A01Fragment.newInstance(), "a01")
-                        .commit()
-                }
+                changeFragment(A01Fragment.newInstance())
                 true
             }
             else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    // 表示するフラグメントを切り替える
+    private fun changeFragment(fragment: Fragment) {
+        // 現在表示しているフラグメントをスタックから外す
+        supportFragmentManager.popBackStack()
+        // 選択したフラグメントを表示する
+        if ( supportFragmentManager.findFragmentByTag(fragment.javaClass.simpleName) == null ) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frameLayout, fragment, fragment.javaClass.simpleName)
+                .commit()
         }
     }
 }

@@ -12,7 +12,13 @@ import android.widget.*
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W64Fragment : androidx.fragment.app.Fragment() {
+// ---------------------------------------------------------------
+// リムライティング
+//   モデルの後方からライトが当たっている情報を再現する照明効果
+// ---------------------------------------------------------------
+// https://wgld.org/d/webgl/w064.html
+// ---------------------------------------------------------------
+class W64Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 

@@ -11,7 +11,12 @@ import android.widget.*
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W86Fragment : androidx.fragment.app.Fragment() {
+// ------------------------------------
+// 描画結果から色を取得
+// ------------------------------------
+// https://wgld.org/d/webgl/w086.html
+// ------------------------------------
+class W86Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -40,6 +45,7 @@ class W86Fragment : androidx.fragment.app.Fragment() {
                     renderer.touchP.y = event.y
 
                     textViewW86.text = "R[${renderer.colorBuf.get(0)}]G[${renderer.colorBuf.get(1)}]B[${renderer.colorBuf.get(2)}]A[${renderer.colorBuf.get(3)}]"
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                 }

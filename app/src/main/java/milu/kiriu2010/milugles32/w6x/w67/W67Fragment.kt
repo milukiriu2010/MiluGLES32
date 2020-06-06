@@ -12,7 +12,16 @@ import android.widget.*
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W67Fragment : androidx.fragment.app.Fragment() {
+// -----------------------------------
+// emuglGLESv2_enc: device/generic/goldfish-opengl/system/GLESv2_enc/GL2Encoder.cpp:s_glVertexAttribPointer:599 GL error 0x501
+//    Info: Invalid vertex attribute index. Wanted index: 4294967295. Max index: 16
+// WV067ShaderZoomBlur:a_TextureCoord:Board00Model:1281
+// -----------------------------------
+// ズームブラーフィルタ
+// -----------------------------------
+// https://wgld.org/d/webgl/w067.html
+// -----------------------------------
+class W67Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -38,6 +47,7 @@ class W67Fragment : androidx.fragment.app.Fragment() {
                     Log.d(javaClass.simpleName,"ex[${event.x}]ey[${event.y}]")
                     Log.d(javaClass.simpleName,"vw[${myGLES32View.width}]vh[${myGLES32View.height}]")
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)

@@ -12,7 +12,14 @@ import android.widget.*
 import milu.kiriu2010.gui.view.MyGLES32View
 import milu.kiriu2010.milugles32.R
 
-class W60Fragment : androidx.fragment.app.Fragment() {
+// --------------------------------------------------------------
+// 距離フォグ
+//   カメラからの距離に応じて、
+//   あたかも視界が遮られているかのようにモデルに色づけをする
+// --------------------------------------------------------------
+// https://wgld.org/d/webgl/w060.html
+// --------------------------------------------------------------
+class W60Fragment : Fragment() {
 
     private lateinit var myGLES32View: MyGLES32View
 
@@ -38,6 +45,7 @@ class W60Fragment : androidx.fragment.app.Fragment() {
                     Log.d(javaClass.simpleName,"ex[${event.x}]ey[${event.y}]")
                     Log.d(javaClass.simpleName,"vw[${myGLES32View.width}]vh[${myGLES32View.height}]")
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)
+                    myGLES32View.performClick()
                 }
                 MotionEvent.ACTION_MOVE -> {
                     renderer.receiveTouch(event,myGLES32View.width,myGLES32View.height)
