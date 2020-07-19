@@ -23,7 +23,7 @@ class W8xActivity : AppCompatActivity() {
         setContentView(R.layout.activity_es32x01)
 
         // 初期表示のフラグメントを設定
-        changeFragment(W80Fragment.newInstance())
+        changeFragment(W89Fragment.newInstance())
 
         // アクションバーの設定を行う
         supportActionBar?.apply {
